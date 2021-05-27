@@ -20,14 +20,14 @@ function [gammaCmd, chiCmd] = Fabrizio_PathTracker(r, VK, WayPoints, CurrentWP_I
 %   5.) Limitieren Sie gammaSoll und chiCmd auf sinnvolle Wertebereiche
 
 %% Parameter
-ky =  4.4928;
-kz =  2.0406;
-gammaMax = pi/4;
+ky =  1.4966/4;
+kz =  1.8195/4;
+gammaMax = 10*180/pi;
 chiMax = pi/2;
 
 %% Berechnung der Sollbahnwerte
 % Sollbahnneigung
-gamma0 = atan2(WayPoints(CurrentWP_ID,3)-PreviousWP(3),WayPoints(CurrentWP_ID,2)-PreviousWP(2));
+gamma0 = -atan2(WayPoints(CurrentWP_ID,3)-PreviousWP(3),sqrt((WayPoints(CurrentWP_ID,2)-PreviousWP(2))^2+(WayPoints(CurrentWP_ID,1)-PreviousWP(1))^2 );
 % Sollbahnazimuth
 chi0 = atan2(WayPoints(CurrentWP_ID,2)-PreviousWP(2),WayPoints(CurrentWP_ID,1)-PreviousWP(1));
 
@@ -54,6 +54,5 @@ uV = min(max(uV,-abs(sqrt(a^2+b^2)*VK)),abs(sqrt(a^2+b^2)*VK));
 gammaCmd = asin(-uV/(sqrt(a^2+b^2)*VK)) + delta;
 
 %% Limitierung der Kommandos auf sinnvolle Bereiche
-chiCmd = min(max(chiCmd,-chiMax),chiMax);
 gammaCmd = min(max(gammaCmd,-gammaMax),gammaMax);
 end
