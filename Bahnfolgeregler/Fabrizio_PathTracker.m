@@ -27,9 +27,9 @@ chiMax = pi/2;
 
 %% Berechnung der Sollbahnwerte
 % Sollbahnneigung
-gamma0 = atan2(Waypoints(CurrentWP_ID,3)-PreviousWP(3),Waypoints(CurrentWP_ID,2)-PreviousWP(2));
+gamma0 = atan2(WayPoints(CurrentWP_ID,3)-PreviousWP(3),WayPoints(CurrentWP_ID,2)-PreviousWP(2));
 % Sollbahnazimuth
-chi0 = atan2(Waypoints(CurrentWP_ID,2)-PreviousWP(2),Waypoints(CurrentWP_ID,1)-PreviousWP(1));
+chi0 = atan2(WayPoints(CurrentWP_ID,2)-PreviousWP(2),WayPoints(CurrentWP_ID,1)-PreviousWP(1));
 
 %% Transformation der aktuellen Flugzeugposition in Sollbahnkoordinaten
 % Transformationsmatrix
@@ -37,23 +37,21 @@ TrE = [cos(gamma0)*cos(chi0) cos(gamma0)*sin(chi0) -sin(gamma0);...
         -sin(chi0) cos(chi0) 0;...
         sin(gamma0)*cos(chi0) sin(gamma0)*sin(chi0) cos(gamma0)];
 
-rrFZ = Tre*(r-PreviousWP);
+rrFZ = TrE*(r-PreviousWP);
 
 %% Berechnung der Kommandos
 % Pseudosteuerungen
 uH = -ky*rrFZ(2);
 uV = -kz*rrFZ(3);
-% Begrenzung der Pseudosteuerungen
-uH = uH;
-uV = uV;
 % Heading
-chiCmd = chi0+asin(uH/(cos(gamma0*VK)));
+uH = min(max(uH,-abs(cos(gamma0)*VK)),abs(cos(gamma0)*VK));
+chiCmd = chi0+asin(uH/(cos(gamma0)*VK));
 % Bahnwinkel
 a = -cos(gamma0);
 b = sin(gamma0)*cos(chiCmd-chi0);
-c = uV/VK;
 delta = atan2(b,-a);
-gammaCmd = asin(-c/sqrt(a^2+b^2)) + delta;
+uV = min(max(uV,-abs(sqrt(a^2+b^2)*VK)),abs(sqrt(a^2+b^2)*VK));
+gammaCmd = asin(-uV/(sqrt(a^2+b^2)*VK)) + delta;
 
 %% Limitierung der Kommandos auf sinnvolle Bereiche
 chiCmd = min(max(chiCmd,-chiMax),chiMax);
