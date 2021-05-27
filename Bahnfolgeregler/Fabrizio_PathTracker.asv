@@ -19,11 +19,14 @@ function [gammaCmd, chiCmd] = Fabrizio_PathTracker(r, VK, WayPoints, CurrentWP_I
 %   4.) Berechnen Sie den kommandierten Bahnwinkel (gammaCmd) und das kommandierte Heading (chiCmd)
 %   5.) Limitieren Sie gammaSoll und chiCmd auf sinnvolle Wertebereiche
 
+gammaCmd = single(0);
+chiCmd   = single(0);
+
 %% Parameter
 ky =  4.4928;
 kz =  2.0406;
+
 gammaMax = pi/4;
-chiMax = pi/2;
 
 %% Berechnung der Sollbahnwerte
 % Sollbahnneigung
@@ -43,9 +46,6 @@ rrFZ = Tre*(r-PreviousWP);
 % Pseudosteuerungen
 uH = -ky*rrFZ(2);
 uV = -kz*rrFZ(3);
-% Begrenzung der Pseudosteuerungen
-uH = uH;
-uV = uV;
 % Heading
 chiCmd = chi0+asin(uH/(cos(gamma0*VK)));
 % Bahnwinkel
