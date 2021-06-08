@@ -1,0 +1,64 @@
+\documentclass[a4paper,ngerman,12pt,chapterprefix=false,oneside,openright]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[headings]{fullpage}
+
+%Grafikeinbindung
+\usepackage[pdftex]{graphicx,xcolor}
+\graphicspath{{./src/pics/}}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\usepackage{tikz}
+\usetikzlibrary{plotmarks,shapes,arrows.meta,decorations.markings,patterns,calc}
+
+%Kopfzeile
+\usepackage{geometry}
+\geometry{verbose,a4paper,tmargin=3.5cm,bmargin=2.5cm,lmargin=2.6cm,rmargin=2.6cm,headheight=40pt,headsep=1cm}
+\usepackage[headsepline= 0.4pt]{scrlayer-scrpage}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ohead{  \normalfont \sffamily \bfseries \small Universität Stuttgart \\[2pt] Institut für Flugmechanik und Flugregelung  \\[8pt] \normalfont\sffamily\footnotesize{Prof. Dr.-Ing. Walter Fichter}\\[-37pt] }
+\lohead{ \includegraphics[scale=0.4, trim= -0.0cm 0.05cm 0cm 0cm] {./src/pics/logo/ifrlogo.pdf} \vspace{0.05cm}}
+
+
+%Mathematikfunktionen
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathtools}
+
+\makeindex
+  
+%==================================================================
+ %==================================================================
+ % Metadaten der Arbeit
+ %
+ % Titel
+ \newcommand{\ifrtitleOne}{Modul X: }
+ \newcommand{\ifrtitleTwo}{Hier sollte der Titel Ihrer Arbeit stehen}
+ % Author
+  \newcommand{\ifrauthor}{Max Musterstudent}
+ %
+ %=================================================================== 
+ %==================================================================
+  
+
+%Beispieltext
+\usepackage{blindtext}
+
+\begin{document}
+%Titlepage
+\input{./src/00_title.tex}
+
+%Table of contents
+\tableofcontents
+
+%Chapters
+\input{./src/01_chapter.tex}
+\input{./src/02_chapter.tex}
+\input{./src/03_chapter.tex}
+
+%Bibliography
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\bibliographystyle{abbrvdin}
+\bibliography{./src/bibfile}
+
+\end{document}
