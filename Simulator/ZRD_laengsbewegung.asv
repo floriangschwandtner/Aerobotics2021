@@ -1,0 +1,40 @@
+clc
+clear all
+close all
+
+V0 = 30;
+Za = 1;
+
+% load("C:\Users\Florian\bwedu\Fabrizio Turco - Aerobotics_SS21_SysID\Systemidentifikation_Flugdaten\x_state_original.mat"
+% load("C:\Users\Florian\bwedu\Fabrizio Turco - Aerobotics_SS21_SysID\Systemidentifikation_Flugdaten\u_control_original.mat"
+
+% Beiwerte für A
+Zv = 1;
+Ma = 1;
+Mq = 1;
+Mv = 1;
+Xa = 1;
+Xv = 1;
+g = 9.81;
+Za = 1;
+Zv = 1;
+
+%Beiwerte für B
+Xdf = 1;
+a0 = 0;
+i_f = 0;
+Meta = 1;
+Mdf = 1;
+Xeta = 1;
+Zeta = 1;
+
+[X, U, t_vec] = createStateAndInput(906, 1119);
+
+t = t_vec-t_vec(1);
+
+U1sim = [t, U(:,1)]
+U2sim = [t, U(:,1)]
+
+sim('ZRD_Simulator.slx', t_vec-t_vec(1))
+
+
