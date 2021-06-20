@@ -7,23 +7,21 @@ close all
 V0 = 30;
 
 % Beiwerte für A
-Ma = 1;
-Mq = 1;
-Mv = 1;
-Xa = 1;
-Xv = 1;
+Nr = 1;
+Nb = 1;
+Np = 1;
+Yz = 1;
+Lr = 1;
 g = 9.81;
-Za = 1;
-Zv = 1;
+Lb = 1;
+Lp = 1;
 
 %Beiwerte für B
-Xdf = 1;
-a0 = 0;
-i_f = 0;
-Meta = 1;
-Mdf = 1;
-Xeta = 1;
-Zeta = 1;
+Nc = 1;
+Nz = 0;
+Yz = 0;
+Le = 1;
+Lz = 1;
 
 %Erster längerer Geradeausflug
 t0 = 906;
@@ -37,7 +35,7 @@ t = t_vec-t_vec(1);
 U1sim = [t, U(:,1)]
 U2sim = [t, U(:,2)]
 
-output = sim('ZRD_laengsSimulator.slx', t_vec-t_vec(1))
+output = sim('ZRD_seitw_Simulator.slx', t_vec-t_vec(1))
 
 figure(1)
 subplot(2,2,1)
@@ -45,14 +43,14 @@ plot(output.tout, output.ysim(:,1))
 hold on
 plot(t,X(:,1))
 xlabel('t[s]')
-ylabel('\Delta \alpha')
+ylabel('r')
 
 subplot(2,2,2)
 plot(output.tout, output.ysim(:,2))
 hold on
 plot(t,X(:,2))
 xlabel('t[s]')
-ylabel('q')
+ylabel('\beta')
 
 
 subplot(2,2,3)
@@ -60,7 +58,7 @@ plot(output.tout, output.ysim(:,3))
 hold on
 plot(t,X(:,3))
 xlabel('t[s]')
-ylabel('\Delta V_A')
+ylabel('p')
 
 
 subplot(2,2,4)
@@ -68,6 +66,6 @@ plot(output.tout, output.ysim(:,4))
 hold on
 plot(t,X(:,4))
 xlabel('t[s]')
-ylabel('\Delta \gamma')
+ylabel('\Phi')
 
 
