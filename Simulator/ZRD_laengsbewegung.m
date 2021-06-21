@@ -34,10 +34,10 @@ tend = 1119;
 
 t = t_vec-t_vec(1);
 
-U1sim = [t, U(:,1)]
-U2sim = [t, U(:,2)]
+U1sim = [t, U(:,1)];
+U2sim = [t, U(:,2)];
 
-output = sim('ZRD_laengs_Simulator.slx', t_vec-t_vec(1))
+output = sim('ZRD_laengs_Simulator.slx', t_vec-t_vec(1));
 
 figure(1)
 subplot(2,2,1)
