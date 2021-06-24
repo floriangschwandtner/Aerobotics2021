@@ -34,7 +34,7 @@ t_vec = x_1(i0_x:iend_x,1);
 
 x_2Inter = interp1(x_2(i0_x2:iend_x2,1), x_2(i0_x2:iend_x2,2),(t_vec));
 
-X = [x_1(i0_x:iend_x, 2), x_2Inter, x_2(i0_x:iend_x, 2),x_3(i0_x:iend_x, 2)];
+X = [x_1(i0_x:iend_x, 2), x_2Inter, x_3(i0_x:iend_x, 2),x_4(i0_x:iend_x, 2)];
 
 u_1Inter = interp1(u_1(i0_u:iend_u,1), u_1(i0_u:iend_u,2),(t_vec));
 u_2Inter = interp1(u_2(i0_u:iend_u,1), u_2(i0_u:iend_u,2),(t_vec));
