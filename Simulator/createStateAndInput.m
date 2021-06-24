@@ -7,6 +7,8 @@ load("u_control_original.mat")
 
 [minValue0 , i0_x2] = min(abs(x_2(:,1)-t0));
 [minValueEnd, iend_x2] = min(abs(x_2(:,1)-tend));
+[minValue0 , i0_x4] = min(abs(x_4(:,1)-t0));
+[minValueEnd, iend_x4] = min(abs(x_4(:,1)-tend));
 
 if(minValue0>1.0 || minValueEnd>1.0)
     error("t0 or tend not in x_2");
@@ -33,8 +35,9 @@ end
 t_vec = x_1(i0_x:iend_x,1);
 
 x_2Inter = interp1(x_2(i0_x2:iend_x2,1), x_2(i0_x2:iend_x2,2),(t_vec));
+x_4Inter = interp1(x_4(i0_x4:iend_x4,1), x_4(i0_x4:iend_x4,2),(t_vec));
 
-X = [x_1(i0_x:iend_x, 2), x_2Inter, x_3(i0_x:iend_x, 2),x_4(i0_x:iend_x, 2)];
+X = [x_1(i0_x:iend_x, 2), x_2Inter, x_3(i0_x:iend_x, 2), x_4Inter];
 
 u_1Inter = interp1(u_1(i0_u:iend_u,1), u_1(i0_u:iend_u,2),(t_vec));
 u_2Inter = interp1(u_2(i0_u:iend_u,1), u_2(i0_u:iend_u,2),(t_vec));
