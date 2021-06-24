@@ -1,13 +1,10 @@
 %% 
-t_start = 1000;
-t_end = 1100;
+t_start = 915;
+t_end = 1115;
 
 %%
 [X, U, t_vec] = createStateAndInput(t_start, t_end);
 
-% ACHTUNG, NOCH BESSER LÖSEN!
-U(1,:)=U(2,:);
-%
 
 tdiff = zeros(length(t_vec)-1,1);
 for i=1:length(t_vec)-1
