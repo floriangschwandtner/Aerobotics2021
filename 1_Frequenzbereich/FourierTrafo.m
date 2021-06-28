@@ -2,7 +2,7 @@
 t_start = 915;
 t_end = 1115;
 
-%%
+%% Fourier-Transformationen
 [X, U, t_vec] = createStateAndInput(t_start, t_end);
 
 
