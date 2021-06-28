@@ -1,5 +1,6 @@
 %% Funktion um X und U aus den Messdaten zu bestimmen
 %2021-06-19 Florian Gschwandtner: Funktion erstellt
+%2021-06-24 FT: Interpolation für x_4 hinzugefügt
 
 function [X, U, t_vec] = createStateAndInput(t0, tend)
 load("x_state_original.mat")
