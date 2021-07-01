@@ -27,7 +27,7 @@ u_Fourier = Y(1:L/2+1,:);
 % Berechnung der Übertragungsmatrix für jede Frequenz
 G = zeros(4,2,L/2+1);
 for k=1:L/2+1
-    G(:,:,k) = (u_Fourier(k,:)\x_Fourier(k,:))';
+    G(:,:,k) = x_Fourier(k,:)'/u_Fourier(k,:)';
 end
 
 % for k=1:L/2+1

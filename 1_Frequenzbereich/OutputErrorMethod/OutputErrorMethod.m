@@ -1,6 +1,8 @@
 %% Pfad
-cd ..
+cd .. 
+addpath(cd)
 cd OutputErrorMethod
+
 
 clear
 load ('data_even.mat');
