@@ -26,29 +26,26 @@ x(:,3) = x(:,3)-V0;
 u(:,1) = u(:,1)-eta0;
 u(:,2) = u(:,2)-deltaF0;
 %% Fourier-Trafos
-t_end = 7500;
-f_end = 200;
-
-[x_Fourier, u_Fourier, G_exp, f] = FourierTrafo(x(1:t_end,:), u(1:t_end,:), t(1:t_end));
-x_Fourier=x_Fourier(2:f_end,:);
-u_Fourier=u_Fourier(2:f_end,:);
-G_exp=G_exp(:,:,2:f_end);
-f=f(2:f_end);
+[x_Fourier, u_Fourier, G_exp, f] = FourierTrafo(x(1:7500,:), u(1:7500,:), t(1:7500));
+x_Fourier=x_Fourier(2:1000,:);
+u_Fourier=u_Fourier(2:1000,:);
+G_exp=G_exp(:,:,2:1000);
+f=f(2:1000);
 N = length(f);
 
 %% Initialisierung des Parametervektors
-Z_alpha = 1;
-Z_V = 1; 
-M_alpha = 1;
-M_q = 1;
-M_V = 1;
-X_alpha = 1;
-X_V = 1;
-Z_eta = 1;
-X_deltaF = 1;
-M_eta = 1;
-M_deltaF = 1;
-X_eta = 1;
+Z_alpha = 7;
+Z_V = 7; 
+M_alpha = 167;
+M_q = 21;
+M_V = 167;
+X_alpha = 161;
+X_V = 161;
+Z_eta = -2;
+X_deltaF = 2;
+M_eta = 160;
+M_deltaF = 21;
+X_eta = 152;
 theta = [Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_deltaF X_eta];
 
 
@@ -104,8 +101,7 @@ while iter <= iter_max && abs(J(iter)) > threshold
     
     for k = 1:N
        y(:,k)     = G_k(:,:,k)*u_Fourier(k,:)';
-       %Svv        = Svv + (x_Fourier(k,:)'-y(:,k)) * conj((x_Fourier(k,:)'-y(:,k))');
-       Svv = eye(4,4);
+       Svv        = Svv + (x_Fourier(k,:)'-y(:,k)) * conj((x_Fourier(k,:)'-y(:,k))');
        Suu(:,:,k) = u_Fourier(k,:)'*conj(u_Fourier(k,:)')';
        Szu(:,:,k) = x_Fourier(k,:)'*conj(u_Fourier(k,:)')';
     end
