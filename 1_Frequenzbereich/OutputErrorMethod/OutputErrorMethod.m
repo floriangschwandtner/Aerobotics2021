@@ -11,10 +11,10 @@ u=u(1:49254,:);
 t=t(1:49254,:);
 
 %% 
-V0 = 26.992;
+V0 = 23.9732;
 alpha0 = 0;
-eta0 = -0.1326;
-deltaF0 = 0.4244;
+eta0 = -0.1738;
+deltaF0 = 0.4012;
 g = 9.81;
 
 %% 
@@ -23,10 +23,11 @@ x(:,3) = x(:,3)-V0;
 u(:,1) = u(:,1)-eta0;
 u(:,2) = u(:,2)-deltaF0;
 %% Fourier-Trafos
-t_end = 7500;
+t_start = 8003;
+t_end = 11758;
 f_end = 200;
 
-[x_Fourier, u_Fourier, G_exp, f] = FourierTrafo(x(1:t_end,:), u(1:t_end,:), t(1:t_end));
+[x_Fourier, u_Fourier, G_exp, f] = FourierTrafo(x(t_start:t_end,:), u(t_start:t_end,:), t(t_start:t_end));
 x_Fourier=x_Fourier(2:f_end,:);
 u_Fourier=u_Fourier(2:f_end,:);
 G_exp=G_exp(:,:,2:f_end);
@@ -50,9 +51,9 @@ theta = [Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_deltaF X
 
 
 %% Newton-Raphson-Algorithmus
-nugget = 0;
+nugget = 0.05;
 threshold = 1e-3;
-iter_max = 15;
+iter_max = 100;
 
 iter = 1;
 dtheta = 50*ones(length(theta),1);
