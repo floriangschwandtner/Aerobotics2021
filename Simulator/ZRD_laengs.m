@@ -1,10 +1,8 @@
-% 2021-06-19 Florian Gschwandtner: Grundstruktur, Modell
-
-clc
-%clear all
 close all
+clear
+load ('data_even.mat');
 
-V0 = 30;
+theta= [];
 
 % Beiwerte für A
 Ma = -0.3215;
@@ -25,34 +23,40 @@ Mdf = -1.9727;
 Xeta = -0.5580;
 Zeta = 0.8461;
 
-%Erster längerer Geradeausflug
-t0 = 906;
-tend = 1119;
+%% Trimmwerte
+%a0 = 0.0061;
+V0 = 26.9962;
+eta0 = -0.1326;
+deltaF0 = 0.4244;
 
-% Erstellen der Matrixen für Zustand und Eingang
-%[X, U, t_vec] = createStateAndInput(t0, tend);
+x(:,1) = x(:,1)-a0;
+x(:,3) = x(:,3)-V0;
+u(:,1) = u(:,1)-eta0;
+u(:,2) = u(:,2)-deltaF0;
 
-%t = t_vec-t_vec(1);
-X = x;
-U = u;
-t_vec = t;
+%% 
+x = x(1:7500,:);
+u = u(1:7500,:);
+t = t(1:7500);
+%% Simulation
+x0 = [a0 0 V0 0];
 U1sim = [t, u(:,1)];
 U2sim = [t, u(:,2)];
+output = sim('ZRD_laengs_Simulator.slx',t);
 
-output = sim('ZRD_laengs_Simulator.slx', t_vec);
-
+%% Visualization
 figure(1)
 subplot(2,2,1)
 plot(output.tout, output.ysim(:,1))
 hold on
-plot(t,X(:,1))
+plot(t,x(:,1))
 xlabel('t[s]')
 ylabel('\Delta \alpha')
 
 subplot(2,2,2)
 plot(output.tout, output.ysim(:,2))
 hold on
-plot(t,X(:,2))
+plot(t,x(:,2))
 xlabel('t[s]')
 ylabel('q')
 
@@ -60,7 +64,7 @@ ylabel('q')
 subplot(2,2,3)
 plot(output.tout, output.ysim(:,3))
 hold on
-plot(t,X(:,3))
+plot(t,x(:,3))
 xlabel('t[s]')
 ylabel('\Delta V_A')
 
@@ -68,8 +72,6 @@ ylabel('\Delta V_A')
 subplot(2,2,4)
 plot(output.tout, output.ysim(:,4))
 hold on
-plot(t,X(:,4))
+plot(t,x(:,4))
 xlabel('t[s]')
 ylabel('\Delta \gamma')
-
-

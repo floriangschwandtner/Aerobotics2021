@@ -12,7 +12,7 @@ A = [theta_sym(1)/theta_sym(13) 1 theta_sym(2)/theta_sym(13) 0;...
 B = [theta_sym(8)/theta_sym(13) 0;...
         theta_sym(10) theta_sym(11);...
         theta_sym(12) theta_sym(9);...
-        -theta(8)/theta_sym(13) 0];
+        -theta_sym(8)/theta_sym(13) 0];
     
 G = inv(theta_sym(15)*eye(size(A))-A)*B;
 
@@ -28,6 +28,19 @@ dG9  = diff(G,theta_sym(9));
 dG10 = diff(G,theta_sym(10));
 dG11 = diff(G,theta_sym(11));
 dG12 = diff(G,theta_sym(12));
+
+dG1_conj  = diff(conj(G)',theta_sym(1));
+dG2_conj  = diff(conj(G)',theta_sym(2));
+dG3_conj  = diff(conj(G)',theta_sym(3));
+dG4_conj  = diff(conj(G)',theta_sym(4));
+dG5_conj  = diff(conj(G)',theta_sym(5));
+dG6_conj  = diff(conj(G)',theta_sym(6));
+dG7_conj  = diff(conj(G)',theta_sym(7));
+dG8_conj  = diff(conj(G)',theta_sym(8));
+dG9_conj  = diff(conj(G)',theta_sym(9));
+dG10_conj = diff(conj(G)',theta_sym(10));
+dG11_conj = diff(conj(G)',theta_sym(11));
+dG12_conj = diff(conj(G)',theta_sym(12));
 
 filename = 'Matrices.mat';
 save Matrices.mat
