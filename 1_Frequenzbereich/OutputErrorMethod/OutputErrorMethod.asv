@@ -15,7 +15,7 @@ t=t(1:49254,:);
 
 %% 
 V0 = 26.9962;
-alpha0 = 0.0061;
+alpha0 = 0;
 eta0 = -0.1326;
 deltaF0 = 0.4244;
 g = 9.81;
@@ -25,11 +25,10 @@ x(:,1) = x(:,1)-alpha0;
 x(:,3) = x(:,3)-V0;
 u(:,1) = u(:,1)-eta0;
 u(:,2) = u(:,2)-deltaF0;
-
 %% Fourier-Trafos
 t_start = 1;
 t_end = 7500;
-f_end = 200;
+f_end = 500;
 
 [x_Fourier, u_Fourier, G_exp, f] = FourierTrafo(x(t_start:t_end,:), u(t_start:t_end,:), t(t_start:t_end));
 x_Fourier=x_Fourier(2:f_end,:);
@@ -99,9 +98,9 @@ while iter <= iter_max && norm(dtheta)/norm(theta) > threshold
     dG7_conj_sub   = subs(dG7_conj,theta_sym(1:15),[theta V0 g alpha0]);
     dG8_conj_sub   = subs(dG8_conj,theta_sym(1:15),[theta V0 g alpha0]);
     dG9_conj_sub   = subs(dG9_conj,theta_sym(1:15),[theta V0 g alpha0]);
-    dG10_conj_sub  = subs(dG10_conj,theta_sym(1:15),[theta V0 g alpha0]);
-    dG11_conj_sub  = subs(dG11_conj,theta_sym(1:15),[theta V0 g alpha0]);
-    dG12_conj_sub  = subs(dG12_conj,theta_sym(1:15),[theta V0 g alpha0]);
+    dG10_conj_sub  = subs(dG10_conj,theta_sym(1:14),[theta V0 g alpha0]);
+    dG11_conj_sub  = subs(dG11_conj,theta_sym(1:14),[theta V0 g alpha0]);
+    dG12_conj_sub  = subs(dG12_conj,theta_sym(1:14),[theta V0 g alpha0]);
     
     %Umwandeln in Frequenzabhängige Funktion
     
@@ -168,7 +167,6 @@ while iter <= iter_max && norm(dtheta)/norm(theta) > threshold
     iter   = iter + 1;
 end
 
-x_hat = zeros(4,N);
 for k=1:N
     x_hat(:,k) = G_k(:,:,k)*u_Fourier(k,:)';
 end
