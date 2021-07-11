@@ -7,17 +7,21 @@ cd OutputErrorMethod
 
 clear
 close all
-load ('data_even.mat');
+% load ('data_even.mat');
+load ('testdata.mat');
 load ('Matrices.mat');
-x=x(1:49254,:);
-u=u(1:49254,:);
-t=t(1:49254,:);
+% x=x(1:49254,:);
+% u=u(1:49254,:);
+% t=t(1:49254,:);
+x=x_test(1:5000,:);
+u=u_test(1:5000,:);
+t=time(1:5000,:);
 
 %% 
-V0 = 26.9962;
-alpha0 = 0.0061;
-eta0 = -0.1326;
-deltaF0 = 0.4244;
+V0 = 27;
+alpha0 = 0;
+eta0 = -0.1;
+deltaF0 = 0.4;
 g = 9.81;
 
 %% 
@@ -28,14 +32,15 @@ u(:,2) = u(:,2)-deltaF0;
 
 %% Fourier-Trafos
 t_start = 1;
-t_end = 7500;
-f_end = 200;
+t_end   = 5000;
+f_start = 40;
+f_end   = 1200;
 
 [x_Fourier, u_Fourier, G_exp, f] = FourierTrafo(x(t_start:t_end,:), u(t_start:t_end,:), t(t_start:t_end));
-x_Fourier=x_Fourier(2:f_end,:);
-u_Fourier=u_Fourier(2:f_end,:);
-G_exp=G_exp(:,:,2:f_end);
-f=f(2:f_end);
+x_Fourier=x_Fourier(f_start:f_end,:);
+u_Fourier=u_Fourier(f_start:f_end,:);
+G_exp=G_exp(:,:,f_start:f_end);
+f=f(f_start:f_end);
 N = length(f);
 
 %% Initialisierung des Parametervektors
@@ -57,7 +62,7 @@ theta = [Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_deltaF X
 %% Newton-Raphson-Algorithmus
 nugget = 0.05;
 threshold = 1e-3;
-iter_max = 15;
+iter_max = 20;
 
 iter = 1;
 dtheta = ones(length(theta),1);
