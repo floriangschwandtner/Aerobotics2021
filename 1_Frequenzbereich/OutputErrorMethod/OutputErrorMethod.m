@@ -1,5 +1,4 @@
 %% Pfad
-
 cd .. 
 addpath(cd)
 cd OutputErrorMethod
