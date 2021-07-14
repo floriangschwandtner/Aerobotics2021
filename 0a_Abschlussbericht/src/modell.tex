@@ -1,7 +1,26 @@
 \chapter{Einleitung}
 
 Im folgenden Abschnitt wird das der durchgeführten Systemidentifikation zugrundeliegende Modell beschrieben. Es handelt sich 
-dabei um die bekannten linearisierten Modelle der Längs- und Seitenbewegung \cite{Fichter2009} mit den zu bestimmenden 
-Beiwerten.
+dabei um die bekannten linearisierten Modelle der Längs- und Seitenbewegung 
+\cite{Fichter2009} mit den üblichen Annahmen \footnote{Linearisierum den 
+symmetrischen Horizontalflug, kein Auftrieb durch Nickrate, keine Querkräfte 
+durch Roll- oder Gierdrehrate, keine Querkraft durch Querruder}, deren Beiwerte 
+zu bestimmen sind. Die Dynamiken können deshalb entkoppelt behandelt werden. 
+%\cite{V2}
 
 \section{Längsbewegung}
+Der Zustand der Längsbewegung setzt sich zusammen aus dem Anstellwinkel $ 
+\alpha $, der Nickrate $ q $, der Anströmgeschwindigkeit $ V_A $ und dem 
+Bahnwinkel $ \gamma $. Die zugehörigen Steuerungen umfassen den 
+Höhenruderausschlag $ \eta $ und den Schubdrosselgrad $ \delta_F $. Bis auf die 
+Nickrate werden alle GRößen als Abweichungen vom jeweiligen Trimmpunkt 
+beschrieben.
+
+\begin{equation}
+	\begin{array}{cols}
+		\dot{\Delta x}\\
+		\dot{q}\\
+		\dot{\Delta V_A}\\
+		\dot{\Delta \gamma}
+	\end{array}
+\end{equation}
