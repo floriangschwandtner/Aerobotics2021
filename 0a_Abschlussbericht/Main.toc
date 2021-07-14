@@ -3,9 +3,13 @@
 \contentsline {chapter}{\numberline {2}Einleitung}{4}{}%
 \contentsline {section}{\numberline {2.1}Längsbewegung}{4}{}%
 \contentsline {chapter}{\numberline {3}Vorbereitung der Daten}{5}{}%
-\contentsline {section}{\numberline {3.1}Filterung}{5}{}%
-\contentsline {subsection}{\numberline {3.1.1}Ablauf}{5}{}%
-\contentsline {subsection}{\numberline {3.1.2}Wahl der Filterübertragungsfunktion}{5}{}%
-\contentsline {chapter}{\numberline {4}Zusammenfassung}{6}{}%
-\contentsline {chapter}{Literaturverzeichnis}{6}{}%
+\contentsline {section}{\numberline {3.1}Ermittlung der relevanten Signale}{5}{}%
+\contentsline {section}{\numberline {3.2}Trimmpunkte}{5}{}%
+\contentsline {section}{\numberline {3.3}Filterung}{5}{}%
+\contentsline {subsection}{\numberline {3.3.1}Ablauf}{5}{}%
+\contentsline {subsection}{\numberline {3.3.2}Wahl der Filterübertragungsfunktion}{5}{}%
+\contentsline {chapter}{\numberline {4}Systemidentifikation im Zeitbereich}{7}{}%
+\contentsline {chapter}{\numberline {5}Systemidentifikation im Frequenzbereich}{8}{}%
+\contentsline {chapter}{\numberline {6}Zusammenfassung}{9}{}%
+\contentsline {chapter}{Literaturverzeichnis}{9}{}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
