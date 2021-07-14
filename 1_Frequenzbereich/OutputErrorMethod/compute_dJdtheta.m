@@ -3,7 +3,7 @@ dJ = zeros(length(dGF_conj),1);
 inv_Svv = inv(Svv);
 for i=1:length(dGF_conj)
     for k = 1:N
-       dJ(i) = dJ(i) + 1/f(k)*trace((dGF_conj{i}(1j*f(k)))*inv_Svv*(Szu(:,:,k)-G_k(:,:,k)*Suu(:,:,k))); 
+       dJ(i) = dJ(i) + 1/f(k)*trace((dGF_conj{i}(f(k)))*inv_Svv*(Szu(:,:,k)-G_k(:,:,k)*Suu(:,:,k))); 
     end
 end
 dJ = -2 * real(dJ);

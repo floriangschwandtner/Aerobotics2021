@@ -20,6 +20,7 @@ t=time(1:5000,:);
 %% 
 V0 = 27;
 alpha0 = 0;
+gamma0 = 0;
 eta0 = -0.1;
 deltaF0 = 0.4;
 g = 9.81;
@@ -27,16 +28,25 @@ g = 9.81;
 %% 
 x(:,1) = x(:,1)-alpha0;
 x(:,3) = x(:,3)-V0;
+x(:,4) = x(:,4)-gamma0;
 u(:,1) = u(:,1)-eta0;
 u(:,2) = u(:,2)-deltaF0;
 
+%Normierung
+
+x(:,1) = x(:,1)/abs(max(x(:,1)));
+x(:,2) = x(:,2)/abs(max(x(:,2)));
+x(:,3) = x(:,3)/abs(max(x(:,3)));
+x(:,4) = x(:,4)/abs(max(x(:,4)));
+
 %% Fourier-Trafos
 t_start = 1;
-t_end   = 5000;
-f_start = 40;
-f_end   = 1200;
+t_end   = 1200;
+f_start = 2;
+f_end   = 400;
 
 [x_Fourier, u_Fourier, G_exp, f] = FourierTrafo(x(t_start:t_end,:), u(t_start:t_end,:), t(t_start:t_end));
+
 x_Fourier=x_Fourier(f_start:f_end,:);
 u_Fourier=u_Fourier(f_start:f_end,:);
 G_exp=G_exp(:,:,f_start:f_end);
@@ -62,15 +72,16 @@ theta = [Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_deltaF X
 %% Newton-Raphson-Algorithmus
 nugget = 0.05;
 threshold = 1e-3;
-iter_max = 20;
+iter_max = 50;
 
 iter = 1;
 dtheta = ones(length(theta),1);
 J = zeros(iter_max,1);
+konv = zeros(iter_max,1);
 error_diff = 5;
 while iter <= iter_max && norm(dtheta)/norm(theta) > threshold
     % Update Parametervektor
-    theta  = theta + dtheta';
+    theta  = theta + min(dtheta',10);
     
     % Kostenfunktion
     
@@ -153,7 +164,7 @@ while iter <= iter_max && norm(dtheta)/norm(theta) > threshold
        J(iter) = J(iter) + 1/(N*f(k))*( conj((x_Fourier(k,:)'-y(:,k))')*inv_Svv*(x_Fourier(k,:)'-y(:,k)) ); %#ok<MINV>
     end
     
-    
+   
     % Update des Parametervektors
     dJ     = compute_dJdtheta(N,f,G_k,dGF_conj,Svv,Suu,Szu);
     M      = compute_M(N,f,dGF,dGF_conj,Svv,Suu);
@@ -170,6 +181,7 @@ while iter <= iter_max && norm(dtheta)/norm(theta) > threshold
     else
         dtheta = inv(M)*dJ;
     end
+    konv(iter) = norm(dtheta)/norm(theta);
     iter   = iter + 1;
 end
 
@@ -180,45 +192,47 @@ end
 x_hat = x_hat';
 
 figure
-semilogx(f,20*log10(abs(x_hat(:,1))))
+subplot(2,2,1);
+semilogx(f,abs(x_hat(:,1)))
 hold on
-semilogx(f,20*log10(abs(x_Fourier(:,1))),'--')
+semilogx(f,abs(x_Fourier(:,1)),'--')
 ylabel('alpha')
-figure
-semilogx(f,20*log10(abs(x_hat(:,2))))
+subplot(2,2,2);
+semilogx(f,abs(x_hat(:,2)))
 hold on
-semilogx(f,20*log10(abs(x_Fourier(:,2))),'--')
+semilogx(f,abs(x_Fourier(:,2)),'--')
 ylabel('q')
-figure
-semilogx(f,20*log10(abs(x_hat(:,3))))
+subplot(2,2,3);
+semilogx(f,abs(x_hat(:,3)))
 hold on
-semilogx(f,20*log10(abs(x_Fourier(:,3))),'--')
+semilogx(f,abs(x_Fourier(:,3)),'--')
 ylabel('VA')
-figure
-semilogx(f,20*log10(abs(x_hat(:,4))))
+subplot(2,2,4);
+semilogx(f,abs(x_hat(:,4)))
 hold on
-semilogx(f,20*log10(abs(x_Fourier(:,4))),'--')
+semilogx(f,abs(x_Fourier(:,4)),'--')
 ylabel('gamma')
 
 figure
+subplot(2,2,1)
 semilogx(f,20*log10(abs(squeeze(G_exp(1,1,:)))))
 hold on
 semilogx(f,20*log10(abs(squeeze(G_k(1,1,:)))))
 title('G(1,1)');
 
-figure
+subplot(2,2,2)
 semilogx(f,20*log10(abs(squeeze(G_exp(1,2,:)))))
 hold on
 semilogx(f,20*log10(abs(squeeze(G_k(1,2,:)))))
 title('G(1,2)');
 
-figure
+subplot(2,2,3)
 semilogx(f,20*log10(abs(squeeze(G_exp(3,1,:)))))
 hold on
 semilogx(f,20*log10(abs(squeeze(G_k(3,1,:)))))
 title('G(3,1)');
 
-figure
+subplot(2,2,4)
 semilogx(f,20*log10(abs(squeeze(G_exp(3,2,:)))))
 hold on
 semilogx(f,20*log10(abs(squeeze(G_k(3,2,:)))))
