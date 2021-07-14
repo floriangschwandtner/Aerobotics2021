@@ -1,26 +1,91 @@
-\chapter{Einleitung}
+\chapter{Modell}
 
-Im folgenden Abschnitt wird das der durchgeführten Systemidentifikation zugrundeliegende Modell beschrieben. Es handelt sich 
-dabei um die bekannten linearisierten Modelle der Längs- und Seitenbewegung 
-\cite{Fichter2009} mit den üblichen Annahmen \footnote{Linearisierum den 
-symmetrischen Horizontalflug, kein Auftrieb durch Nickrate, keine Querkräfte 
-durch Roll- oder Gierdrehrate, keine Querkraft durch Querruder}, deren Beiwerte 
-zu bestimmen sind. Die Dynamiken können deshalb entkoppelt behandelt werden. 
-%\cite{V2}
+Im folgenden Abschnitt werden die der durchgeführten Systemidentifikationen 
+zugrundeliegenden Modelle beschrieben, deren beiwerte zu bestimmen sind. Es 
+handelt sich dabei um die bekannten linearisierten Modelle der Längs- und 
+Seitenbewegung mit den folgenden Annahmen \cite{Fichter2009}:
+\begin{itemize}
+	\item Linearisierung um den symmetrischen Horizontalflug ($ \gamma_0=0 $)
+	\item kein Auftrieb durch Nickrate ($ Z_q=0 $)
+	\item keine Querkräfte durch Roll- oder Gierdrehrate ($ Y_p=Y_r=0 $)
+	\item keine Querkraft durch Querruder ($ Y_\xi $)
+	\item kein Wind ($ \Delta\gamma = \Delta\theta-\Delta\alpha $)
+	\item horizontal eingebautes Triebwerk ($ i_F=0 $)
+\end{itemize} 
+Die Dynamiken können deshalb entkoppelt behandelt werden. %\cite{Vorlesung2}
 
 \section{Längsbewegung}
 Der Zustand der Längsbewegung setzt sich zusammen aus dem Anstellwinkel $ 
 \alpha $, der Nickrate $ q $, der Anströmgeschwindigkeit $ V_A $ und dem 
 Bahnwinkel $ \gamma $. Die zugehörigen Steuerungen umfassen den 
 Höhenruderausschlag $ \eta $ und den Schubdrosselgrad $ \delta_F $. Bis auf die 
-Nickrate werden alle GRößen als Abweichungen vom jeweiligen Trimmpunkt 
-beschrieben.
+Nickrate werden alle Größen als Abweichungen (Delta-Größen) vom jeweiligen 
+Trimmpunkt 
+(gekennzeichnet durch den Index "$ _0 $") beschrieben. Es ergibt sich folgendes 
+Modell\cite{Fichter2009}:
 
-\begin{equation}
-	\begin{array}{cols}
+\begin{equation}\label{eq:laengsbewegung}
+	\begin{pmatrix}
 		\dot{\Delta x}\\
 		\dot{q}\\
 		\dot{\Delta V_A}\\
 		\dot{\Delta \gamma}
-	\end{array}
+	\end{pmatrix} = 
+	\begin{pmatrix}
+		\frac{Z_\alpha}{V_0} & 1 & \frac{Z_V}{V_0} & 0\\
+		M_\alpha & M_q & M_V & 0\\
+		X_\alpha & 0 & X_V & -g\\
+		-\frac{Z_\alpha}{V_0} & 0 & -\frac{Z_V}{V_0} & 0\\
+	\end{pmatrix} \cdot
+	\begin{pmatrix}
+		\Delta x\\
+		q\\
+		\Delta V_A\\
+		\Delta \gamma
+	\end{pmatrix} + 
+	\begin{pmatrix}
+		\frac{Z_\eta}{V_0} & -\frac{X_{\delta F}}{V_0} \sin{(\alpha_0)}\\
+		M_\eta & M_{\delta F}\\
+		X_\eta & X_{\delta F} \cos{(\alpha_0+i_F)}\\
+		-\frac{Z_\eta}{V_0} & \frac{X_{\delta F}}{V_0} \sin{(\alpha_0)}\\
+	\end{pmatrix}\cdot
+	\begin{pmatrix}
+		\Delta \eta\\
+		\Delta \delta_F\\
+	\end{pmatrix}
 \end{equation}
+
+\section{Seitenbewegung}
+Das Modell der Seitenbewegung wird mit dem absoluten Zustand aufgestellt:
+
+\begin{equation}\label{eq:seitenbewegung}
+	\begin{pmatrix}
+		\dot{r}\\
+		\dot{\beta}\\
+		\dot{p}\\
+		\dot{\phi}
+	\end{pmatrix} = 
+	\begin{pmatrix}
+		N_r & N_\beta             & N_p & 0\\
+		-1  & \frac{Y_\zeta}{V_0} & 0   & \frac{g}{V_0}\\
+		L_r & L_\beta             & L_p & 0\\
+		0   & 0                   & 1   & 0\\
+	\end{pmatrix} \cdot
+	\begin{pmatrix}
+		\dot{r}\\
+		\dot{\beta}\\
+		\dot{p}\\
+		\dot{\phi}
+	\end{pmatrix} + 
+	\begin{pmatrix}
+		N_\xi & N_\zeta\\
+		0 & \frac{Y_\zeta}{V_0}\\
+		L_\xi & L_\zeta\\
+		0 & 0\\
+	\end{pmatrix}\cdot
+	\begin{pmatrix}
+		\xi\\
+		\zeta
+	\end{pmatrix}
+\end{equation}
+

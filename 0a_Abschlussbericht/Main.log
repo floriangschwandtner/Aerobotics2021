@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.6.24)  14 JUL 2021 10:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.6.24)  14 JUL 2021 19:07
 entering extended mode
 **./main.tex
 (main.tex
@@ -944,36 +944,17 @@ chapter 1.
 
 ]
 chapter 2.
-
-! LaTeX Error: Illegal character in array arg.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.20 	\begin{array}{cols}
-                         
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Illegal character in array arg.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.20 	\begin{array}{cols}
-                         
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
 ) (src/vorbereitung.tex [4
 
 
 ]
+File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
+<use ./src/pics/logo/ifrlogo.pdf>
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 1.
+(pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
+ [5]
 chapter 3.
-[5
+[6
 
 
 ]) (src/zeitbereich.tex
@@ -981,45 +962,46 @@ File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
 Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 1.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
- [6]
+ [7]
 chapter 4.
-) (src/frequenzbereich.tex [7
+) (src/frequenzbereich.tex [8
 
 
 ]
 chapter 5.
-) (src/zusammenfassung.tex [8
+) (src/zusammenfassung.tex [9
 
 
 ]
 chapter 6.
-) (main.bbl [9
+) (main.bbl [10
 
 
-]) [10
+]) [11
 
 
 ] (main.aux) ) 
 Here is how much of TeX's memory you used:
- 31658 strings out of 478931
- 811004 string characters out of 2865567
- 1399365 words of memory out of 3000000
- 48981 multiletter control sequences out of 15000+600000
- 413755 words of font info for 66 fonts, out of 8000000 for 9000
+ 31660 strings out of 478931
+ 811065 string characters out of 2865567
+ 1410410 words of memory out of 3000000
+ 48984 multiletter control sequences out of 15000+600000
+ 412393 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,24n,108p,10628b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-<C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmmi8.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.
-pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmr7.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmr8.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12
-.pfb>
-Output written on main.pdf (10 pages, 185803 bytes).
+ <C:\Users\Fabrizio\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jkna
+ppen/ec/dpi600\tcrm1200.pk><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc1
+0.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmmi12.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmmi6.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmr6.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.p
+fb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmssbx10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmsy10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on main.pdf (11 pages, 200445 bytes).
 PDF statistics:
- 105 PDF objects out of 1000 (max. 8388607)
+ 118 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
