@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.6.24)  24 JUN 2021 18:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.6.24)  14 JUL 2021 09:55
 entering extended mode
 **./main.tex
 (main.tex
@@ -944,15 +944,6 @@ chapter 1.
 
 ]
 chapter 2.
-! Undefined control sequence.
-l.7 \subchapter
-               {Längsbewegung}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 ) (src/vorbereitung.tex [4
 
 
@@ -971,20 +962,23 @@ chapter 4.
 
 ] (main.aux) ) 
 Here is how much of TeX's memory you used:
- 31619 strings out of 478931
- 809845 string characters out of 2865567
- 1395365 words of memory out of 3000000
- 48950 multiletter control sequences out of 15000+600000
- 411762 words of font info for 57 fonts, out of 8000000 for 9000
+ 31634 strings out of 478931
+ 810382 string characters out of 2865567
+ 1399365 words of memory out of 3000000
+ 48965 multiletter control sequences out of 15000+600000
+ 412056 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,24n,108p,10628b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 <C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmss10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssbx
-10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (7 pages, 109798 bytes).
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmmi8.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.
+pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmss10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmssbx10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on main.pdf (7 pages, 153001 bytes).
 PDF statistics:
- 66 PDF objects out of 1000 (max. 8388607)
+ 86 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

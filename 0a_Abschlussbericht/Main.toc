@@ -1,7 +1,11 @@
 \babel@toc {ngerman}{}
 \contentsline {chapter}{\numberline {1}Einleitung}{3}{}%
 \contentsline {chapter}{\numberline {2}Einleitung}{4}{}%
+\contentsline {section}{\numberline {2.1}Längsbewegung}{4}{}%
 \contentsline {chapter}{\numberline {3}Vorbereitung der Daten}{5}{}%
+\contentsline {section}{\numberline {3.1}Filterung}{5}{}%
+\contentsline {subsection}{\numberline {3.1.1}Ablauf}{5}{}%
+\contentsline {subsection}{\numberline {3.1.2}Wahl der Filterübertragungsfunktion}{5}{}%
 \contentsline {chapter}{\numberline {4}Zusammenfassung}{6}{}%
 \contentsline {chapter}{Literaturverzeichnis}{6}{}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

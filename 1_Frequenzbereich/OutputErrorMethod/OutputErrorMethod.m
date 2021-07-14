@@ -1,15 +1,13 @@
 %% Pfad
-
 cd .. 
 addpath(cd)
 cd OutputErrorMethod
 
-
 clear
 close all
 % load ('data_even.mat');
-load ('testdata.mat');
 load ('Matrices.mat');
+load ('testdata.mat');
 % x=x(1:49254,:);
 % u=u(1:49254,:);
 % t=t(1:49254,:);
@@ -17,7 +15,7 @@ x=x_test(1:5000,:);
 u=u_test(1:5000,:);
 t=time(1:5000,:);
 
-%% 
+%% Trimmzustand
 V0 = 27;
 alpha0 = 0;
 gamma0 = 0;
@@ -25,7 +23,7 @@ eta0 = -0.1;
 deltaF0 = 0.4;
 g = 9.81;
 
-%% 
+%% Berechnung der Delta-Werte
 x(:,1) = x(:,1)-alpha0;
 x(:,3) = x(:,3)-V0;
 x(:,4) = x(:,4)-gamma0;
@@ -46,7 +44,6 @@ f_start = 2;
 f_end   = 400;
 
 [x_Fourier, u_Fourier, G_exp, f] = FourierTrafo(x(t_start:t_end,:), u(t_start:t_end,:), t(t_start:t_end));
-
 x_Fourier=x_Fourier(f_start:f_end,:);
 u_Fourier=u_Fourier(f_start:f_end,:);
 G_exp=G_exp(:,:,f_start:f_end);
@@ -68,12 +65,10 @@ M_deltaF = 1;
 X_eta = 1;
 theta = [Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_deltaF X_eta];
 
-
 %% Newton-Raphson-Algorithmus
 nugget = 0.05;
 threshold = 1e-3;
-iter_max = 50;
-
+iter_max = 5;
 iter = 1;
 dtheta = ones(length(theta),1);
 J = zeros(iter_max,1);
@@ -81,7 +76,7 @@ konv = zeros(iter_max,1);
 error_diff = 5;
 while iter <= iter_max && norm(dtheta)/norm(theta) > threshold
     % Update Parametervektor
-    theta  = theta + min(dtheta',10);
+    theta  = theta + dtheta';
     
     % Kostenfunktion
     
@@ -241,6 +236,6 @@ title('G(3,2)');
 [x_time_hat] = InvFourierTrafo(x_hat, u_Fourier, f, t_end);
 
 figure
-plot(x_time_hat(:,3))
+plot(x_time_hat(1:2:end,1) )
 hold on
-plot(x(1:t_end,3),'--')
+plot(x(t_start:t_end,1),'--')

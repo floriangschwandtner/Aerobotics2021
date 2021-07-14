@@ -1,4 +1,4 @@
-function [x_Fourier, u_Fourier, G, f] = FourierTrafo(x, u, t)
+function [x_Fourier, u_Fourier, G, f, Y_x, Y_u] = FourierTrafo(x, u, t)
 
 tdiff = zeros(length(t)-1,1);
 for i=1:length(t)-1
@@ -8,21 +8,21 @@ end
 T = mean(tdiff);            % Sampling period 
 Fs = 1/T;                   % Sampling frequency                          
 L = length(t);              % Length of signal
-f = Fs*(0:(L/2))/L;
+f = 2*Fs*(0:(L/2))/L;
 
 % Fourier-Trafo Zustand
-Y=fft(x);
-P2 = Y/L;
-P1 = P2(1:L/2+1,:);
-P1(2:end-1,:) = 2*P1(2:end-1,:);
-x_Fourier = Y(1:L/2+1,:);
+Y_x=fft(x);
+P2_x = abs(Y_x/L);               % 2-sided spectrum
+P1_x = P2_x(1:L/2+1,:);     % 1-sided spectrum
+P1_x(2:end-1,:) = 2*P1_x(2:end-1,:);
+x_Fourier = P1_x(1:L/2+1,:);
 
 % Fourier-Trafo Steuergrößen
-Y=fft(u);
-P2_u = Y/L;
+Y_u=fft(u);
+P2_u = abs(Y_u/L);
 P1_u = P2_u(1:L/2+1,:);
 P1_u(2:end-1,:) = 2*P1_u(2:end-1,:);
-u_Fourier = Y(1:L/2+1,:);
+u_Fourier = P1_u(1:L/2+1,:);
 
 % Berechnung der Übertragungsmatrix für jede Frequenz
 G = zeros(4,2,L/2+1);
