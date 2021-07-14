@@ -26,16 +26,16 @@ u_Fourier = P1_u(1:L/2+1,:);
 
 % Berechnung der Übertragungsmatrix für jede Frequenz
 G = zeros(4,2,L/2+1);
-for k=1:L/2+1
-    G(:,:,k) = x_Fourier(k,:)'/u_Fourier(k,:)';
-end
-
 % for k=1:L/2+1
-%     for i=1:4
-%         for j=1:2
-%             G(i,j,k) = x_Fourier(k,i)/u_Fourier(k,j);
-%         end
-%     end
+%     G(:,:,k) = x_Fourier(k,:)'/u_Fourier(k,:)';
 % end
+
+for k=1:L/2+1
+    for i=1:4
+        for j=1:2
+            G(i,j,k) = x_Fourier(k,i)/u_Fourier(k,j);
+        end
+    end
+end
 
 end
