@@ -5,45 +5,47 @@ cd OutputErrorMethod
 
 clear
 close all
-% load ('data_even.mat');
+load ('data_even.mat');
 load ('Matrices.mat');
-load ('testdata.mat');
-% x=x(1:49254,:);
-% u=u(1:49254,:);
-% t=t(1:49254,:);
-x=x_test(1:5000,:);
-u=u_test(1:5000,:);
-t=time(1:5000,:);
+% load ('testdata.mat');
+% x=x_test(1:5000,:);
+% u=u_test(1:5000,:);
+% t=time(1:5000,:);
+
+%% Datenbereich
+t_start = 1;
+t_end   = 7500;
+f_start = 2;
+f_end   = 1200;
 
 %% Trimmzustand
-V0 = 27;
-alpha0 = 0;
+alpha0 = 0.0061;
+V0 = 26.9962;
 gamma0 = 0;
-eta0 = -0.1;
-deltaF0 = 0.4;
+eta0 = -0.1326;
+deltaF0 = 0.4244;
 g = 9.81;
 
-%% Berechnung der Delta-Werte
+%% Berechnung der Delta-Werte und Normierung
+x = x(t_start:t_end,:);
+u = u(t_start:t_end,:);
+t = t(t_start:t_end);
+
 x(:,1) = x(:,1)-alpha0;
 x(:,3) = x(:,3)-V0;
 x(:,4) = x(:,4)-gamma0;
 u(:,1) = u(:,1)-eta0;
 u(:,2) = u(:,2)-deltaF0;
 
-%Normierung
-
-x(:,1) = x(:,1)/abs(max(x(:,1)));
-x(:,2) = x(:,2)/abs(max(x(:,2)));
-x(:,3) = x(:,3)/abs(max(x(:,3)));
-x(:,4) = x(:,4)/abs(max(x(:,4)));
+% Normierung
+norm_x = abs(max(x));
+x(:,1) = x(:,1)/norm_x(1);
+x(:,2) = x(:,2)/norm_x(2);
+x(:,3) = x(:,3)/norm_x(3);
+x(:,4) = x(:,4)/norm_x(4);
 
 %% Fourier-Trafos
-t_start = 1;
-t_end   = 1200;
-f_start = 2;
-f_end   = 400;
-
-[x_Fourier, u_Fourier, G_exp, f] = FourierTrafo(x(t_start:t_end,:), u(t_start:t_end,:), t(t_start:t_end));
+[x_Fourier, u_Fourier, G_exp, f] = FourierTrafo(x(:,:), u(:,:), t);
 x_Fourier=x_Fourier(f_start:f_end,:);
 u_Fourier=u_Fourier(f_start:f_end,:);
 G_exp=G_exp(:,:,f_start:f_end);
@@ -68,12 +70,16 @@ theta = [Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_deltaF X
 %% Newton-Raphson-Algorithmus
 nugget = 0.05;
 threshold = 1e-3;
-iter_max = 5;
+iter_max = 50;
 iter = 1;
 dtheta = ones(length(theta),1);
 J = zeros(iter_max,1);
 konv = zeros(iter_max,1);
+M_pd = zeros(iter_max,1);       % M(iter) is pd -> M_pd(iter) = 1 (else 0)
 error_diff = 5;
+fprintf('==================================\n')
+fprintf('Newton-Raphson-Algorithm started.\n')
+fprintf('==================================\n')
 while iter <= iter_max && norm(dtheta)/norm(theta) > threshold
     % Update Parametervektor
     theta  = theta + dtheta';
@@ -173,12 +179,20 @@ while iter <= iter_max && norm(dtheta)/norm(theta) > threshold
     end
     if flag == 0   % flag==0 --> M ist positiv definit
         dtheta = - inv(M)*dJ;
+        M_pd(iter) = 1;
     else
         dtheta = inv(M)*dJ;
     end
     konv(iter) = norm(dtheta)/norm(theta);
+    
+    fprintf('Iteration #%d done. | J = %.5f\n',iter, J(iter))
+    
     iter   = iter + 1;
 end
+
+fprintf('==================================\n')
+fprintf('Algorithm finished.\n')
+fprintf('==================================\n')
 
 x_hat = zeros(4,N);
 for k=1:N
@@ -188,24 +202,24 @@ x_hat = x_hat';
 
 figure
 subplot(2,2,1);
-semilogx(f,abs(x_hat(:,1)))
+semilogx(f,20*log10(abs(x_hat(:,1))))
 hold on
-semilogx(f,abs(x_Fourier(:,1)),'--')
+semilogx(f,20*log10(abs(x_Fourier(:,1))),'--')
 ylabel('alpha')
 subplot(2,2,2);
-semilogx(f,abs(x_hat(:,2)))
+semilogx(f,20*log10(abs(x_hat(:,2))))
 hold on
-semilogx(f,abs(x_Fourier(:,2)),'--')
+semilogx(f,20*log10(abs(x_Fourier(:,2))),'--')
 ylabel('q')
 subplot(2,2,3);
-semilogx(f,abs(x_hat(:,3)))
+semilogx(f,20*log10(abs(x_hat(:,3))))
 hold on
-semilogx(f,abs(x_Fourier(:,3)),'--')
+semilogx(f,20*log10(abs(x_Fourier(:,3))),'--')
 ylabel('VA')
 subplot(2,2,4);
-semilogx(f,abs(x_hat(:,4)))
+semilogx(f,20*log10(abs(x_hat(:,4))))
 hold on
-semilogx(f,abs(x_Fourier(:,4)),'--')
+semilogx(f,20*log10(abs(x_Fourier(:,4))),'--')
 ylabel('gamma')
 
 figure
