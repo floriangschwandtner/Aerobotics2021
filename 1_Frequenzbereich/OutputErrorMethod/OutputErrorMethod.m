@@ -4,7 +4,6 @@ cd ..
 addpath(cd)
 cd OutputErrorMethod
 
-
 clear
 close all
 load ('data_even.mat');
@@ -13,14 +12,14 @@ x=x(1:49254,:);
 u=u(1:49254,:);
 t=t(1:49254,:);
 
-%% 
+%% Trimmzustand
 V0 = 26.9962;
 alpha0 = 0.0061;
 eta0 = -0.1326;
 deltaF0 = 0.4244;
 g = 9.81;
 
-%% 
+%% Berechnung der Delta-Werte
 x(:,1) = x(:,1)-alpha0;
 x(:,3) = x(:,3)-V0;
 u(:,1) = u(:,1)-eta0;
@@ -53,7 +52,6 @@ M_eta = 1;
 M_deltaF = 1;
 X_eta = 1;
 theta = [Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_deltaF X_eta];
-
 
 %% Newton-Raphson-Algorithmus
 nugget = 0.05;
