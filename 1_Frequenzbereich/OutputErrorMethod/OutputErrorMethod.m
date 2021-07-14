@@ -29,13 +29,14 @@ u(:,2) = u(:,2)-deltaF0;
 %% Fourier-Trafos
 t_start = 1;
 t_end = 7500;
-f_end = 200;
+f_start = 2;
+f_end = 100;
 
-[x_Fourier, u_Fourier, G_exp, f] = FourierTrafo(x(t_start:t_end,:), u(t_start:t_end,:), t(t_start:t_end));
-x_Fourier=x_Fourier(2:f_end,:);
-u_Fourier=u_Fourier(2:f_end,:);
-G_exp=G_exp(:,:,2:f_end);
-f=f(2:f_end);
+[x_Fourier, u_Fourier, G_exp, f, Y_x, Y_u] = FourierTrafo(x(t_start:t_end,:), u(t_start:t_end,:), t(t_start:t_end));
+x_Fourier=x_Fourier(f_start:f_end,:);
+u_Fourier=u_Fourier(f_start:f_end,:);
+G_exp=G_exp(:,:,f_start:f_end);
+f=f(f_start:f_end);
 N = length(f);
 
 %% Initialisierung des Parametervektors
@@ -222,6 +223,6 @@ title('G(3,2)');
 [x_time_hat] = InvFourierTrafo(x_hat, u_Fourier, f, t_end);
 
 figure
-plot(x_time_hat(:,3))
+plot(x_time_hat(1:2:end,1) )
 hold on
-plot(x(1:t_end,3),'--')
+plot(x(t_start:t_end,1),'--')
