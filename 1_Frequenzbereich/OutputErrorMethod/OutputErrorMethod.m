@@ -7,10 +7,10 @@ clear
 close all
 load ('data_even.mat');
 load ('Matrices.mat');
-% load ('testdata.mat');
-% x=x_test(1:5000,:);
+% load ('testdata2.mat');
+% x=x(1:5000,:);
 % u=u_test(1:5000,:);
-% t=time(1:5000,:);
+% t=t(1:5000,:);
 
 %% Datenbereich
 t_start = 1;
@@ -19,11 +19,11 @@ f_start = 2;
 f_end   = 1200;
 
 %% Trimmzustand
-alpha0 = 0.0061;
-V0 = 26.9962;
+alpha0 = 0;%0.0061;
+V0 = 27;%26.9962;
 gamma0 = 0;
-eta0 = -0.1326;
-deltaF0 = 0.4244;
+eta0 = -0.1;%-0.1326;
+deltaF0 = 0.4;%0.4244;
 g = 9.81;
 
 %% Berechnung der Delta-Werte und Normierung
@@ -38,22 +38,22 @@ u(:,1) = u(:,1)-eta0;
 u(:,2) = u(:,2)-deltaF0;
 
 % Normierung
-norm_x = abs(max(x));
-x(:,1) = x(:,1)/norm_x(1);
-x(:,2) = x(:,2)/norm_x(2);
-x(:,3) = x(:,3)/norm_x(3);
-x(:,4) = x(:,4)/norm_x(4);
+% norm_x = abs(max(x));
+% x(:,1) = x(:,1)/norm_x(1);
+% x(:,2) = x(:,2)/norm_x(2);
+% x(:,3) = x(:,3)/norm_x(3);
+% x(:,4) = x(:,4)/norm_x(4);
 
 %% Fourier-Trafos
-[x_Fourier, u_Fourier, G_exp, f] = FourierTrafo(x(:,:), u(:,:), t);
-x_Fourier=x_Fourier(f_start:f_end,:);
-u_Fourier=u_Fourier(f_start:f_end,:);
-G_exp=G_exp(:,:,f_start:f_end);
-f=f(f_start:f_end);
+[x_Fourier_orig, u_Fourier_orig, G_exp_orig, f_orig] = FourierTrafo(x(:,:), u(:,:), t);
+x_Fourier=x_Fourier_orig(f_start:f_end,:);
+u_Fourier=u_Fourier_orig(f_start:f_end,:);
+G_exp=G_exp_orig(:,:,f_start:f_end);
+f=f_orig(f_start:f_end);
 N = length(f);
 
 %% Initialisierung des Parametervektors
-Z_alpha = 1;
+Z_alpha = -10;
 Z_V = 1; 
 M_alpha = 1;
 M_q = 1;
@@ -65,18 +65,17 @@ X_deltaF = 1;
 M_eta = 1;
 M_deltaF = 1;
 X_eta = 1;
-theta = [Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_deltaF X_eta];
+theta = 1+[Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_deltaF X_eta];
 
 %% Newton-Raphson-Algorithmus
 nugget = 0.05;
 threshold = 1e-3;
-iter_max = 50;
+iter_max = 10;
 iter = 1;
 dtheta = ones(length(theta),1);
 J = zeros(iter_max,1);
 konv = zeros(iter_max,1);
 M_pd = zeros(iter_max,1);       % M(iter) is pd -> M_pd(iter) = 1 (else 0)
-error_diff = 5;
 fprintf('==================================\n')
 fprintf('Newton-Raphson-Algorithm started.\n')
 fprintf('==================================\n')
@@ -121,7 +120,7 @@ while iter <= iter_max && norm(dtheta)/norm(theta) > threshold
     dG12_conj_sub  = subs(dG12_conj,theta_sym(1:15),[theta V0 g alpha0]);
     
     %Umwandeln in Frequenzabhängige Funktion
-    
+
     GF     = matlabFunction(G_sub);
     dGF{1} = matlabFunction(dG1_sub);
     dGF{2} = matlabFunction(dG2_sub);
@@ -170,54 +169,58 @@ while iter <= iter_max && norm(dtheta)/norm(theta) > threshold
     dJ     = compute_dJdtheta(N,f,G_k,dGF_conj,Svv,Suu,Szu);
     M      = compute_M(N,f,dGF,dGF_conj,Svv,Suu);
     M = M + nugget*eye(size(M));
-    lambda=eig(M); 
-    flag = 0;
-    for i = 1:rank(M)
-        if lambda(i)<=0
-            flag = 1;
-        end
-    end
-    if flag == 0   % flag==0 --> M ist positiv definit
-        dtheta = - inv(M)*dJ;
-        M_pd(iter) = 1;
-    else
-        dtheta = inv(M)*dJ;
-    end
+%     lambda=eig(M); 
+%     flag = 0;
+%     for i = 1:rank(M)
+%         if lambda(i)<=0
+%             flag = 1;
+%         end
+%     end
+%     if flag == 0   % flag==0 --> M ist positiv definit
+%         dtheta = - inv(M)*dJ;
+%         M_pd(iter) = 1;
+%     else
+%         dtheta = inv(M)*dJ;
+%     end
+    dtheta = - inv(M)*dJ;
     konv(iter) = norm(dtheta)/norm(theta);
     
-    fprintf('Iteration #%d done. | J = %.5f\n',iter, J(iter))
+    fprintf('Iteration #%d done. | J = %.5f\n',iter, abs(J(iter)))
     
     iter   = iter + 1;
 end
+
+G_sub  = subs(G,theta_sym(1:15),[theta V0 g alpha0]);
+GF     = matlabFunction(G_sub);
 
 fprintf('==================================\n')
 fprintf('Algorithm finished.\n')
 fprintf('==================================\n')
 
-x_hat = zeros(4,N);
-for k=1:N
-    x_hat(:,k) = G_k(:,:,k)*u_Fourier(k,:)';
+x_hat = zeros(4,length(t)/2+1);
+for k=1:length(t)/2+1
+    x_hat(:,k) = GF(f_orig(k))*u_Fourier_orig(k,:)';
 end
 x_hat = x_hat';
 
 figure
 subplot(2,2,1);
-semilogx(f,20*log10(abs(x_hat(:,1))))
+semilogx(f,20*log10(abs(x_hat(f_start:f_end,1))))
 hold on
 semilogx(f,20*log10(abs(x_Fourier(:,1))),'--')
 ylabel('alpha')
 subplot(2,2,2);
-semilogx(f,20*log10(abs(x_hat(:,2))))
+semilogx(f,20*log10(abs(x_hat(f_start:f_end,2))))
 hold on
 semilogx(f,20*log10(abs(x_Fourier(:,2))),'--')
 ylabel('q')
 subplot(2,2,3);
-semilogx(f,20*log10(abs(x_hat(:,3))))
+semilogx(f,20*log10(abs(x_hat(f_start:f_end,3))))
 hold on
 semilogx(f,20*log10(abs(x_Fourier(:,3))),'--')
 ylabel('VA')
 subplot(2,2,4);
-semilogx(f,20*log10(abs(x_hat(:,4))))
+semilogx(f,20*log10(abs(x_hat(f_start:f_end,4))))
 hold on
 semilogx(f,20*log10(abs(x_Fourier(:,4))),'--')
 ylabel('gamma')
@@ -247,9 +250,15 @@ hold on
 semilogx(f,20*log10(abs(squeeze(G_k(3,2,:)))))
 title('G(3,2)');
 
-[x_time_hat] = InvFourierTrafo(x_hat, u_Fourier, f, t_end);
+[x_time_hat] = InvFourierTrafo(x_hat,length(t));
 
-figure
-plot(x_time_hat(1:2:end,1) )
-hold on
-plot(x(t_start:t_end,1),'--')
+titles = {'\Delta\alpha', 'q', '\Delta V_A', '\Delta \gamma'};
+for i=1:4
+    figure
+    plot(t,x_time_hat(:,i) )
+    hold on
+    plot(t,x(:,i),'r')
+    plot(t,u(:,1),'g')
+    plot(t,u(:,2),'y')
+    legend(strcat(titles{i},'_{Näherung}'),titles{i},'\Delta\eta', '\Delta\delta_{F}')
+end
