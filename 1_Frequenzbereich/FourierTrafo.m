@@ -12,14 +12,14 @@ f = 2*Fs*(0:(L/2))/L;
 
 % Fourier-Trafo Zustand
 Y_x=fft(x);
-P2_x = abs(Y_x/L);               % 2-sided spectrum
+P2_x = Y_x/L;               % 2-sided spectrum
 P1_x = P2_x(1:L/2+1,:);     % 1-sided spectrum
 P1_x(2:end-1,:) = 2*P1_x(2:end-1,:);
 x_Fourier = P1_x(1:L/2+1,:);
 
 % Fourier-Trafo Steuergrößen
 Y_u=fft(u);
-P2_u = abs(Y_u/L);
+P2_u = Y_u/L;
 P1_u = P2_u(1:L/2+1,:);
 P1_u(2:end-1,:) = 2*P1_u(2:end-1,:);
 u_Fourier = P1_u(1:L/2+1,:);
