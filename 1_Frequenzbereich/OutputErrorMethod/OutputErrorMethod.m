@@ -16,14 +16,14 @@ load ('Matrices.mat');
 t_start = 1;
 t_end   = 7500;
 f_start = 2;
-f_end   = 1200;
+f_end   = 500;
 
 %% Trimmzustand
-alpha0 = 0;%0.0061;
-V0 = 27;%26.9962;
+alpha0 = 0.0061;
+V0 = 26.9962;
 gamma0 = 0;
-eta0 = -0.1;%-0.1326;
-deltaF0 = 0.4;%0.4244;
+eta0 = -0.1326;
+deltaF0 = 0.4244;
 g = 9.81;
 
 %% Berechnung der Delta-Werte und Normierung
@@ -31,11 +31,12 @@ x = x(t_start:t_end,:);
 u = u(t_start:t_end,:);
 t = t(t_start:t_end);
 
-x(:,1) = x(:,1)-alpha0;
-x(:,3) = x(:,3)-V0;
-x(:,4) = x(:,4)-gamma0;
-u(:,1) = u(:,1)-eta0;
-u(:,2) = u(:,2)-deltaF0;
+deltax(:,1) = x(:,1)-alpha0;
+deltax(:,2) = x(:,2);
+deltax(:,3) = x(:,3)-V0;
+deltax(:,4) = x(:,4)-gamma0;
+deltau(:,1) = u(:,1)-eta0;
+deltau(:,2) = u(:,2)-deltaF0;
 
 % Normierung
 % norm_x = abs(max(x));
@@ -45,7 +46,7 @@ u(:,2) = u(:,2)-deltaF0;
 % x(:,4) = x(:,4)/norm_x(4);
 
 %% Fourier-Trafos
-[x_Fourier_orig, u_Fourier_orig, G_exp_orig, f_orig] = FourierTrafo(x(:,:), u(:,:), t);
+[x_Fourier_orig, u_Fourier_orig, G_exp_orig, f_orig] = FourierTrafo(deltax(:,:), deltau(:,:), t, 0);
 x_Fourier=x_Fourier_orig(f_start:f_end,:);
 u_Fourier=u_Fourier_orig(f_start:f_end,:);
 G_exp=G_exp_orig(:,:,f_start:f_end);
@@ -53,7 +54,7 @@ f=f_orig(f_start:f_end);
 N = length(f);
 
 %% Initialisierung des Parametervektors
-Z_alpha = -10;
+Z_alpha = -50;
 Z_V = 1; 
 M_alpha = 1;
 M_q = 1;
@@ -65,12 +66,12 @@ X_deltaF = 1;
 M_eta = 1;
 M_deltaF = 1;
 X_eta = 1;
-theta = 1+[Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_deltaF X_eta];
+theta = [Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_deltaF X_eta];
 
 %% Newton-Raphson-Algorithmus
 nugget = 0.05;
 threshold = 1e-3;
-iter_max = 10;
+iter_max = 1;
 iter = 1;
 dtheta = ones(length(theta),1);
 J = zeros(iter_max,1);
@@ -250,7 +251,13 @@ hold on
 semilogx(f,20*log10(abs(squeeze(G_k(3,2,:)))))
 title('G(3,2)');
 
-[x_time_hat] = InvFourierTrafo(x_hat,length(t));
+[deltax_time_hat] = InvFourierTrafo(x_hat,length(t));
+
+x_time_hat(:,1) = deltax_time_hat(:,1)+alpha0;
+x_time_hat(:,2) = deltax_time_hat(:,2);
+x_time_hat(:,3) = deltax_time_hat(:,3)+V0;
+x_time_hat(:,4) = deltax_time_hat(:,4)+gamma0;
+
 
 titles = {'\Delta\alpha', 'q', '\Delta V_A', '\Delta \gamma'};
 for i=1:4

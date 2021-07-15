@@ -1,4 +1,4 @@
-function [x_Fourier, u_Fourier, G, f, Y_x, Y_u] = FourierTrafo(x, u, t)
+function [x_Fourier, u_Fourier, G, f, Y_x, Y_u] = FourierTrafo(x, u, t, smooth)
 
 tdiff = zeros(length(t)-1,1);
 for i=1:length(t)-1
@@ -24,6 +24,11 @@ P1_u = P2_u(1:L/2+1,:);
 P1_u(2:end-1,:) = 2*P1_u(2:end-1,:);
 u_Fourier = P1_u(1:L/2+1,:);
 
+% Glättung
+if smooth == 1
+    x_Fourier = smoothdata(x_Fourier,'movmedian',15);
+    u_Fourier = smoothdata(u_Fourier,'movmedian',15);
+end
 % Berechnung der Übertragungsmatrix für jede Frequenz
 G = zeros(4,2,L/2+1);
 % for k=1:L/2+1
