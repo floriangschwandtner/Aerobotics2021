@@ -73,7 +73,7 @@ threshold = 1e-3;
 iter_max = 500;
 
 iter = 1;
-dtheta = ones(length(theta),1);
+dtheta = zeros(length(theta),1);
 J = zeros(iter_max,1);
 konv = zeros(iter_max,1);
 M_pd = zeros(iter_max,1);       % M(iter) is pd -> M_pd(iter) = 1 (else 0)
