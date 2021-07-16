@@ -10,16 +10,16 @@ load("data_laengs_even.mat");
 % Parameter 
 n1 = 1;     %Startindex
 n2 = 78419;  %Endindex
-dFilt =100; 
-fEck  =10;    %Hz
+dFilt =1; 
+fEck  =5;    %Hz
 dt = 0.01;  % Zeitschritt
 g    = 9.81;
 
 % Anfangswerte
 a0   = 0.0167;   
 i_f  = 0;
-V0   = 34.0097;
-gamma0 = 0.0027  ;
+V0   = 26.1497;
+gamma0 = 0.0016  ;
 q0    = 0;
 nu0   = -0.1698;
 df0   = 0.4271; 
@@ -89,17 +89,21 @@ H = [x1filt, x2filt, x3filt, x4filt, u1filt, u2filt];
 
 xhat1 = (H'*H)\H'*z;
 
-A  = [Za/V0, 1, Zv/V0, 0; Ma, Mq, Mv, 0; Xa, 0, Xv, -g; -Za/V0, 0, -Zv/V0, 0]
-A1 = xhat1(1:4, 1:4)'
-B  = [Zeta/V0, -Xdf/V0*sin(a0+i_f); Meta, Mdf; Xeta, Xdf*cos(a0+i_f); -Zeta/V0, Xdf/V0*sin(a0+i_f)]
-B1 = xhat1(5:6, 1:4)'
+A  = [Za/V0, 1, Zv/V0, 0; Ma, Mq, Mv, 0; Xa, 0, Xv, -g; -Za/V0, 0, -Zv/V0, 0];
+A1 = xhat1(1:4, 1:4)';
+B  = [Zeta/V0, -Xdf/V0*sin(a0+i_f); Meta, Mdf; Xeta, Xdf*cos(a0+i_f); -Zeta/V0, Xdf/V0*sin(a0+i_f)];
+B1 = xhat1(5:6, 1:4)';
 
 
 %% Simulation %%%%%%
 U1sim = [time(1:length(time)-1), Ufilt(:,1)];
 U2sim = [time(1:length(time)-1), Ufilt(:,2)];
 x0    = [0;0;0;0];
-output = sim('ZRD_laengs_Simulator.slx', time);
+output = sim('ZRD_laengs_Simulator.slx',time);
+
+output.ysim(:,1)=output.ysim(:,1)+a0;
+output.ysim(:,3)=output.ysim(:,1)+V0;
+output.ysim(:,4)=output.ysim(:,1)+gamma0;
 
 
 %% LSQ Schätzer %%%%%%
