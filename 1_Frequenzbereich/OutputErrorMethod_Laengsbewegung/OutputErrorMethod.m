@@ -4,7 +4,7 @@ addpath(cd)
 cd OutputErrorMethod_Laengsbewegung
 clear
 close all
-load ('data_even.mat');
+load ('data_laengs_even_smoothed.mat');
 load ('Matrices.mat');
 % load ('testdata2.mat');
 % x=x(1:5000,:);
@@ -13,16 +13,16 @@ load ('Matrices.mat');
 
 %% Datenbereich
 t_start = 1;
-t_end   = 48900;
+t_end   = 78418;
 f_start = 2;
-f_end   = 700;%500;
+f_end   = 3000;%500;
 
 %% Trimmzustand
-alpha0 = 0.0169;
-V0 = 26.0921;
-gamma0 = 0;
-eta0 = -0.1702;
-deltaF0 = 0.4264;
+alpha0 = 0.0306;
+V0 = 21.9938;
+gamma0 = 0.0011;
+eta0 = -0.2167;
+deltaF0 = 0.3871;
 g = 9.81;
 
 %% Berechnung der Delta-Werte und Normierung
@@ -53,13 +53,13 @@ f=f_orig(f_start:f_end);
 N = length(f);
 
 %% Initialisierung des Parametervektors
-Z_alpha = -50;
-Z_V = -50; 
+Z_alpha = -1;
+Z_V = -1; 
 M_alpha = 1;
-M_q = 1;
+M_q = -1;
 M_V = 1;
 X_alpha = 1;
-X_V = 1;
+X_V = -1;
 Z_eta = 1;
 X_deltaF = 1;
 M_eta = 1;
@@ -68,9 +68,9 @@ X_eta = 1;
 theta = [Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_deltaF X_eta];
 
 %% Newton-Raphson-Algorithmus
-nugget = 0.01;
+nugget = 0.05;
 threshold = 1e-3;
-iter_max = 500;
+iter_max = 100;
 
 iter = 1;
 dtheta = ones(length(theta),1);
@@ -122,7 +122,7 @@ while iter <= iter_max && norm(dtheta)/norm(theta) > threshold
     dG11_conj_sub  = subs(dG11_conj,theta_sym(1:15),[theta V0 g alpha0]);
     dG12_conj_sub  = subs(dG12_conj,theta_sym(1:15),[theta V0 g alpha0]);
     
-    %Umwandeln in Frequenzabhängige Funktion
+    %Umwandeln in frequenzabhängige Funktion
 
     GF     = matlabFunction(G_sub);
     dGF{1} = matlabFunction(dG1_sub);
@@ -203,54 +203,55 @@ fprintf('==================================\n')
 x_hat = zeros(4,length(t)/2+1);
 for k=1:length(t)/2+1
     x_hat(:,k) = GF(f_orig(k))*u_Fourier_orig(k,:)';
+    G_k(:,:,k) = GF(f_orig(k));
 end
 x_hat = x_hat';
 
 figure
 subplot(2,2,1);
-semilogx(f,20*log10(abs(x_hat(f_start:f_end,1))))
+semilogx(f_orig,20*log10(abs(x_hat(:,1))))
 hold on
-semilogx(f,20*log10(abs(x_Fourier(:,1))),'--')
+semilogx(f_orig,20*log10(abs(x_Fourier_orig(:,1))),'--')
 ylabel('alpha')
 subplot(2,2,2);
-semilogx(f,20*log10(abs(x_hat(f_start:f_end,2))))
+semilogx(f_orig,20*log10(abs(x_hat(:,2))))
 hold on
-semilogx(f,20*log10(abs(x_Fourier(:,2))),'--')
+semilogx(f_orig,20*log10(abs(x_Fourier_orig(:,2))),'--')
 ylabel('q')
 subplot(2,2,3);
-semilogx(f,20*log10(abs(x_hat(f_start:f_end,3))))
+semilogx(f_orig,20*log10(abs(x_hat(:,3))))
 hold on
-semilogx(f,20*log10(abs(x_Fourier(:,3))),'--')
-ylabel('VA')
+semilogx(f_orig,20*log10(abs(x_Fourier_orig(:,3))),'--')
+ylabel('V_A')
 subplot(2,2,4);
-semilogx(f,20*log10(abs(x_hat(f_start:f_end,4))))
+semilogx(f_orig,20*log10(abs(x_hat(:,4))))
 hold on
-semilogx(f,20*log10(abs(x_Fourier(:,4))),'--')
+semilogx(f_orig,20*log10(abs(x_Fourier_orig(:,4))),'--')
 ylabel('gamma')
 
 figure
 subplot(2,2,1)
-semilogx(f,20*log10(abs(squeeze(G_exp(1,1,:)))))
+semilogx(f_orig,20*log10(abs(squeeze(G_exp_orig(1,1,:)))))
 hold on
-semilogx(f,20*log10(abs(squeeze(G_k(1,1,:)))))
+semilogx(f_orig,20*log10(abs(squeeze(G_k(1,1,:)))))
 title('G(1,1)');
 
 subplot(2,2,2)
-semilogx(f,20*log10(abs(squeeze(G_exp(1,2,:)))))
+semilogx(f_orig,20*log10(abs(squeeze(G_exp_orig(1,2,:)))))
 hold on
-semilogx(f,20*log10(abs(squeeze(G_k(1,2,:)))))
+semilogx(f_orig,20*log10(abs(squeeze(G_k(1,2,:)))))
 title('G(1,2)');
 
 subplot(2,2,3)
-semilogx(f,20*log10(abs(squeeze(G_exp(3,1,:)))))
+semilogx(f_orig,20*log10(abs(squeeze(G_exp_orig(3,1,:)))))
 hold on
-semilogx(f,20*log10(abs(squeeze(G_k(3,1,:)))))
+semilogx(f_orig,20*log10(abs(squeeze(G_k(3,1,:)))))
 title('G(3,1)');
 
 subplot(2,2,4)
-semilogx(f,20*log10(abs(squeeze(G_exp(3,2,:)))))
+semilogx(f_orig,20*log10(abs(squeeze(G_exp_orig(3,2,:)))))
 hold on
-semilogx(f,20*log10(abs(squeeze(G_k(3,2,:)))))
+semilogx(f_orig,20*log10(abs(squeeze(G_k(3,2,:)))))
 title('G(3,2)');
 
 [deltax_time_hat] = InvFourierTrafo(x_hat,length(t));
