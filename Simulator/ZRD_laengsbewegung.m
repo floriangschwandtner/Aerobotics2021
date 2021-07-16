@@ -5,45 +5,54 @@ clear all
 close all
 
 %% Daten-Vorbereitung %%%%%
-load("data_even.mat");
+load("data_laengs_even.mat");
 
 % Parameter 
 n1 = 1;     %Startindex
-n2 = 1200;  %Endindex
-fEck =1;    %Hz
+n2 = 78419;  %Endindex
+dFilt =100; 
+fEck  =10;    %Hz
 dt = 0.01;  % Zeitschritt
 g    = 9.81;
 
 % Anfangswerte
-a0   = 0;   
+a0   = 0.0167;   
 i_f  = 0;
-V0   = 26.92;
-gamma0 = -0.019  ;
-q0    = 0.083;
-
+V0   = 34.0097;
+gamma0 = 0.0027  ;
+q0    = 0;
+nu0   = -0.1698;
+df0   = 0.4271; 
 % Interpolation 
 
-x1=interp1(t(n1:n2),x(n1:n2,1)-a0,t(n1):dt:t(n2));
-x2=interp1(t(n1:n2),x(n1:n2,2),t(n1):dt:t(n2));
-x3=interp1(t(n1:n2),x(n1:n2,3)-V0,t(n1):dt:t(n2));
-x4=interp1(t(n1:n2),x(n1:n2,4)-gamma0,t(n1):dt:t(n2));
-u1=interp1(t(n1:n2),u(n1:n2,1)+ 0.1326,t(n1):dt:t(n2));
-u2=interp1(t(n1:n2),u(n1:n2,2)-0.4244,t(n1):dt:t(n2));
+% x1=interp1(t(n1:n2),x(n1:n2,1)-a0,(t(n1):dt:t(n2))');
+% x2=interp1(t(n1:n2),x(n1:n2,2),(t(n1):dt:t(n2))');
+% x3=interp1(t(n1:n2),x(n1:n2,3)-V0,(t(n1):dt:t(n2))');
+% x4=interp1(t(n1:n2),x(n1:n2,4)-gamma0,(t(n1):dt:t(n2))');
+% u1=interp1(t(n1:n2),u(n1:n2,1)+ 0.1326,(t(n1):dt:t(n2))');
+% u2=interp1(t(n1:n2),u(n1:n2,2)-0.4244,(t(n1):dt:t(n2))');
+% time = (t(n1):dt:t(n2))' ;
 
-time = (t(n1):dt:t(n2))';
-X    = [x1',x2',x3',x4'];
-U    = [u1',u2'];
+time = t(n1:n2);
+X    = x(n1:n2,:);
+x1   = X(:,1)-a0;%-X(1,1);
+x2   = X(:,2);%-X(1,2);
+x3   = X(:,3)-V0;%-X(1,3);
+x4   = X(:,4)-gamma0;%-X(1,4);
+U    = u(n1:n2,:);
+u1   = U(:,1)-nu0;%- U(1,1);
+u2   = U(:,2)-df0;%- U(1,2); 
 
 %% Filterung %%%%%%
 
 
-[x1filt, x1_dot] = filteredDerivative(x1', dt, fEck);
-[x2filt, x2_dot] = filteredDerivative(x2', dt, fEck);
-[x3filt, x3_dot] = filteredDerivative(x3', dt, fEck);
-[x4filt, x4_dot] = filteredDerivative(x4', dt, fEck);
+[x1filt, x1_dot] = filteredDerivative1(x1, dt, fEck,dFilt);
+[x2filt, x2_dot] = filteredDerivative1(x2, dt, fEck,dFilt);
+[x3filt, x3_dot] = filteredDerivative1(x3, dt, fEck,dFilt);
+[x4filt, x4_dot] = filteredDerivative1(x4, dt, fEck,dFilt);
 
-[u1filt, u1_dot] = filteredDerivative(u1', dt, fEck);
-[u2filt, u2_dot] = filteredDerivative(u2', dt, fEck);
+[u1filt, u1_dot] = filteredDerivative1(u1, dt, fEck,dFilt);
+[u2filt, u2_dot] = filteredDerivative1(u2, dt, fEck,dFilt);
 
 Xfilt=[x1filt,x2filt,x3filt,x4filt];
 Ufilt=[u1filt,u2filt];
@@ -54,7 +63,7 @@ Ufilt=[u1filt,u2filt];
 
 %% LSQ- Schätzer 
 % Beiwerte 
-xhat = LSQ(Xfilt,Ufilt,dt,V0,a0, i_f,g ,'L');
+xhat = LSQ(Xfilt(2:length(x1filt),:),Ufilt(2:length(x1filt),:),dt,V0,a0, i_f,g ,'L');
 
 % Beiwerte für A 
 Ma = xhat(8);
@@ -78,7 +87,7 @@ z = [x1_dot, x2_dot, x3_dot, x4_dot];
 
 H = [x1filt, x2filt, x3filt, x4filt, u1filt, u2filt];
 
-xhat1 = (H'*H)\H'*z
+xhat1 = (H'*H)\H'*z;
 
 A  = [Za/V0, 1, Zv/V0, 0; Ma, Mq, Mv, 0; Xa, 0, Xv, -g; -Za/V0, 0, -Zv/V0, 0]
 A1 = xhat1(1:4, 1:4)'
@@ -87,8 +96,8 @@ B1 = xhat1(5:6, 1:4)'
 
 
 %% Simulation %%%%%%
-U1sim = [time, U(:,1)];
-U2sim = [time, U(:,2)];
+U1sim = [time(1:length(time)-1), Ufilt(:,1)];
+U2sim = [time(1:length(time)-1), Ufilt(:,2)];
 x0    = [0;0;0;0];
 output = sim('ZRD_laengs_Simulator.slx', time);
 
@@ -177,3 +186,44 @@ plot(time(1:length(time)-1),x4filt)
 xlabel('t[s]')
 ylabel('\Delta \gamma')
 legend('sim','true')
+
+%%
+% figure(3)
+% subplot(2,2,1)
+% 
+% plot(time(1:length(time)-1),x1_dot)
+% hold on
+% plot(time(1:length(time)-1),x1filt)
+% plot(time,X(:,1))
+% xlabel('t[s]')
+% ylabel('\Delta \alpha')
+% 
+% subplot(2,2,2)
+% 
+% plot(time(1:length(time)-1),x2_dot)
+% hold on
+% plot(time(1:length(time)-1),x2filt)
+% plot(time,X(:,2))
+% xlabel('t[s]')
+% ylabel('q')
+% 
+% 
+% subplot(2,2,3)
+% 
+% plot(time(1:length(time)-1),x3_dot)
+% hold on
+% plot(time(1:length(time)-1),x3filt)
+% plot(time,X(:,3))
+% xlabel('t[s]')
+% ylabel('\Delta V_A')
+% 
+
+% subplot(2,2,4)
+% 
+% plot(time(1:length(time)-1),x4_dot)
+% hold on
+% plot(time(1:length(time)-1),x4filt)
+% plot(time,X(:,4))
+% xlabel('t[s]')
+% ylabel('\Delta \gamma')
+% legend('dot','filt')
