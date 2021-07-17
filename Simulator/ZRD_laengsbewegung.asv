@@ -19,10 +19,10 @@ g    = 9.81;
 a0   = 0.0167;   
 i_f  = 0;
 V0   = 26.1497;
-gamma0 = 0.0016;
+gamma0 = 0.0011;
 q0    = 0;
-nu0   = -0.1698;
-df0   = 0.4271; 
+nu0   = -0.2167;
+df0   = 0.3871; 
 % Interpolation 
 
 % x1=interp1(t(n1:n2),x(n1:n2,1)-a0,(t(n1):dt:t(n2))');
@@ -62,7 +62,7 @@ Ufilt=[u1filt,u2filt];
 
 
 
-%% LSQ-Schätzer 
+%% LSQ- Schätzer 
 % Beiwerte 
 xhat = LSQ(Xfilt(2:length(x1filt),:),Ufilt(2:length(x1filt),:),dt,V0,a0, i_f,g ,'L');
 
@@ -95,10 +95,11 @@ A1 = xhat1(1:4, 1:4)';
 B  = [Zeta/V0, -Xdf/V0*sin(a0+i_f); Meta, Mdf; Xeta, Xdf*cos(a0+i_f); -Zeta/V0, Xdf/V0*sin(a0+i_f)];
 B1 = xhat1(5:6, 1:4)';
 
+
 %% Simulation %%%%%%
 U1sim = [time(1:length(time)-1), Ufilt(:,1)];
 U2sim = [time(1:length(time)-1), Ufilt(:,2)];
-x0    = [x1filt(1);x2filt(1);x3filt(1);x4filt(1)];
+x0    = [0;0;0;0];
 output = sim('ZRD_laengs_Simulator_einfach.slx',time);
 
 
