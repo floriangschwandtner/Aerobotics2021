@@ -14,8 +14,8 @@ load ('Matrices.mat');
 %% Datenbereich
 t_start = 1;
 t_end   = 78418;
-f_start = 400;
-f_end   = 2400;%500;
+f_start = 2;
+f_end   = 3000;%500;
 
 %% Trimmzustand
 alpha0 = 0.00167;
@@ -70,7 +70,7 @@ theta = [Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_deltaF X
 %% Newton-Raphson-Algorithmus
 nugget = 0.05;
 threshold = 1e-3;
-iter_max = 100;
+iter_max = 10;
 
 iter = 1;
 dtheta = ones(length(theta),1);

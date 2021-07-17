@@ -9,20 +9,20 @@ load("data_laengs_even.mat");
 
 % Parameter 
 n1 = 1;%18927;     %Startindex
-n2 = 78419;%35831;  %Endindex
+n2 = 12412;%35831;  %Endindex
 dFilt =1; 
 fEck  =20;    %Hz
 %dt = 0.01;  % Zeitschritt
 g    = 9.81;
 
 % Anfangswerte
-a0   = 0.0167;   
+a0   = 0.0062;   
 i_f  = 0;
-V0   = 26.1497;
-gamma0 = 0.0016;
+V0   = 26.9978;
+gamma0 = 0.0013;
 q0    = 0;
-nu0   = -0.1698;
-df0   = 0.4271; 
+nu0   = -0.1340;
+df0   = 0.4246; 
 % Interpolation 
 
 % x1=interp1(t(n1:n2),x(n1:n2,1)-a0,(t(n1):dt:t(n2))');
@@ -106,8 +106,8 @@ output.ysim(:,1)=output.ysim(:,1)+a0;
 output.ysim(:,3)=output.ysim(:,1)+V0;
 output.ysim(:,4)=output.ysim(:,1)+gamma0;
 x1filt = x1filt+a0;
-x3filt = x1filt+V0;
-x4filt = x1filt+gamma0;
+x3filt = x3filt+V0;
+x4filt = x4filt+gamma0;
 %% LSQ Schätzer %%%%%%
 figure(1)
 subplot(2,2,1)
