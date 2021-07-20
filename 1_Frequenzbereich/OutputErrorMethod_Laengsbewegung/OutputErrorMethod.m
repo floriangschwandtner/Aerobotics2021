@@ -15,7 +15,7 @@ load ('Matrices.mat');
 t_start = 1;
 t_end   = 78418;
 f_start = 2;
-f_end   = 3300;%500;
+f_end   = 3;%500;
 
 %% Trimmzustand
 alpha0 = 0.0062;
@@ -53,24 +53,24 @@ f=f_orig(f_start:f_end);
 N = length(f);
 
 %% Initialisierung des Parametervektors
-Z_alpha = -1.240966747613154e+02;
-Z_V = -0.781870189929807; 
-M_alpha = -18.691940475808664;
-M_q = -8.643781655760385;
-M_V = -0.127247102075194;
-X_alpha = 3.268476004800303;
-X_V = -0.688853172337177;
-Z_eta = 0.035617558973790;
-X_deltaF = 0.234952179984699;
-M_eta = -0.232993948010700;
-M_deltaF = 0.043838256594211;
-X_eta = -0.001105783331975;
+Z_alpha = [-0.473186580900319]*V0;
+Z_V = [-0.000763325096957492]*V0; 
+M_alpha = [-87.6450530495459];
+M_q = [-58.2128494877069];
+M_V = [1.66437872449425];
+X_alpha = [-6.26938451560701];
+X_V = [-0.0741111475602237];
+Z_eta = [-0.0634198470314440]*V0;
+X_deltaF = [-0.0226287671386684]*(-1)*V0/(sin(alpha0));
+M_eta = [-97.6955223213428];
+M_deltaF = [-53.7881728478177];
+X_eta = [-0.351042475926444];
 theta = [Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_deltaF X_eta];
 
 %% Newton-Raphson-Algorithmus
 nugget = 0.05;
 threshold = 1e-3;
-iter_max = 100;
+iter_max = 1;
 
 iter = 1;
 dtheta = ones(length(theta),1);
@@ -201,7 +201,7 @@ fprintf('Algorithm finished.\n')
 fprintf('==================================\n')
 
 x_hat = zeros(4,length(t)/2+1);
-for k=1:length(t)/2+1
+for k=2:length(t)/2+1
     x_hat(:,k) = GF(f_orig(k))*u_Fourier_orig(k,:)';
     G_k(:,:,k) = GF(f_orig(k));
 end

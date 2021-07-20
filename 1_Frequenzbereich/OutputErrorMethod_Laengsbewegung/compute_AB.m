@@ -14,5 +14,7 @@ function [A,B] = compute_AB(theta, V0, alpha0)
         theta(10) theta(11);...
         theta(12) theta(9)*cos(alpha0+iF);...
         -theta(8)/V0 theta(9)/V0*sin(alpha0+iF)];
-    
+%     load 'AB.mat'
+%     A=A1;
+%     B=B1;
 end
