@@ -21,4 +21,11 @@ y = filtfilt(filterD.Numerator{:},filterD.Denominator{:},in);
 
 out = y(1:end-1);
 diffOut = -(y(1:end-1)-y(2:end))./dt;
+%%
+% out=smoothdata(in,'movmean',100);
+% diffOut(1)=(out(2)-out(1))/(dt);
+% diffOut(end)=(out(end)-out(end-1))/(dt);
+% for i=2:length(out)-1
+%     diffOut(i) = (out(i+1)-out(i-1))/(2*dt);
+% end
 end

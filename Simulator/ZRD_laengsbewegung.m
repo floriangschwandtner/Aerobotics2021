@@ -8,21 +8,21 @@ close all
 load("data_laengs_even.mat");
 
 % Parameter 
-n1 = 1;%18927;     %Startindex
-n2 = 12412;%35831;  %Endindex
-dFilt =1; 
+n1 = 1;     %Startindex
+n2 = 78419;  %Endindex
+dFilt =0.3; 
 fEck  =20;    %Hz
-%dt = 0.01;  % Zeitschritt
+dt = 0.0267;  % Zeitschritt
 g    = 9.81;
 
 % Anfangswerte
-a0   = 0.0062;   
+a0   = 0.0167;   
 i_f  = 0;
-V0   = 26.9978;
-gamma0 = 0.0013;
+V0   = 26.1497;
+gamma0 = 0.0027  ;
 q0    = 0;
-nu0   = -0.1340;
-df0   = 0.4246; 
+nu0   = -0.1698;
+df0   = 0.4271; 
 % Interpolation 
 
 % x1=interp1(t(n1:n2),x(n1:n2,1)-a0,(t(n1):dt:t(n2))');
@@ -43,7 +43,6 @@ U    = u(n1:n2,:);
 u1   = U(:,1)-nu0;%- U(1,1);
 u2   = U(:,2)-df0;%- U(1,2); 
 
-dt = time(2)-time(1);
 %% Filterung %%%%%%
 
 
@@ -62,9 +61,9 @@ Ufilt=[u1filt,u2filt];
 
 
 
-%% LSQ-Schätzer 
+%% LSQ- Schätzer 
 % Beiwerte 
-xhat = LSQ(Xfilt(2:length(x1filt),:),Ufilt(2:length(x1filt),:),dt,V0,a0, i_f,g ,'L');
+xhat = LSQ(Xfilt,Ufilt,dt,X(1,2),X(1,1), i_f,g ,'L');
 
 % Beiwerte für A 
 Ma = xhat(8);
@@ -84,38 +83,35 @@ Zeta = xhat(7);
 
 
 %% Matrix-Schätzer
-z = [x1_dot, x2_dot, x3_dot, x4_dot];
-
-H = [x1filt, x2filt, x3filt, x4filt, u1filt, u2filt];
+z = [x1filt(2:length(x1filt)), x2filt(2:length(x1filt)), x3filt(2:length(x1filt)), x4filt(2:length(x1filt))];
+%z = [x1_dot, x2_dot, x3_dot, x4_dot];
+H = [x1filt(1:length(x1filt)-1), x2filt(1:length(x1filt)-1), x3filt(1:length(x1filt)-1), x4filt(1:length(x1filt)-1), u1filt(1:length(x1filt)-1), u2filt(1:length(x1filt)-1)];
+%H = [x1filt, x2filt, x3filt, x4filt, u1filt, u2filt];
 
 xhat1 = (H'*H)\H'*z;
 
-A  = [Za/V0, 1, Zv/V0, 0; Ma, Mq, Mv, 0; Xa, 0, Xv, -g; -Za/V0, 0, -Zv/V0, 0];
-A1 = xhat1(1:4, 1:4)';
-B  = [Zeta/V0, -Xdf/V0*sin(a0+i_f); Meta, Mdf; Xeta, Xdf*cos(a0+i_f); -Zeta/V0, Xdf/V0*sin(a0+i_f)];
-B1 = xhat1(5:6, 1:4)';
+A  = [Za/V0, 1, Zv/V0, 0; Ma, Mq, Mv, 0; Xa, 0, Xv, -g; -Za/V0, 0, -Zv/V0, 0]
+A1 = (xhat1(1:4, 1:4)'-eye(4,4))/dt
+B  = [Zeta/V0, -Xdf/V0*sin(a0+i_f); Meta, Mdf; Xeta, Xdf*cos(a0+i_f); -Zeta/V0, Xdf/V0*sin(a0+i_f)]
+B1 = xhat1(5:6, 1:4)'/dt
+
 
 %% Simulation %%%%%%
 U1sim = [time(1:length(time)-1), Ufilt(:,1)];
 U2sim = [time(1:length(time)-1), Ufilt(:,2)];
-x0    = [x1filt(1);x2filt(1);x3filt(1);x4filt(1)];
-output = sim('ZRD_laengs_Simulator_einfach.slx',time);
+x0    = [0;0;0;0];
+output = sim('ZRD_laengs_Simulator.slx', time);
 
 
-output.ysim(:,1)=output.ysim(:,1)+a0;
-output.ysim(:,3)=output.ysim(:,1)+V0;
-output.ysim(:,4)=output.ysim(:,1)+gamma0;
-x1filt = x1filt+a0;
-x3filt = x3filt+V0;
-x4filt = x4filt+gamma0;
 %% LSQ Schätzer %%%%%%
 figure(1)
 subplot(2,2,1)
 
-plot(output.tout, output.ysim(:,1))
+plot(output.tout, output.ysim(:,1)+a0)
 hold on
-plot(time(1:length(time)-1),x1filt)
-% plot(time,X(:,1))
+plot(time(1:length(time)-1),x1filt+a0)
+% hold on
+% plot(time,x1)
 xlabel('t[s]')
 ylabel('\Delta \alpha')
 
@@ -124,112 +120,141 @@ subplot(2,2,2)
 plot(output.tout, output.ysim(:,2))
 hold on
 plot(time(1:length(time)-1),x2filt)
-% plot(time,X(:,2))
+%hold on
+%plot(time,x2)
 xlabel('t[s]')
 ylabel('q')
 
 
 subplot(2,2,3)
 
-plot(output.tout, output.ysim(:,3))
+plot(output.tout, output.ysim(:,3)+V0)
 hold on
-plot(time(1:length(time)-1),x3filt)
-% plot(time,X(:,3))
+plot(time(1:length(time)-1),x3filt+V0)
+% hold on
+% plot(time,x3)
+xlabel('t[s]')
+ylabel('\Delta V_A')
+
+
+subplot(2,2,4)
+% 
+plot(output.tout, output.ysim(:,4)+gamma0)
+hold on
+plot(time(1:length(time)-1),x4filt+gamma0)
+% hold on
+% plot(time,x4)
+xlabel('t[s]')
+ylabel('\Delta \gamma')
+
+legend('sim','filt')
+
+
+%% A&B Schätzer %%%%%%%%
+
+figure(2)
+subplot(2,2,1)
+
+plot(output.tout, output.ysim1(:,1)+a0)
+hold on
+plot(time(1:length(time)-1),x1filt+a0)
+%plot(time,X(:,1))
+xlabel('t[s]')
+ylabel('\Delta \alpha')
+
+subplot(2,2,2)
+
+plot(output.tout, output.ysim1(:,2))
+hold on
+plot(time(1:length(time)-1),x2filt)
+%plot(time,X(:,2))
+xlabel('t[s]')
+ylabel('q')
+
+
+subplot(2,2,3)
+
+plot(output.tout, output.ysim1(:,3)+V0)
+hold on
+plot(time(1:length(time)-1),x3filt+V0)
+%plot(time,X(:,3))
 xlabel('t[s]')
 ylabel('\Delta V_A')
 
 
 subplot(2,2,4)
 
-plot(output.tout, output.ysim(:,4))
+plot(output.tout, output.ysim1(:,4)+gamma0)
 hold on
-plot(time(1:length(time)-1),x4filt)
-% plot(time,X(:,4))
+plot(time(1:length(time)-1),x4filt+gamma0)
+%plot(time,X(:,4))
 xlabel('t[s]')
 ylabel('\Delta \gamma')
-
-legend('sim','true')
-
-
-%% A&B Schätzer %%%%%%%%
-
-% figure(2)
-% subplot(2,2,1)
-% 
-% plot(output.tout, output.ysim1(:,1))
-% hold on
-% plot(time(1:length(time)-1),x1filt)
-% %plot(time,X(:,1))
-% xlabel('t[s]')
-% ylabel('\Delta \alpha')
-% 
-% subplot(2,2,2)
-% 
-% plot(output.tout, output.ysim1(:,2))
-% hold on
-% plot(time(1:length(time)-1),x2filt)
-% %plot(time,X(:,2))
-% xlabel('t[s]')
-% ylabel('q')
-% 
-% 
-% subplot(2,2,3)
-% 
-% plot(output.tout, output.ysim1(:,3))
-% hold on
-% plot(time(1:length(time)-1),x3filt)
-% %plot(time,X(:,3))
-% xlabel('t[s]')
-% ylabel('\Delta V_A')
-% 
-% 
-% subplot(2,2,4)
-% 
-% plot(output.tout, output.ysim1(:,4))
-% hold on
-% plot(time(1:length(time)-1),x4filt)
-% %plot(time,X(:,4))
-% xlabel('t[s]')
-% ylabel('\Delta \gamma')
-% legend('sim','true')
+legend('sim','filt')
 
 %%
-% figure(3)
-% subplot(2,2,1)
-% 
-% plot(time(1:length(time)-1),x1_dot)
+% figure (3)
+% plot(time(1:length(time)-1),x2filt)
 % hold on
-% plot(time(1:length(time)-1),x1filt)
-% plot(time,X(:,1))
+% plot(time,x2)
 % xlabel('t[s]')
 % ylabel('\Delta \alpha')
+% legend('filt','true')
 % 
-% subplot(2,2,2)
-% 
+% figure (4)
+% subplot(1,2,1)
+% plot(time(1:length(time)-1),u1filt)
+% ylabel('nufilt')
+% hold on
+% plot(time,u1)
+% ylabel('nutrue')
+% subplot(1,2,2)
+% plot(time(1:length(time)-1),u2filt)
+% ylabel('dffilt')
+% hold on
+% plot(time,u2)
+% ylabel('dftrue')
+
+figure(3)
+subplot(2,2,1)
+
+% plot(time(1:length(time)-1),x1_dot)
+% hold on
+plot(time(1:length(time)-1),x1filt)
+hold on
+plot(time,x1)
+xlabel('t[s]')
+ylabel('\Delta \alpha')
+
+subplot(2,2,2)
+
 % plot(time(1:length(time)-1),x2_dot)
 % hold on
-% plot(time(1:length(time)-1),x2filt)
-% plot(time,X(:,2))
-% xlabel('t[s]')
-% ylabel('q')
-% 
-% 
-% subplot(2,2,3)
-% 
+plot(time(1:length(time)-1),x2filt)
+hold on
+plot(time,x2)
+xlabel('t[s]')
+ylabel('q')
+
+
+subplot(2,2,3)
+
 % plot(time(1:length(time)-1),x3_dot)
 % hold on
-% plot(time(1:length(time)-1),x3filt)
-% plot(time,X(:,3))
-% xlabel('t[s]')
-% ylabel('\Delta V_A')
-% 
+plot(time(1:length(time)-1),x3filt)
+hold on
+plot(time,x3)
+xlabel('t[s]')
+ylabel('\Delta V_A')
 
-% subplot(2,2,4)
-% 
+
+subplot(2,2,4)
+
 % plot(time(1:length(time)-1),x4_dot)
 % hold on
-% plot(time(1:length(time)-1),x4filt)
-% plot(time,X(:,4))
-% xlabel('t[s]')
-% ylabel('\Delta \gamma')
-% legend('dot','filt')
+plot(time(1:length(time)-1),x4filt)
+hold on
+plot(time,x4)
+xlabel('t[s]')
+ylabel('\Delta \gamma')
+legend('filt','true')
