@@ -14,7 +14,7 @@ nu    = U(:,1);
 deltaF= U(:,2);
 N     = length(alpha);
 %dt    = (tend-t0)/N;
-jj    = (a0+i_f)*pi/180; 
+jj    = (a0+i_f);%*pi/180; 
 
 z=reshape([((alpha(2:N)-alpha(1:N-1))./(dt))- q(2:N);
      (q(2:N) - q(1:N-1))./(dt) ;
