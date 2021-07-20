@@ -14,16 +14,16 @@ load ('Matrices.mat');
 %% Datenbereich
 t_start = 1;
 t_end   = 78418;
-f_start = 400;
-f_end   = 2400;%500;
+f_start = 2;
+f_end   = 3300;%500;
 
 %% Trimmzustand
-alpha0 = 0.00167;
-V0 = 26.1497;
-gamma0 = 0.0016;
-eta0 = -0.1698;
-deltaF0 = 0.4271;
-g = 9.81;
+alpha0 = 0.0062;
+V0 = 26.9978;
+gamma0 = 0.0013;
+eta0 = -0.1340;
+deltaF0 = 0.4246;
+g = 9.8067;
 
 %% Berechnung der Delta-Werte und Normierung
 x = x(t_start:t_end,:);
@@ -53,18 +53,18 @@ f=f_orig(f_start:f_end);
 N = length(f);
 
 %% Initialisierung des Parametervektors
-Z_alpha = -0.1797*V0;
-Z_V = -1; 
-M_alpha = 1;
-M_q = -1;
-M_V = 1;
-X_alpha = 1;
-X_V = -1;
-Z_eta = 1;
-X_deltaF = 1;
-M_eta = 1;
-M_deltaF = 1;
-X_eta = 1;
+Z_alpha = -1.240966747613154e+02;
+Z_V = -0.781870189929807; 
+M_alpha = -18.691940475808664;
+M_q = -8.643781655760385;
+M_V = -0.127247102075194;
+X_alpha = 3.268476004800303;
+X_V = -0.688853172337177;
+Z_eta = 0.035617558973790;
+X_deltaF = 0.234952179984699;
+M_eta = -0.232993948010700;
+M_deltaF = 0.043838256594211;
+X_eta = -0.001105783331975;
 theta = [Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_deltaF X_eta];
 
 %% Newton-Raphson-Algorithmus
