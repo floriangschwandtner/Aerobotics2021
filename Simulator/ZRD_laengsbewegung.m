@@ -50,7 +50,7 @@ u2   = U(:,2)-df0;%- U(1,2);
 Xfilt=[x1filt,x2filt,x3filt,x4filt];
 Ufilt=[u1filt,u2filt];
 
-%% LSQ- Schätzer 
+%% LSQ-Schätzer 
 % Beiwerte 
 xhat = LSQ(Xfilt,Ufilt,dt,X(1,2),X(1,1), i_f,g ,'L');
 
@@ -119,7 +119,7 @@ output = sim('ZRD_laengs_Simulator.slx', time);
 
 %% LSQ Schätzer %%%%%%
 figure(1)
-sgtitle("LSQ Schätzer")
+sgtitle("LSQ-Schätzer")
 subplot(2,2,1)
 
 plot(output.tout, output.ysim(:,1)+a0)
