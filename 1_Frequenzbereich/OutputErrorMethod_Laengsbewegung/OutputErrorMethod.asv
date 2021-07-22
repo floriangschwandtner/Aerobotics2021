@@ -72,22 +72,21 @@ X_deltaF = [-0.0226287671386684]*(-1)*V0/(sin(alpha0));
 M_eta = [-97.6955223213428];
 M_deltaF = [-53.7881728478177];
 X_eta = [-0.351042475926444];
-theta = zeros(iter_max,12);
-theta(1,:) = [Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_deltaF X_eta];
+theta = zeros(12,iter_max);
+theta(:,1) = [Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_deltaF X_eta];
 
 %% Newton-Raphson-Algorithmus
-fprintf('==================================\n')
-fprintf('Newton-Raphson-Algorithm started.\n')
-fprintf('==================================\n')
 dtheta = ones(length(theta),1);
 J = zeros(iter_max,1);
 konv = zeros(iter_max,1);
 M_pd = zeros(iter_max,1);       % M(iter) is pd -> M_pd(iter) = 1 (else 0)
-iter = 1;
-while iter <= iter_max && norm(dtheta)/norm(theta(iter,:)) > threshold
+fprintf('==================================\n')
+fprintf('Newton-Raphson-Algorithm started.\n')
+fprintf('==================================\n')
+while iter <= iter_max && norm(dtheta)/norm(theta(iter)) > threshold
     % Update Parametervektor
     if iter > 1
-        theta(iter,:)  = theta(iter-1,:) + dtheta';
+        theta(iter)  = theta(iter-1) + dtheta';
     end
     
     % Kostenfunktion
@@ -99,32 +98,32 @@ while iter <= iter_max && norm(dtheta)/norm(theta(iter,:)) > threshold
     
     %Besetzung von G und deren Ableitung mit aktuellem theta
     
-    G_sub    = subs(G,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG1_sub   = subs(dG1,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG2_sub   = subs(dG2,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG3_sub   = subs(dG3,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG4_sub   = subs(dG4,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG5_sub   = subs(dG5,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG6_sub   = subs(dG6,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG7_sub   = subs(dG7,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG8_sub   = subs(dG8,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG9_sub   = subs(dG9,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG10_sub  = subs(dG10,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG11_sub  = subs(dG11,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG12_sub  = subs(dG12,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
+    G_sub    = subs(G,theta_sym(1:15),[theta V0 g alpha0]);
+    dG1_sub   = subs(dG1,theta_sym(1:15),[theta V0 g alpha0]);
+    dG2_sub   = subs(dG2,theta_sym(1:15),[theta V0 g alpha0]);
+    dG3_sub   = subs(dG3,theta_sym(1:15),[theta V0 g alpha0]);
+    dG4_sub   = subs(dG4,theta_sym(1:15),[theta V0 g alpha0]);
+    dG5_sub   = subs(dG5,theta_sym(1:15),[theta V0 g alpha0]);
+    dG6_sub   = subs(dG6,theta_sym(1:15),[theta V0 g alpha0]);
+    dG7_sub   = subs(dG7,theta_sym(1:15),[theta V0 g alpha0]);
+    dG8_sub   = subs(dG8,theta_sym(1:15),[theta V0 g alpha0]);
+    dG9_sub   = subs(dG9,theta_sym(1:15),[theta V0 g alpha0]);
+    dG10_sub  = subs(dG10,theta_sym(1:15),[theta V0 g alpha0]);
+    dG11_sub  = subs(dG11,theta_sym(1:15),[theta V0 g alpha0]);
+    dG12_sub  = subs(dG12,theta_sym(1:15),[theta V0 g alpha0]);
     
-    dG1_conj_sub   = subs(dG1_conj,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG2_conj_sub   = subs(dG2_conj,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG3_conj_sub   = subs(dG3_conj,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG4_conj_sub   = subs(dG4_conj,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG5_conj_sub   = subs(dG5_conj,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG6_conj_sub   = subs(dG6_conj,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG7_conj_sub   = subs(dG7_conj,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG8_conj_sub   = subs(dG8_conj,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG9_conj_sub   = subs(dG9_conj,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG10_conj_sub  = subs(dG10_conj,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG11_conj_sub  = subs(dG11_conj,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
-    dG12_conj_sub  = subs(dG12_conj,theta_sym(1:15),[theta(iter,:) V0 g alpha0]);
+    dG1_conj_sub   = subs(dG1_conj,theta_sym(1:15),[theta V0 g alpha0]);
+    dG2_conj_sub   = subs(dG2_conj,theta_sym(1:15),[theta V0 g alpha0]);
+    dG3_conj_sub   = subs(dG3_conj,theta_sym(1:15),[theta V0 g alpha0]);
+    dG4_conj_sub   = subs(dG4_conj,theta_sym(1:15),[theta V0 g alpha0]);
+    dG5_conj_sub   = subs(dG5_conj,theta_sym(1:15),[theta V0 g alpha0]);
+    dG6_conj_sub   = subs(dG6_conj,theta_sym(1:15),[theta V0 g alpha0]);
+    dG7_conj_sub   = subs(dG7_conj,theta_sym(1:15),[theta V0 g alpha0]);
+    dG8_conj_sub   = subs(dG8_conj,theta_sym(1:15),[theta V0 g alpha0]);
+    dG9_conj_sub   = subs(dG9_conj,theta_sym(1:15),[theta V0 g alpha0]);
+    dG10_conj_sub  = subs(dG10_conj,theta_sym(1:15),[theta V0 g alpha0]);
+    dG11_conj_sub  = subs(dG11_conj,theta_sym(1:15),[theta V0 g alpha0]);
+    dG12_conj_sub  = subs(dG12_conj,theta_sym(1:15),[theta V0 g alpha0]);
     
     %Umwandeln in frequenzabhängige Funktion
 
@@ -190,17 +189,14 @@ while iter <= iter_max && norm(dtheta)/norm(theta(iter,:)) > threshold
 %         dtheta = inv(M)*dJ;
 %     end
     dtheta = - inv(M)*dJ;
-    konv(iter) = norm(dtheta)/norm(theta(iter,:));
+    konv(iter) = norm(dtheta)/norm(theta);
     
     fprintf('Iteration #%d done. | J = %.5f\n',iter, abs(J(iter)))
     
     iter   = iter + 1;
 end
 
-[minJ, minIndex] = min(abs(J));
-theta_best = theta(minIndex,:);
-
-G_sub  = subs(G,theta_sym(1:15),[theta_best V0 g alpha0]);
+G_sub  = subs(G,theta_sym(1:15),[theta V0 g alpha0]);
 GF     = matlabFunction(G_sub);
 
 fprintf('==================================\n')
