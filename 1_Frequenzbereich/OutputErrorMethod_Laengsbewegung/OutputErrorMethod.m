@@ -13,9 +13,10 @@ load ('Matrices.mat');
 
 %% Datenbereich
 t_start = 1;
-t_end   = 78418;
+t_end   = 12000;
 f_start = 2;
-f_end   = 3;%500;
+f_end   = 6001;%500;
+normierung = false;
 
 %% Trimmzustand
 alpha0 = 0.0062;
@@ -24,26 +25,32 @@ gamma0 = 0.0013;
 eta0 = -0.1340;
 deltaF0 = 0.4246;
 g = 9.8067;
+ 
+%% Algorithmus-Optionen
+iter_max = 1;
+nugget = 0.05;
+threshold = 1e-3;
 
 %% Berechnung der Delta-Werte und Normierung
 x = x(t_start:t_end,:);
 u = u(t_start:t_end,:);
 t = t(t_start:t_end);
 
+% Abweichungen vom Trimmpunkt
 deltax(:,1) = x(:,1)-alpha0;
 deltax(:,2) = x(:,2);
 deltax(:,3) = x(:,3)-V0;
 deltax(:,4) = x(:,4)-gamma0;
 deltau(:,1) = u(:,1)-eta0;
 deltau(:,2) = u(:,2)-deltaF0;
-
-% Normierung
-% norm_x = abs(max(x));
-% x(:,1) = x(:,1)/norm_x(1);
-% x(:,2) = x(:,2)/norm_x(2);
-% x(:,3) = x(:,3)/norm_x(3);
-% x(:,4) = x(:,4)/norm_x(4);
-
+if (normierung)
+    % Normierung
+    norm_x = abs(max(deltax));
+    deltax(:,1) = deltax(:,1)/norm_x(1);
+    deltax(:,2) = deltax(:,2)/norm_x(2);
+    deltax(:,3) = deltax(:,3)/norm_x(3);
+    deltax(:,4) = deltax(:,4)/norm_x(4);
+end
 %% Fourier-Trafos
 [x_Fourier_orig, u_Fourier_orig, G_exp_orig, f_orig] = FourierTrafo(deltax(:,:), deltau(:,:), t, 0);
 x_Fourier=x_Fourier_orig(f_start:f_end,:);
@@ -68,10 +75,6 @@ X_eta = [-0.351042475926444];
 theta = [Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_deltaF X_eta];
 
 %% Newton-Raphson-Algorithmus
-nugget = 0.05;
-threshold = 1e-3;
-iter_max = 1;
-
 iter = 1;
 dtheta = ones(length(theta),1);
 J = zeros(iter_max,1);
@@ -201,7 +204,8 @@ fprintf('Algorithm finished.\n')
 fprintf('==================================\n')
 
 x_hat = zeros(4,length(t)/2+1);
-for k=2:length(t)/2+1
+G_k = zeros(4,2,length(t)/2+1);
+for k=2:51%length(t)/2+1
     x_hat(:,k) = GF(f_orig(k))*u_Fourier_orig(k,:)';
     G_k(:,:,k) = GF(f_orig(k));
 end
@@ -256,11 +260,18 @@ title('G(3,2)');
 
 [deltax_time_hat] = InvFourierTrafo(x_hat,length(t));
 
+if (normierung)
+    % Rück-Normierung
+    deltax(:,1) = deltax(:,1)/norm_x(1);
+    deltax(:,2) = deltax(:,2)/norm_x(2);
+    deltax(:,3) = deltax(:,3)/norm_x(3);
+    deltax(:,4) = deltax(:,4)/norm_x(4);
+end
+
 x_time_hat(:,1) = deltax_time_hat(:,1)+alpha0;
 x_time_hat(:,2) = deltax_time_hat(:,2);
 x_time_hat(:,3) = deltax_time_hat(:,3)+V0;
 x_time_hat(:,4) = deltax_time_hat(:,4)+gamma0;
-
 
 titles = {'\Delta\alpha', 'q', '\Delta V_A', '\Delta \gamma'};
 for i=1:4
