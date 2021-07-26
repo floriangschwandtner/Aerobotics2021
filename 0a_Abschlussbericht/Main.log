@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.6.24)  14 JUL 2021 19:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.6.24)  26 JUL 2021 19:06
 entering extended mode
 **./main.tex
 (main.tex
@@ -39,12 +39,12 @@ Package: tocbasic 2021/03/17 v3.33 KOMA-Script package (handling toc-files)
 )
 Package tocbasic Info: babel extension for `toc' omitted
 (tocbasic)             because of missing \bbl@set@language on input line 137.
-Package scrreprt Info: You've used standard option `12pt'.
+Package scrreprt Info: You've used standard option `11pt'.
 (scrreprt)             This is correct!
-(scrreprt)             Internally I'm using `fontsize=12pt'.
+(scrreprt)             Internally I'm using `fontsize=11pt'.
 (scrreprt)             If you'd like to set the option with \KOMAoptions,
-(scrreprt)             you'd have to use `fontsize=12pt' there
-(scrreprt)             instead of `12pt', too.
+(scrreprt)             you'd have to use `fontsize=11pt' there
+(scrreprt)             instead of `11pt', too.
 Class scrreprt Info: You've used standard option `oneside'.
 (scrreprt)           This is correct!
 (scrreprt)           Internally I'm using `twoside=false'.
@@ -57,11 +57,11 @@ Class scrreprt Info: You've used standard option `openright'.
 (scrreprt)           If you'd like to set the option with \KOMAoptions,
 (scrreprt)           you'd have to use `open=right' there
 (scrreprt)           instead of `openright', too.
-Class scrreprt Info: File `scrsize12pt.clo' used to setup font sizes on input l
+Class scrreprt Info: File `scrsize11pt.clo' used to setup font sizes on input l
 ine 2451.
 
-(C:\MiKTeX 2.9\tex/latex/koma-script\scrsize12pt.clo
-File: scrsize12pt.clo 2021/03/17 v3.33 KOMA-Script font size class option (12pt
+(C:\MiKTeX 2.9\tex/latex/koma-script\scrsize11pt.clo
+File: scrsize11pt.clo 2021/03/17 v3.33 KOMA-Script font size class option (11pt
 )
 )
 (C:\MiKTeX 2.9\tex/latex/koma-script\typearea.sty
@@ -85,21 +85,21 @@ Package typearea Info: You've used standard option `oneside'.
 \ta@temp=\skip51
 \footheight=\skip52
 Package typearea Info: These are the values describing the layout:
-(typearea)             DIV  = 12
+(typearea)             DIV  = 10
 (typearea)             BCOR = 0.0pt
 (typearea)             \paperwidth      = 597.50793pt
-(typearea)              \textwidth      = 448.13095pt
+(typearea)              \textwidth      = 418.25555pt
 (typearea)              DIV departure   = -6%
-(typearea)              \evensidemargin = 2.4185pt
-(typearea)              \oddsidemargin  = 2.4185pt
+(typearea)              \evensidemargin = 17.3562pt
+(typearea)              \oddsidemargin  = 17.3562pt
 (typearea)             \paperheight     = 845.04694pt
-(typearea)              \textheight     = 635.5pt
-(typearea)              \topmargin      = -41.72441pt
-(typearea)              \headheight     = 18.125pt
-(typearea)              \headsep        = 21.75pt
-(typearea)              \topskip        = 12.0pt
-(typearea)              \footskip       = 50.75pt
-(typearea)              \baselineskip   = 14.5pt
+(typearea)              \textheight     = 595.80026pt
+(typearea)              \topmargin      = -25.16531pt
+(typearea)              \headheight     = 17.0pt
+(typearea)              \headsep        = 20.40001pt
+(typearea)              \topskip        = 11.0pt
+(typearea)              \footskip       = 47.6pt
+(typearea)              \baselineskip   = 13.6pt
 (typearea)              on input line 1741.
 )
 \c@part=\count183
@@ -801,6 +801,30 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 130.
 \xmathstrut@box=\box86
 \xmathstrut@dim=\dimen292
 )
+(C:\MiKTeX 2.9\tex/latex/todonotes\todonotes.sty
+Package: todonotes 2021/06/04 v1.1.5 Todonotes source and documentation.
+Package: todonotes 2021/06/04
+
+(C:\MiKTeX 2.9\tex/latex/base\ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(C:\MiKTeX 2.9\tex/latex/xkeyval\xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+
+(C:\MiKTeX 2.9\tex/generic/xkeyval\xkeyval.tex
+(C:\MiKTeX 2.9\tex/generic/xkeyval\xkvutils.tex
+\XKV@toks=\toks41
+\XKV@tempa@toks=\toks42
+)
+\XKV@depth=\count307
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(C:\MiKTeX 2.9\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryposition
+ing.code.tex
+File: tikzlibrarypositioning.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+\c@@todonotes@numberoftodonotes=\count308
+)
 \@indexfile=\write4
 \openout4 = `main.idx'.
 
@@ -812,60 +836,60 @@ Package: blindtext 2012/01/06 V2.0 blindtext-Package
 (C:\MiKTeX 2.9\tex/latex/tools\xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
-\c@blindtext=\count307
-\c@Blindtext=\count308
-\c@blind@countparstart=\count309
-\blind@countxx=\count310
-\blindtext@numBlindtext=\count311
-\blind@countyy=\count312
-\c@blindlist=\count313
-\c@blindlistlevel=\count314
-\c@blindlist@level=\count315
-\blind@listitem=\count316
-\c@blind@listcount=\count317
-\c@blind@levelcount=\count318
-\blind@mathformula=\count319
-\blind@Mathformula=\count320
-\c@blind@randomcount=\count321
-\c@blind@randommax=\count322
-\c@blind@pangramcount=\count323
-\c@blind@pangrammax=\count324
+\c@blindtext=\count309
+\c@Blindtext=\count310
+\c@blind@countparstart=\count311
+\blind@countxx=\count312
+\blindtext@numBlindtext=\count313
+\blind@countyy=\count314
+\c@blindlist=\count315
+\c@blindlistlevel=\count316
+\c@blindlist@level=\count317
+\blind@listitem=\count318
+\c@blind@listcount=\count319
+\c@blind@levelcount=\count320
+\blind@mathformula=\count321
+\blind@Mathformula=\count322
+\c@blind@randomcount=\count323
+\c@blind@randommax=\count324
+\c@blind@pangramcount=\count325
+\c@blind@pangrammax=\count326
 )
 (C:\MiKTeX 2.9\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2021-05-07 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count325
+\l__color_backend_stack_int=\count327
 \l__pdf_internal_box=\box87
 ) (main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
 
 (C:\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count326
+\scratchcounter=\count328
 \scratchdimen=\dimen293
 \scratchbox=\box88
-\nofMPsegments=\count327
-\nofMParguments=\count328
-\everyMPshowfont=\toks41
-\MPscratchCnt=\count329
+\nofMPsegments=\count329
+\nofMParguments=\count330
+\everyMPshowfont=\toks43
+\MPscratchCnt=\count331
 \MPscratchDim=\dimen294
-\MPnumerator=\count330
-\makeMPintoPDFobject=\count331
-\everyMPtoPDFconversion=\toks42
+\MPnumerator=\count332
+\makeMPintoPDFobject=\count333
+\everyMPtoPDFconversion=\toks44
 ) (C:\MiKTeX 2.9\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -896,12 +920,12 @@ enefit from \pgfplotsset{compat=1.18} (current compat level: 1.16).
 * \topmargin=-41.13809pt
 * \headheight=40.0pt
 * \headsep=28.45274pt
-* \topskip=12.0pt
-* \footskip=50.75pt
-* \marginparwidth=49.79233pt
+* \topskip=11.0pt
+* \footskip=47.6pt
+* \marginparwidth=59.7508pt
 * \marginparsep=12.8401pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -915,14 +939,14 @@ enefit from \pgfplotsset{compat=1.18} (current compat level: 1.16).
 <./src/pics/logo/ifrlogo.pdf, id=4, 156.20056pt x 83.27834pt>
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 52.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 55.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 52.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 55.
 
  (C:\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 52.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 55.
 
 
 (C:\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd
@@ -948,13 +972,8 @@ chapter 2.
 
 
 ]
-File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
-<use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 1.
-(pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
- [5]
 chapter 3.
-[6
+[5
 
 
 ]) (src/zeitbereich.tex
@@ -962,46 +981,46 @@ File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
 Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 1.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
- [7]
+ [6]
 chapter 4.
-) (src/frequenzbereich.tex [8
+) (src/frequenzbereich.tex [7
 
 
 ]
 chapter 5.
-) (src/zusammenfassung.tex [9
+) (src/zusammenfassung.tex [8
 
 
 ]
 chapter 6.
-) (main.bbl [10
+) (main.bbl [9
 
 
-]) [11
+]) [10
 
 
 ] (main.aux) ) 
 Here is how much of TeX's memory you used:
- 31660 strings out of 478931
- 811065 string characters out of 2865567
- 1410410 words of memory out of 3000000
- 48984 multiletter control sequences out of 15000+600000
- 412393 words of font info for 59 fonts, out of 8000000 for 9000
+ 32246 strings out of 478931
+ 823171 string characters out of 2865567
+ 1427380 words of memory out of 3000000
+ 49552 multiletter control sequences out of 15000+600000
+ 412099 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,24n,108p,10628b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 108i,24n,108p,10628b,868s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\Fabrizio\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jkna
-ppen/ec/dpi600\tcrm1200.pk><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc1
+ppen/ec/dpi600\tcrm1095.pk><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc1
 0.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmmi12.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsf
+onts/type1/public/amsfonts/cm/cmmi10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmmi6.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/MiKTeX 2.9/fonts/type1/p
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmr6.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.p
-fb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmssbx10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (11 pages, 200445 bytes).
+fb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss9.pfb><C:/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmssbx10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on main.pdf (10 pages, 203031 bytes).
 PDF statistics:
- 118 PDF objects out of 1000 (max. 8388607)
+ 115 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
