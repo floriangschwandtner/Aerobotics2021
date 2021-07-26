@@ -4,32 +4,33 @@ addpath(cd)
 cd OutputErrorMethod_Laengsbewegung
 clear
 close all
-load ('data_laengs_even.mat');
+%load ('data_laengs_even.mat');
 load ('Matrices.mat');
-% load ('testdata2.mat');
-% x=x(1:5000,:);
-% u=u_test(1:5000,:);
-% t=t(1:5000,:);
+load ('testdata2.mat');
+x=x_test(1:5000,:);
+u=u_test(1:5000,:);
+t=t(1:5000,:);
 
 %% Datenbereich
 t_start = 1;
-t_end   = 12000;
+t_end   = 550;
 f_start = 2;
-f_end   = 6001;%500;
+f_end   = 275;%500;
 normierung = false;
 
 %% Trimmzustand
-alpha0 = 0.0062;
-V0 = 26.9978;
-gamma0 = 0.0013;
-eta0 = -0.1340;
-deltaF0 = 0.4246;
 g = 9.8067;
+% TP1
+alpha0 = 0;
+V0 = 26.9996;
+gamma0 = 0;
+eta0 = -0.1;
+deltaF0 = 0.4;
  
 %% Algorithmus-Optionen
 iter_max = 10;
 nugget = 0.01;
-threshold = 1e-3;
+threshold = 1e-5;
 
 %% Berechnung der Delta-Werte und Normierung
 x = x(t_start:t_end,:);
@@ -68,7 +69,7 @@ M_V = [1.66437872449425];
 X_alpha = [-6.26938451560701];
 X_V = [-0.0741111475602237];
 Z_eta = [-0.0634198470314440]*V0;
-X_deltaF = [-0.0226287671386684]*(-1)*V0/(sin(alpha0));
+X_deltaF = [-0.0226287671386684];%[-0.0226287671386684]*(-1)*V0/(sin(alpha0));
 M_eta = [-97.6955223213428];
 M_deltaF = [-53.7881728478177];
 X_eta = [-0.351042475926444];
@@ -79,7 +80,7 @@ theta(1,:) = [Z_alpha Z_V M_alpha M_q M_V X_alpha X_V Z_eta X_deltaF M_eta M_del
 fprintf('==================================\n')
 fprintf('Newton-Raphson-Algorithm started.\n')
 fprintf('==================================\n')
-dtheta = ones(length(theta),1);
+dtheta = 100*ones(length(theta),1);
 J = zeros(iter_max,1);
 konv = zeros(iter_max,1);
 M_pd = zeros(iter_max,1);       % M(iter) is pd -> M_pd(iter) = 1 (else 0)
@@ -215,6 +216,7 @@ for k=2:51%length(t)/2+1
 end
 x_hat = x_hat';
 
+%% Plotting
 figure
 subplot(2,2,1);
 semilogx(f_orig,20*log10(abs(x_hat(:,1))))
@@ -280,9 +282,9 @@ x_time_hat(:,4) = deltax_time_hat(:,4)+gamma0;
 titles = {'\Delta\alpha', 'q', '\Delta V_A', '\Delta \gamma'};
 for i=1:4
     figure
-    plot(t,x_time_hat(:,i) )
+    plot(t,x_time_hat(:,i),'--' )
     hold on
-    plot(t,x(:,i),'r')
+    plot(t,x(:,i),'r--' )
     plot(t,u(:,1),'g')
     plot(t,u(:,2),'y')
     legend(strcat(titles{i},'_{Näherung}'),titles{i},'\Delta\eta', '\Delta\delta_{F}')
