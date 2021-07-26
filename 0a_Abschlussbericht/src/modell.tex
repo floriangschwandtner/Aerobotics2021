@@ -20,16 +20,15 @@ Der Zustand der Längsbewegung setzt sich zusammen aus dem Anstellwinkel $
 Bahnwinkel $ \gamma $. Die zugehörigen Steuerungen umfassen den 
 Höhenruderausschlag $ \eta $ und den Schubdrosselgrad $ \delta_F $. Bis auf die 
 Nickrate werden alle Größen als Abweichungen (Delta-Größen) vom jeweiligen 
-Trimmpunkt 
-(gekennzeichnet durch den Index "$ _0 $") beschrieben. Es ergibt sich folgendes 
-Modell\cite{Fichter2009}:
+Trimmpunkt (gekennzeichnet durch den Index "$ _0 $") beschrieben. Es ergibt sich folgendes 
+Modell \cite{Fichter2009}:
 
 \begin{equation}\label{eq:laengsbewegung}
 	\begin{pmatrix}
-		\dot{\Delta x}\\
-		\dot{q}\\
-		\dot{\Delta V_A}\\
-		\dot{\Delta \gamma}
+		\Delta \dot \alpha\\
+		\dot q\\
+		\Delta \dot V_A\\
+		\Delta \dot \gamma
 	\end{pmatrix} = 
 	\begin{pmatrix}
 		\frac{Z_\alpha}{V_0} & 1 & \frac{Z_V}{V_0} & 0\\
@@ -38,7 +37,7 @@ Modell\cite{Fichter2009}:
 		-\frac{Z_\alpha}{V_0} & 0 & -\frac{Z_V}{V_0} & 0\\
 	\end{pmatrix} \cdot
 	\begin{pmatrix}
-		\Delta x\\
+		\Delta \alpha\\
 		q\\
 		\Delta V_A\\
 		\Delta \gamma
@@ -46,7 +45,7 @@ Modell\cite{Fichter2009}:
 	\begin{pmatrix}
 		\frac{Z_\eta}{V_0} & -\frac{X_{\delta F}}{V_0} \sin{(\alpha_0)}\\
 		M_\eta & M_{\delta F}\\
-		X_\eta & X_{\delta F} \cos{(\alpha_0+i_F)}\\
+		X_\eta & X_{\delta F} \cos{(\alpha_0)}\\
 		-\frac{Z_\eta}{V_0} & \frac{X_{\delta F}}{V_0} \sin{(\alpha_0)}\\
 	\end{pmatrix}\cdot
 	\begin{pmatrix}
