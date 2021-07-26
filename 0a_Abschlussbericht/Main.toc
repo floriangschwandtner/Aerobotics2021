@@ -1,16 +1,17 @@
 \babel@toc {ngerman}{}
-\contentsline {chapter}{\numberline {1}Einleitung}{3}{}%
-\contentsline {chapter}{\numberline {2}Modelle}{4}{}%
-\contentsline {section}{\numberline {2.1}Längsbewegung}{4}{}%
-\contentsline {section}{\numberline {2.2}Seitenbewegung}{4}{}%
-\contentsline {chapter}{\numberline {3}Vorbereitung der Daten}{5}{}%
-\contentsline {section}{\numberline {3.1}Ermittlung der relevanten Signale}{5}{}%
-\contentsline {section}{\numberline {3.2}Trimmpunkte}{5}{}%
-\contentsline {section}{\numberline {3.3}Filterung}{5}{}%
-\contentsline {subsection}{\numberline {3.3.1}Ablauf}{5}{}%
-\contentsline {subsection}{\numberline {3.3.2}Wahl der Filterübertragungsfunktion}{5}{}%
-\contentsline {chapter}{\numberline {4}Systemidentifikation im Zeitbereich}{7}{}%
-\contentsline {chapter}{\numberline {5}Systemidentifikation im Frequenzbereich}{8}{}%
-\contentsline {chapter}{\numberline {6}Zusammenfassung}{9}{}%
-\contentsline {chapter}{Literaturverzeichnis}{9}{}%
+\contentsline {chapter}{\numberline {1}Einleitung}{4}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Modelle}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Längsbewegung}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Seitenbewegung}{5}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Vorbereitung der Daten}{6}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Ermittlung der relevanten Signale}{6}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Trimmpunkt}{6}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Interpolation}{6}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Filterung}{7}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Ablauf}{7}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Wahl der Filterübertragungsfunktion}{7}{subsection.3.4.2}%
+\contentsline {chapter}{\numberline {4}Systemidentifikation im Zeitbereich}{8}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Systemidentifikation im Frequenzbereich}{9}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Zusammenfassung}{10}{chapter.6}%
+\contentsline {chapter}{Literaturverzeichnis}{10}{chapter.6}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
