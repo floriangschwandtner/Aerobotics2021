@@ -17,4 +17,3 @@
 \contentsline {section}{\numberline {5.3}Ergebnisse}{10}{section.5.3}%
 \contentsline {chapter}{\numberline {6}Zusammenfassung und Ausblick}{11}{chapter.6}%
 \contentsline {chapter}{Literaturverzeichnis}{11}{chapter.6}%
-\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -45,7 +45,14 @@ $\mathbf{\tilde{z}}$ entspricht dabei dem gemessenen Zustand, der durch Messraus
 $\mathbf{\tilde{y}}$ entsteht. Der übertragene Zustand kann aus den Steuergrößen $\mathbf{\tilde{u}}$ durch Multiplikation 
 mit der Übertragungsmatrix $\mathbf{G}(\mathbf{\theta)}$ berechnet werden. Die Übertagungsmatrix ist, wie in 
 \cref{eq:ZRD_Frequenzbereich} gezeigt, abhängig vom zugrunde liegenden Modell und von den zu schätzenden Parametern 
-$\mathbf{\theta}$. Diese sind die Einträge der Matrizen des Zustandsraummodells.   
+$\mathbf{\theta}$. Diese sind die Einträge der Matrizen des Zustandsraummodells. Das Ziel der Methode ist nun den Ausgangsvektor, der aus dem Modell und seinen Parametern folgt, dem gemessenen Zustand möglichst gut anzunähern. Mathematisch bedeutet das, dass das Minimum einer Kostenfunktion gefunden werden soll. Die Kostenfunktion der OEM ist nach Klein und Morelli \cite{Klein2006} die negative Log-likelihood Funktion mithilfe des Ansatzes des Ausgangsfehlers (Gl. \ref{eq:Output_Error}):
 
+ \begin{equation}
+    J(\mathbf{\theta})=N \sum\limits_{k=0}^{N-1}\mathbf{\tilde{\nu}}^H(k,\mathbf{\theta})\mathbf{S_{\nu\nu}^{-1}}\mathbf{\tilde{\nu}}(k,\mathbf{\theta})+Nln|\mathbf{S_{\nu\nu}}|
+	\label{eq:Kostenfunktion}
+\end{equation}  
+
+\todo{Svv kurz in ein zwei Sätzen erklären}
+Wie bereits beschrieben geht es nun darum das Minimum dieser Kostenfunktion zu finden. Wir suchen also die Nullstelle ihrer Ableitung. Einer der wichtigsten Algorithmen zur Bestimmung von Nullstellen sowohl bei Eingrößenproblemen, als auch bei Mehrgrößenproblemen ist der iterative Newton Raphson Algorithmus.
 
 \section{Ergebnisse}
