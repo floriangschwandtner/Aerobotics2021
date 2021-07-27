@@ -14,5 +14,7 @@
 \contentsline {chapter}{\numberline {5}Systemidentifikation im Frequenzbereich}{9}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Fouriertransformation}{9}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Output-Error-Methode}{9}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Zusammenfassung}{10}{chapter.6}%
-\contentsline {chapter}{Literaturverzeichnis}{10}{chapter.6}%
+\contentsline {section}{\numberline {5.3}Ergebnisse}{10}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Zusammenfassung}{11}{chapter.6}%
+\contentsline {chapter}{Literaturverzeichnis}{11}{chapter.6}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
