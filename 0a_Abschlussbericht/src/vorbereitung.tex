@@ -24,7 +24,8 @@ Tabelle ?? zeigt eine Übersicht über die verwendeten Messgrößen.
 
 Die vorliegenden Messdaten umfassen einen großen Zeitbereich von Start bis Landung. Für die Systemidentifikation wurde nur 
 der Abschnitt berücksichtigt, in dem das Flugzeug Platzrunden fliegt. Dies entspricht im originalen Datensatz in etwa der 
-Zeit zwischen xx und xx.\todo{Zeiten einfügen}
+Zeit zwischen $ \SI{00}{\second} $ und $ \SI{00}{\second} $.\todo{Zeiten 
+einfügen}
 
 
 \section{Trimmpunkt} % Fabrizio
@@ -43,7 +44,7 @@ Abweichungen vom Trimmpunkt berechnen:
 Eine Ausnahme bilden hier die Drehraten $ p $, $ q $ und $ r $, bei denen keine Differenz zum Trimmwert gebildet werden muss.
 
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{trimmpunkte.png}
 	\caption{zeitlicher Verlauf der Anströmgeschwindigkeit mit den stationären Bereichen}
@@ -56,9 +57,12 @@ Eine Ausnahme bilden hier die Drehraten $ p $, $ q $ und $ r $, bei denen keine 
 \section{Interpolation} %Florian
 \todo[inline]{Abschnitt schreiben: Interpolation}
 
-Die Rohdaten werden von mehreren Sensoren mit unterschiedlichen Abtastraten geliefert. Da die Identifikationsalgorithmen die Werte zu diskreten Zeitpunkten benötigen ist es notwendig einen einheitlichen Zeitvektor mit zugehörigen Eingangs- und Zustandsvektoren zu generieren. Außerdem wird eine konstante Schrittweite gefordert.
+Die Rohdaten werden von mehreren Sensoren mit unterschiedlichen Abtastraten geliefert. Da die Identifikationsalgorithmen die 
+Werte zu diskreten Zeitpunkten benötigen, ist es notwendig, einen einheitlichen Zeitvektor mit zugehörigen Eingangs- und 
+Zustandsvektoren zu generieren. Außerdem wird eine konstante Schrittweite gefordert.
 
-Die Abtastrate dieses Zeitvektors ist wichtig, da die Dimension des Optimierungsproblems und damit der Rechenaufwand mit feinerer Diskretisierung steigt. In dieser Arbeit wird der Zeitvektor des 
+Die Abtastrate dieses Zeitvektors ist wichtig, da die Dimension des Optimierungsproblems (im Zeitbereich) und damit der 
+Rechenaufwand mit feinerer Diskretisierung steigt. In dieser Arbeit wird der Zeitvektor des 
 
 
 \begin{figure}[h!]
@@ -100,12 +104,13 @@ bereits implementiert.
 
 \subsection{Wahl der Filterübertragungsfunktion}
 
-Es wurde ein quadriertes PT2-Glied gewählt, da so die Eckfrequenz direkt eingestellt werden kann. Die Eckfrequenz wurde zu 20 Hz gewählt, damit das Rauschen unterdrückt wird, aber keine Information verloren geht.
+Es wurde ein quadriertes PT2-Glied gewählt, da so die Eckfrequenz direkt eingestellt werden kann. Die Eckfrequenz wurde zu $ 
+\SI{20}{\hertz} $ gewählt, damit das Rauschen unterdrückt wird, aber keine Information verloren geht.
 
 Mit
 
 \begin{equation}
-	\omega_{filt} = 2 \cdot \pi \cdot f_{eck} = 2 \cdot \pi \cdot 20
+	\omega_{filt} = 2 \cdot \pi \cdot f_{eck} = 2 \cdot \pi \cdot \SI{20}{\hertz}
 \end{equation}
 
 %\todo{gewählte Eckfrequenz nennen}
