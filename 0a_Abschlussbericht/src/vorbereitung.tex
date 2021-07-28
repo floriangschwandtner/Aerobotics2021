@@ -19,16 +19,20 @@ welcher die Bahngeschwindigkeit mit der Anströmgeschwindigkeit gleichgesetzt wi
 	\label{eq:gammaCalculation}
 \end{equation}
 
-\todo{Auswahl des zeitlichen Ausschnitts erklären}
+Tabelle ?? zeigt eine Übersicht über die verwendeten Messgrößen.
+\missingfigure{Tabelle mit Zustands- und Steuergrößen einfügen}
+
+Die vorliegenden Messdaten umfassen einen großen Zeitbereich von Start bis Landung. Für die Systemidentifikation wurde nur 
+der Abschnitt berücksichtigt, in dem das Flugzeug Platzrunden fliegt. Dies entspricht im originalen Datensatz in etwa der 
+Zeit zwischen xx und xx.\todo{Zeiten einfügen}
 
 
 \section{Trimmpunkt} % Fabrizio
-\todo[inline]{Abschnitt fertig schreiben: Trimmpunkt}
-In \cref{fig:trimmpunkte} ist beispielhasft der zeitliche Verlauf der Anströmgeschwindigkeit dargestellt. Es zeigen sich 
+In \cref{fig:trimmpunkte} ist beispielhaft der zeitliche Verlauf der Anströmgeschwindigkeit dargestellt. Es zeigen sich 
 insgesamt acht stationären Bereiche, die als Trimmpunkt für eine Modellierung dienen könnten. In den nachfolgenden 
-Systemidentifikationen soll jeweils der erste Punkt (TP 1) als Grundlage dienen. Dazu werden alle Zustandsgrößen über den 
-Bereich TP 1 gemittelt und diese Mittelwerte als Trimmwerte $ x_0 $ und $ u_0 $ verwendet. Damit lassen sich die Abweichungen 
-vom Trimmpunkt berechnen:
+Systemidentifikationen soll jeweils der erste Punkt (TP 1) als Grundlage dienen. Dazu werden alle Zustands- und Steuergrößen 
+über den Bereich TP 1 gemittelt und diese Mittelwerte als Trimmwerte $ x_0 $ und $ u_0 $ verwendet. Damit lassen sich die 
+Abweichungen vom Trimmpunkt berechnen:
 \begin{equation}
 	\begin{split}
 		\Delta x(t) &= x(t)-x_0\\
@@ -73,14 +77,14 @@ bereits implementiert.
 
 \subsection{Wahl der Filterübertragungsfunktion}
 
-Es wurde ein PT2-Glied gewählt, da so die Eckfrequenz direkt eingestellt werden 
-kann. % also Tiefpass-Filter?
+Es wurde ein PT2-Glied gewählt, da so die Eckfrequenz direkt eingestellt werden kann. % also Tiefpass-Filter?
 
 Mit
 
 \begin{equation}
 	\omega_{filt} = 2 \cdot \pi \cdot f_{eck}
 \end{equation}
+\todo{gewählte Eckfrequenz nennen}
 
 und
 

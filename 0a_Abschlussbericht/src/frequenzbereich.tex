@@ -4,7 +4,8 @@ Neben der Systemidentifikation im Zeitbereich ist es möglich die Parameterschä
 Die Analyse im Frequenzbereich bringt einige Vorteile mit sich, die im weiteren Verlauf dieser Dokumentation genauer 
 beleuchtet werden. Die Grundlage der Frequenzanalyse ist die Fouriertransformation der gemessenen Daten vom Zeitbereich in 
 den Frequenzbereich. Ausgehend von den transformierten Messwerten wird im Folgenden genauer auf die Idee der 
-Output-Error-Methode und auf den Algorithmus zur Lösung des Schätzproblems eingegangen. Zum Schluss werden die Ergebnisse 
+\textit{Output Error}-Methode und auf den Algorithmus zur Lösung des Schätzproblems eingegangen. Zum Schluss werden die 
+Ergebnisse 
 bewertet und der Blick auf mögliche Verbesserungen und andere Methoden gerichtet.
 
 
@@ -20,9 +21,10 @@ bewertet und der Blick auf mögliche Verbesserungen und andere Methoden gerichte
 \missingfigure{Bild von Fourier-Trafo}
 
 
-\section{Output-Error-Methode}
+\section{\textit{Output Error}-Methode}
 
-Die Idee der Output-Error-Methode (OEM) liegt in der Art der Fehlerbetrachtung. Es wird dabei der Fehler, der durch die 
+Die Idee der \textit{Output Error}-Methode (OEM) liegt in der Art der Fehlerbetrachtung. Es wird dabei der Fehler, der durch 
+die 
 mathematische Modellbildung entsteht, vernachlässigt. Das dynamische System wird als deterministisch angenommen. 
 Unsicherheiten entstehen nur durch fehlerhafte und verrauschte Messungen. Ausgangspunkt der OEM ist das transformierte 
 Zustandsraummodell (\ref{eq:ZRD_Frequenzbereich}). Im vorliegenden Fall entspricht der Ausgangsvektor $\tilde{y}$ dem 
@@ -34,14 +36,15 @@ Zustandsvektor $\tilde{x}$. Die Matrizen $\mathbf{C}$ und $\mathbf{D}$ nehmen al
 	\label{eq:CD}
 \end{align}
 
-Da der Zustandsvektor gleichzeitig der gemessene Zustand ist, kann der Output-Error folgendermaßen formuliert werden:
+Da der Zustandsvektor gleichzeitig der gemessene Zustand ist, kann der \textit{Output Error} folgendermaßen formuliert werden:
 
 \begin{equation}
     \mathbf{\tilde{\nu}}(k,\mathbf{\theta}) = \mathbf{\tilde{z}}(k)-\mathbf{\tilde{y}}(k,\mathbf{\theta}) = \mathbf{\tilde{z}}(k)-\mathbf{G}(k,\mathbf{\theta})\mathbf{\tilde{u}}(k)  
 	\label{eq:Output_Error}
 \end{equation}
 
-$\mathbf{\tilde{z}}$ entspricht dabei dem gemessenen Zustand, der durch Messrauschen aus dem übertragenen Zustand 
+$\mathbf{\tilde{z}}$ entspricht dabei dem gemessenen Zustand, der durch\todo{durch = zusammen mit dem} Messrauschen aus dem 
+übertragenen Zustand 
 $\mathbf{\tilde{y}}$ entsteht. Der übertragene Zustand kann aus den Steuergrößen $\mathbf{\tilde{u}}$ durch Multiplikation 
 mit der Übertragungsmatrix $\mathbf{G}(\mathbf{\theta)}$ berechnet werden. Die Übertagungsmatrix ist, wie in 
 \cref{eq:ZRD_Frequenzbereich} gezeigt, abhängig vom zugrunde liegenden Modell und von den zu schätzenden Parametern 

@@ -6,14 +6,15 @@
 \contentsline {chapter}{\numberline {3}Vorbereitung der Daten}{6}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Ermittlung der relevanten Signale}{6}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Trimmpunkt}{6}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Interpolation}{6}{section.3.3}%
+\contentsline {section}{\numberline {3.3}Interpolation}{7}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Filterung}{7}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}Ablauf}{7}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Wahl der Filterübertragungsfunktion}{7}{subsection.3.4.2}%
-\contentsline {chapter}{\numberline {4}Systemidentifikation im Zeitbereich}{8}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Systemidentifikation im Frequenzbereich}{9}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Fouriertransformation}{9}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Output-Error-Methode}{9}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Ergebnisse}{10}{section.5.3}%
-\contentsline {chapter}{\numberline {6}Zusammenfassung und Ausblick}{11}{chapter.6}%
-\contentsline {chapter}{Literaturverzeichnis}{11}{chapter.6}%
+\contentsline {subsection}{\numberline {3.4.2}Wahl der Filterübertragungsfunktion}{8}{subsection.3.4.2}%
+\contentsline {chapter}{\numberline {4}Systemidentifikation im Zeitbereich}{9}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Systemidentifikation im Frequenzbereich}{10}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Fouriertransformation}{10}{section.5.1}%
+\contentsline {section}{\numberline {5.2}\textit {Output Error}-Methode}{10}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Ergebnisse}{11}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Zusammenfassung und Ausblick}{12}{chapter.6}%
+\contentsline {chapter}{Literaturverzeichnis}{12}{chapter.6}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -12,4 +12,11 @@
 \newblock \emph{Flugmechanik}.
 \newblock 2009
 
+\bibitem[2]{Klein2006}
+\textsc{Klein}, V.  ; \textsc{Morelli}, E.~A.:
+\newblock \emph{Aircraft System Identification}.
+\newblock American Institute of Aeronautics~{and}~Astronautics, Reston, VA,
+  2006. --
+\newblock ISBN 1--56347--832--3
+
 \end{thebibliography}
