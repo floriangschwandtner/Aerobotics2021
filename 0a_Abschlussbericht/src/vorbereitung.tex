@@ -56,6 +56,19 @@ Eine Ausnahme bilden hier die Drehraten $ p $, $ q $ und $ r $, bei denen keine 
 \section{Interpolation} %Florian
 \todo[inline]{Abschnitt schreiben: Interpolation}
 
+Die Rohdaten werden von mehreren Sensoren mit unterschiedlichen Abtastraten geliefert. Da die Identifikationsalgorithmen die Werte zu diskreten Zeitpunkten benötigen ist es notwendig einen einheitlichen Zeitvektor mit zugehörigen Eingangs- und Zustandsvektoren zu generieren. Außerdem wird eine konstante Schrittweite gefordert.
+
+Die Abtastrate dieses Zeitvektors ist wichtig, da die Dimension des Optimierungsproblems und damit der Rechenaufwand mit feinerer Diskretisierung steigt. In dieser Arbeit wird der Zeitvektor des 
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{beispielInterpolation.png}
+	\caption{Beispiel Interpolation}
+	\label{fig:interpBsp}
+\end{figure}
+
+%fkt interp1
 
 \section{Filterung} %Florian
 
@@ -68,6 +81,16 @@ Filter nicht in Echtzeit verwendet werden kann, da immer die vollständige
 Datenreihe vorliegen muss. Für eine Systemidentifikation ist dies jedoch keine 
 praktische Einschränkung.
 
+In Abb. \ref{fig:filterBsp} ist die Auswirkung einer reinen Vorwärts und einer Vorwärts-Rückwärtsfilterung auf die Phase gut zu sehen.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{beispielFilterung.png}
+	\caption{Beispiel Filterung}
+	\label{fig:filterBsp}
+\end{figure}
+
+
 \subsection{Ablauf}
 
 Für das Filter wird eine Übertragungsfunktion $f(s)$ auf die Messdaten vorwärts 
@@ -77,14 +100,15 @@ bereits implementiert.
 
 \subsection{Wahl der Filterübertragungsfunktion}
 
-Es wurde ein PT2-Glied gewählt, da so die Eckfrequenz direkt eingestellt werden kann. % also Tiefpass-Filter?
+Es wurde ein quadriertes PT2-Glied gewählt, da so die Eckfrequenz direkt eingestellt werden kann. Die Eckfrequenz wurde zu 20 Hz gewählt, damit das Rauschen unterdrückt wird, aber keine Information verloren geht.
 
 Mit
 
 \begin{equation}
-	\omega_{filt} = 2 \cdot \pi \cdot f_{eck}
+	\omega_{filt} = 2 \cdot \pi \cdot f_{eck} = 2 \cdot \pi \cdot 20
 \end{equation}
-\todo{gewählte Eckfrequenz nennen}
+
+%\todo{gewählte Eckfrequenz nennen}
 
 und
 
@@ -94,6 +118,15 @@ und
 
 ergibt sich die Übertragungsfunktion zu:
 
-\begin{equation}
-	f(s) = \frac{\omega_{filt}^2}{s^2+2 \cdot \zeta_{filt} \cdot \omega_{filt} +\omega_{filt}^2}
+\begin{equation} \label{eq:filter}
+	f(s) = \left(\frac{\omega_{filt}^2}{s^2+2 \cdot \zeta_{filt} \cdot \omega_{filt} +\omega_{filt}^2}\right)^2
 \end{equation}
+
+Im Bodediagramm, Abb. \ref{fig:bodeplot}, sind Amplituden- und Frequenzgang der Filterfunktion zu sehen.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{bodeplot.png}
+	\caption{Bodeplot Filterfunktion Gl. \ref{eq:filter}}
+	\label{fig:bodeplot}
+\end{figure}
