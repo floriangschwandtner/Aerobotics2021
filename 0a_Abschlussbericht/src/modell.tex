@@ -1,7 +1,7 @@
 \chapter{Modelle}
 
 Im folgenden Abschnitt werden die der durchgeführten Systemidentifikationen zugrundeliegenden Modelle beschrieben, deren 
-beiwerte zu bestimmen sind. Es handelt sich dabei um die bekannten linearisierten Modelle der Längs- und Seitenbewegung mit 
+Beiwerte zu bestimmen sind. Es handelt sich dabei um die bekannten linearisierten Modelle der Längs- und Seitenbewegung mit 
 den folgenden Annahmen \cite{Fichter2009}:
 \begin{itemize}
 	\item Linearisierung um den symmetrischen Horizontalflug ($ \gamma_0=0 $)
@@ -11,14 +11,14 @@ den folgenden Annahmen \cite{Fichter2009}:
 	\item kein Wind ($ \Delta\gamma = \Delta\theta-\Delta\alpha $)
 	\item horizontal eingebautes Triebwerk ($ i_F=0 $)
 \end{itemize} 
-Die Dynamiken können deshalb entkoppelt behandelt werden. %\cite{Vorlesung2}
+Die Dynamiken können deshalb entkoppelt behandelt werden, was eine getrennte Identifikation der Längs- bzw. Seitenbewegung 
+ermöglicht. %\cite{Vorlesung2}
 
 \section{Längsbewegung}
 Der Zustand der Längsbewegung setzt sich zusammen aus dem Anstellwinkel $ \alpha $, der Nickrate $ q $, der 
 Anströmgeschwindigkeit $ V_A $ und dem Bahnwinkel $ \gamma $. Die zugehörigen Steuerungen umfassen den Höhenruderausschlag $ 
 \eta $ und den Schubdrosselgrad $ \delta_F $. Bis auf die Nickrate werden alle Größen als Abweichungen (Delta-Größen) vom 
-jeweiligen Trimmpunkt (gekennzeichnet durch den Index "$ _0 $") beschrieben. Es ergibt sich folgendes Modell 
-\cite{Fichter2009}:
+jeweiligen Trimmpunkt (gekennzeichnet durch den Index "$ _0 $") beschrieben. Es ergibt sich folgendes Modell:
 
 \begin{equation}\label{eq:laengsbewegung}
 	\begin{pmatrix}
@@ -52,7 +52,9 @@ jeweiligen Trimmpunkt (gekennzeichnet durch den Index "$ _0 $") beschrieben. Es 
 \end{equation}
 
 \section{Seitenbewegung}
-Das Modell der Seitenbewegung wird mit dem absoluten Zustand aufgestellt:
+Das Modell der Seitenbewegung wird mit dem absoluten Zustand aufgestellt. Dies ist möglich, da es sich bei $ p $ und $ r $ 
+um Drehraten handelt. Außerdem sind die Trimmwerte für den Schiebe- und Rollwinkel sowie für die Steuereingaben jeweils $ 0 
+$:
 
 \begin{equation}\label{eq:seitenbewegung}
 	\begin{pmatrix}
@@ -68,10 +70,10 @@ Das Modell der Seitenbewegung wird mit dem absoluten Zustand aufgestellt:
 		0   & 0                   & 1   & 0\\
 	\end{pmatrix} \cdot
 	\begin{pmatrix}
-		\dot{r}\\
-		\dot{\beta}\\
-		\dot{p}\\
-		\dot{\phi}
+		r\\
+		\beta\\
+		p\\
+		\phi
 	\end{pmatrix} + 
 	\begin{pmatrix}
 		N_\xi & N_\zeta\\
