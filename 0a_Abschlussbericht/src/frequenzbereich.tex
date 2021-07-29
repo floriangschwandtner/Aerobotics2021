@@ -56,6 +56,57 @@ $\mathbf{\theta}$. Diese sind die Einträge der Matrizen des Zustandsraummodells
 \end{equation}  
 
 \todo{Svv kurz in ein zwei Sätzen erklären}
-Wie bereits beschrieben geht es nun darum das Minimum dieser Kostenfunktion zu finden. Wir suchen also die Nullstelle ihrer Ableitung. Einer der wichtigsten Algorithmen zur Bestimmung von Nullstellen sowohl bei Eingrößenproblemen, als auch bei Mehrgrößenproblemen ist der iterative Newton Raphson Algorithmus.
+Wie bereits beschrieben, geht es nun darum das Minimum dieser Kostenfunktion zu finden. Wir suchen also die Nullstelle ihrer Ableitung. Einer der wichtigsten Algorithmen zur Bestimmung von Nullstellen (nicht)-linearer Funktionen sowohl bei Eingrößenproblemen, als auch bei Mehrgrößenproblemen ist der iterative Newton Raphson Algorithmus. Dabei wird die Nullstelle mithilfe der Richtung der Tangentensteigung iterativ angenähert. Das Problem lässt sich folgendermaßen beschreiben: \noindent \\
+
+\noindent \tab Gesucht ist die Nullstelle s einer Funktion $f(x)$ mit $f(s)=0$ für $x=s$ \\
+\tab $\overline{x}$ sei ein Punkt in der Umgebung der Nullstelle.\\
+
+Stellt man nun eine Taylor-Reihe um $\overline{x}$ auf und vernachlässigt die Terme höherer Ordnung erhält man die Iterationsvorschrift des Newton-Raphson-Verfahrens:
+
+ \begin{equation}
+	x_{i+1} = x_{i} - \frac{f(x_{i})}{f'(x_{i})} \text{ für }i=0,1,2...
+	\label{eq:Newton_Raphson}
+\end{equation}  
+
+Diese Vorschrift lässt sich umformulieren für einen mehrdimensionalen Funktionsvektor $\mathbf{F}$:
+
+ \begin{equation}
+	\underbrace{\begin{pmatrix}
+	\frac{\delta f_{1}}{\delta x_{1}} & \frac{\delta f_{1}}{\delta x_{2}} & ... & \frac{\delta f_{1}}    		{\delta x_{n}}\\
+	\frac{\delta f_{2}}{\delta x_{1}} & \frac{\delta f_{2}}{\delta x_{2}} & ... & \frac{\delta f_{2}}			{\delta x_{n}}\\
+	... & ... & ... & ...\\
+	\frac{\delta f_{n}}{\delta x_{1}} & \frac{\delta f_{n}}{\delta x_{2}} & ... & \frac{\delta f_{n}}			{\delta x_{n}}\\
+	\end{pmatrix}^{i}}_{\substack{\mathbf{J^{i}}}}
+	\underbrace{\begin{pmatrix}
+	\Delta x_{1}\\
+	\Delta x_{2}\\
+	...\\
+	\Delta x_{n}\\
+	\end{pmatrix}^{i+1}}_{\substack{\Delta \mathbf{X^{i+1}}}} = -
+	\underbrace{\begin{pmatrix}
+	f_{1}\\
+	f_{2}\\
+	...\\
+	f_{n}\\
+	\end{pmatrix}^{i}}_{\substack{\mathbf{F^{i}}}}
+	\label{eq:Newton_Raphson_MIMO}
+\end{equation} 
+
+Da wir das Miminum der Kostenfunktion suchen ist unser Funktionsvektor die Ableitung der Kostenfunktion nach den einzelnen zu schätzenden Parametern. 
+
+\begin{equation}
+	{F} = \frac{\delta J}{\delta \mathbf{\theta}}
+	\label{eq:Newton_Raphson_1}
+\end{equation}
+
+Wir suchen die Nullstelle dieser Funktion. Mithilfe von Gleichung \ref{eq:Newton_Raphson_MIMO} können wir die Vorschrift für unser Problem umschreiben:
+
+\begin{align}
+	\Delta \mathbf{\theta}^{i+1} &= -\left(\left[  \frac{\delta^{2}J}{\delta \mathbf{\theta} \delta \mathbf{\theta^T}}\right]^{-1} \right)^{i} \cdot \left(\frac{\delta J}{\delta \mathbf{\theta}}\right)^{i} \nonumber \\
+	\theta^{i+1} &= \theta^{i} + \Delta\theta^{i+1}
+	\label{eq:Newton_Raphson_2}
+\end{align}
+
+In jedem Iterationsschritt muss also ein lineares Gleichungssystem gelöst werden. Das größte Problem bei der Implementierung des Algoritmus ist die Berechnung der Ableitungen und der Hesse-Matrix in jedem Iterationsschritt. Diese können bei vielen zu schätzenden Parametern schnell sehr kompliziert werden. Da die Kostenfunktion als Summe über alle Frequenzen berechnet wird (siehe Gleichung \ref{eq:Kostenfunktion}), gilt dies auch für die Ableitungen. Dadurch wird zusätzlich Rechenzeit beansprucht.  
 
 \section{Ergebnisse}
