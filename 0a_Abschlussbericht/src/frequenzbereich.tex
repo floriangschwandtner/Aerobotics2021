@@ -12,10 +12,13 @@ bewertet und der Blick auf mögliche Verbesserungen und andere Methoden gerichte
 \section{Fouriertransformation}  
 
 \begin{align}
-	j\omega_{k}\mathbf{\tilde{x}}(k)  &= \mathbf{A\tilde{x}}(k) + \mathbf{B\tilde{u}}(k) \nonumber \\
- 	\mathbf{\tilde{y}}(k)             &= \mathbf{C\tilde{x}}(k) + \mathbf{D\tilde{u}}(k) = \mathbf{G}(k,\mathbf{\theta})\mathbf{\tilde{u}}(k) \nonumber \\
- 	\text{mit }\mathbf{G}(k,\mathbf{\theta}) &= \mathbf{C}(j\omega\mathbf{I}-\mathbf{A})^{-1}\mathbf{B}+\mathbf{D}
-	\label{eq:ZRD_Frequenzbereich}
+	\begin{split}
+		j\omega_{k}\mathbf{\tilde{x}}(k)  &= \mathbf{A\tilde{x}}(k) + \mathbf{B\tilde{u}}(k)  \\
+		\mathbf{\tilde{y}}(k)             &= \mathbf{C\tilde{x}}(k) + \mathbf{D\tilde{u}}(k) = 
+		\mathbf{G}(k,\mathbf{\theta})\mathbf{\tilde{u}}(k)  \\
+		\text{mit }\mathbf{G}(k,\mathbf{\theta}) &= \mathbf{C}(j\omega\mathbf{I}-\mathbf{A})^{-1}\mathbf{B}+\mathbf{D}
+		\label{eq:ZRD_Frequenzbereich}
+	\end{split}
 \end{align}
 
 \missingfigure{Bild von Fourier-Trafo}
@@ -27,13 +30,16 @@ Die Idee der \textit{Output Error}-Methode (OEM) liegt in der Art der Fehlerbetr
 die 
 mathematische Modellbildung entsteht, vernachlässigt. Das dynamische System wird als deterministisch angenommen. 
 Unsicherheiten entstehen nur durch fehlerhafte und verrauschte Messungen. Ausgangspunkt der OEM ist das transformierte 
-Zustandsraummodell (\ref{eq:ZRD_Frequenzbereich}). Im vorliegenden Fall entspricht der Ausgangsvektor $\tilde{y}$ dem 
-Zustandsvektor $\tilde{x}$. Die Matrizen $\mathbf{C}$ und $\mathbf{D}$ nehmen also folgende Gestalt an:
+Zustandsraummodell (\ref{eq:ZRD_Frequenzbereich}). Im vorliegenden Fall entspricht der Ausgangsvektor $\mathbf{\tilde{y}}$ 
+dem 
+Zustandsvektor $\mathbf{\tilde{x}}$. Die Matrizen $\mathbf{C}$ und $\mathbf{D}$ nehmen also folgende Gestalt an:
 
 \begin{align}
-	\mathbf{C} &= \mathbf{I} \nonumber \\
- 	\mathbf{D} &= \mathbf{0}          
-	\label{eq:CD}
+	\begin{split}
+		\mathbf{C} &= \mathbf{I} \\
+		\mathbf{D} &= \mathbf{0}          
+		\label{eq:CD}
+	\end{split}
 \end{align}
 
 Da der Zustandsvektor gleichzeitig der gemessene Zustand ist, kann der \textit{Output Error} folgendermaßen formuliert werden:
@@ -43,25 +49,35 @@ Da der Zustandsvektor gleichzeitig der gemessene Zustand ist, kann der \textit{O
 	\label{eq:Output_Error}
 \end{equation}
 
-$\mathbf{\tilde{z}}$ entspricht dabei dem gemessenen Zustand, der durch\todo{durch = zusammen mit dem} Messrauschen aus dem 
+$\mathbf{\tilde{z}}$ entspricht dabei dem gemessenen Zustand, der zusammen mit dem Messrauschen aus dem 
 übertragenen Zustand 
 $\mathbf{\tilde{y}}$ entsteht. Der übertragene Zustand kann aus den Steuergrößen $\mathbf{\tilde{u}}$ durch Multiplikation 
 mit der Übertragungsmatrix $\mathbf{G}(\mathbf{\theta)}$ berechnet werden. Die Übertagungsmatrix ist, wie in 
 \cref{eq:ZRD_Frequenzbereich} gezeigt, abhängig vom zugrunde liegenden Modell und von den zu schätzenden Parametern 
-$\mathbf{\theta}$. Diese sind die Einträge der Matrizen des Zustandsraummodells. Das Ziel der Methode ist nun den Ausgangsvektor, der aus dem Modell und seinen Parametern folgt, dem gemessenen Zustand möglichst gut anzunähern. Mathematisch bedeutet das, dass das Minimum einer Kostenfunktion gefunden werden soll. Die Kostenfunktion der OEM ist nach Klein und Morelli \cite{Klein2006} die negative Log-likelihood Funktion mithilfe des Ansatzes des Ausgangsfehlers (Gl. \ref{eq:Output_Error}):
+$\mathbf{\theta}$. Diese sind die Einträge der Matrizen des Zustandsraummodells. Das Ziel der Methode ist nun, den 
+Ausgangsvektor, der aus dem Modell und seinen Parametern folgt, dem gemessenen Zustand möglichst gut anzunähern. Mathematisch 
+bedeutet das, dass das Minimum einer Kostenfunktion gefunden werden soll. Die Kostenfunktion der OEM ist nach Klein und 
+Morelli \cite{Klein2006} die negative Log-Likelihood-Funktion mithilfe des Ansatzes des Ausgangsfehlers 
+(\ref{eq:Output_Error}):
 
- \begin{equation}
+\begin{equation}
     J(\mathbf{\theta})=N \sum\limits_{k=0}^{N-1}\mathbf{\tilde{\nu}}^H(k,\mathbf{\theta})\mathbf{S_{\nu\nu}^{-1}}\mathbf{\tilde{\nu}}(k,\mathbf{\theta})+Nln|\mathbf{S_{\nu\nu}}|
 	\label{eq:Kostenfunktion}
 \end{equation}  
 
 \todo{Svv kurz in ein zwei Sätzen erklären}
-Wie bereits beschrieben, geht es nun darum das Minimum dieser Kostenfunktion zu finden. Wir suchen also die Nullstelle ihrer Ableitung. Einer der wichtigsten Algorithmen zur Bestimmung von Nullstellen (nicht)-linearer Funktionen sowohl bei Eingrößenproblemen, als auch bei Mehrgrößenproblemen ist der iterative Newton Raphson Algorithmus. Dabei wird die Nullstelle mithilfe der Richtung der Tangentensteigung iterativ angenähert. Das Problem lässt sich folgendermaßen beschreiben: \noindent \\
+Wie bereits beschrieben, geht es nun darum das Minimum dieser Kostenfunktion zu finden. Wir suchen also die Nullstelle ihrer 
+Ableitung. Einer der wichtigsten Algorithmen zur Bestimmung von Nullstellen (nicht)-linearer Funktionen sowohl bei 
+Eingrößenproblemen als auch bei Mehrgrößenproblemen ist der iterative \textit{Newton-Raphson}-Algorithmus. Dabei wird die 
+Nullstelle 
+mithilfe der Richtung der Tangentensteigung iterativ angenähert. Das Problem lässt sich folgendermaßen beschreiben: \noindent 
+\\
 
-\noindent \tab Gesucht ist die Nullstelle s einer Funktion $f(x)$ mit $f(s)=0$ für $x=s$ \\
+\noindent \tab Gesucht ist die Nullstelle $ s $ einer Funktion $f(x)$ mit $f(s)=0$ für $x=s$. \\
 \tab $\overline{x}$ sei ein Punkt in der Umgebung der Nullstelle.\\
 
-Stellt man nun eine Taylor-Reihe um $\overline{x}$ auf und vernachlässigt die Terme höherer Ordnung erhält man die Iterationsvorschrift des Newton-Raphson-Verfahrens:
+Stellt man nun eine Taylor-Reihe um $\overline{x}$ auf und vernachlässigt die Terme höherer Ordnung, erhält man die 
+Iterationsvorschrift des \textit{Newton-Raphson}-Verfahrens:
 
  \begin{equation}
 	x_{i+1} = x_{i} - \frac{f(x_{i})}{f'(x_{i})} \text{ für }i=0,1,2...
@@ -99,14 +115,47 @@ Da wir das Miminum der Kostenfunktion suchen ist unser Funktionsvektor die Ablei
 	\label{eq:Newton_Raphson_1}
 \end{equation}
 
-Wir suchen die Nullstelle dieser Funktion. Mithilfe von Gleichung \ref{eq:Newton_Raphson_MIMO} können wir die Vorschrift für unser Problem umschreiben:
+Wir suchen die Nullstelle dieser Funktion. Mithilfe von \cref{eq:Newton_Raphson_MIMO} können wir die Vorschrift für 
+unser Problem umschreiben:
 
 \begin{align}
-	\Delta \mathbf{\theta}^{i+1} &= -\left(\left[  \frac{\delta^{2}J}{\delta \mathbf{\theta} \delta \mathbf{\theta^T}}\right]^{-1} \right)^{i} \cdot \left(\frac{\delta J}{\delta \mathbf{\theta}}\right)^{i} \nonumber \\
-	\theta^{i+1} &= \theta^{i} + \Delta\theta^{i+1}
-	\label{eq:Newton_Raphson_2}
+	\begin{split}
+		\Delta \mathbf{\theta}^{i+1} &= -\left(\left[  \frac{\delta^{2}J}{\delta \mathbf{\theta} \delta 
+		\mathbf{\theta^T}}\right]^{-1} \right)^{i} \cdot \left(\frac{\delta J}{\delta \mathbf{\theta}}\right)^{i} \\
+		\theta^{i+1} &= \theta^{i} + \Delta\theta^{i+1}
+		\label{eq:Newton_Raphson_2}
+	\end{split}
 \end{align}
 
-In jedem Iterationsschritt muss also ein lineares Gleichungssystem gelöst werden. Das größte Problem bei der Implementierung des Algoritmus ist die Berechnung der Ableitungen und der Hesse-Matrix in jedem Iterationsschritt. Diese können bei vielen zu schätzenden Parametern schnell sehr kompliziert werden. Da die Kostenfunktion als Summe über alle Frequenzen berechnet wird (siehe Gleichung \ref{eq:Kostenfunktion}), gilt dies auch für die Ableitungen. Dadurch wird zusätzlich Rechenzeit beansprucht.  
+In jedem Iterationsschritt muss also ein lineares Gleichungssystem gelöst werden. Das größte Problem bei der Implementierung 
+des Algorithmus ist die Berechnung der Ableitungen und der Hesse-Matrix in jedem Iterationsschritt. Diese können bei vielen 
+zu schätzenden Parametern schnell sehr kompliziert werden. Da die Kostenfunktion als Summe über alle Frequenzen berechnet 
+wird (siehe \cref{eq:Kostenfunktion}), gilt dies auch für die Ableitungen. Dadurch wird zusätzliche Rechenzeit 
+beansprucht.  
+
+
+\section{Vor- und Nachteile}
+Wie bereits erwähnt werden bei der Systemidentifikation im Frequenzbereich fouriertransformierte Signalverläufe betrachtet. 
+Ein großer Vorteil besteht nun darin, dass die in der Identifikation berücksichtigten Frequenzpunkte frei gewählt werden 
+können. Dies ist von Vorteil, wenn im Vorhinein bereits bekannt ist, welche Frequenzen für das Modell eine wichtige Rolle 
+spielen. Auch wenn die Berechnungen im Algorithmus durchaus sehr aufwändig werden können, so ist der Rechenaufwand unabhängig 
+von der Länge des betrachteten Zeitraums bzw. der Anzahl der Datenpunkte im Zeitbereich.
+
+Darüberhinaus lässt sich ein physikalisches Verständnis des Systems im Frequenzbereich gewinnen, was für viele Anwendungen 
+sehr hilfreich sein kann. Im Reglerentwurf beispielsweise sind Frequenzverläufe von großer Wichtigkeit.\\
+
+Ein schwerwiegender Nachteil ist die Notwendigkeit eines passenden Eingangssignals zum Erreichen einer guten Identifikation. 
+Als Beispiel sei ein Frequency Sweep, auch Chirp-Signal genannt, bei welchem eine Schwingung mit steigender Frequenz auf eine 
+Steuerung gegeben wird. Mit solchen passenden Steuerungen ist mit deutlich besseren Identifikationsergebnissen zu rechnen.
+
+Die Bestimmung der einfachen und zweifachen Ableitungen für die Jacobi- und Hesse-Matrizen ist sehr aufwändig. In diesem 
+Projekt wurde deshalb auf die Möglichkeit des symbolischen Rechnens in Matlab zurückgegriffen. Trotdzem bleibt dies ein 
+Nachteil.
+
+Schließlich bleibt noch die Berücksichtigung des Abtasttheorems nach Shannon ein wichtiger Punkt, um Frequenzverfälschungen 
+zu vermeiden \cite{Grimm2017}. Demzufolge muss die Abtastfrequenz mehr als doppelt so groß sein wie die größte Frequenz im 
+Signal. Dies stellte sich bei den vorliegenden Daten jedoch nicht als Problem heraus.
+
+
 
 \section{Ergebnisse}

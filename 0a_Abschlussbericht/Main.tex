@@ -37,6 +37,28 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{cleveref}
 
+% % Tabellen- und Abbildungspakete 
+% Multirow in Tabellen:
+% Ermöglicht das Verbinden von Zeilen in Tabellen
+\usepackage{multirow}
+% Für schöne Tabellen, bietet dicke/dünne Linien an
+% mehr Tabelleneinstellungen ( \toprule / \midrule / \bottomrule)
+\usepackage{booktabs}
+\renewcommand{\arraystretch}{1.3}		% Erhöht den Zeilenabstand von Tabellen leicht (Ästhetik)
+\setlength{\tabcolsep}{5pt}
+% Beide Pakete werden für die Ausrichtung der Tabellenspalten benötigt
+\usepackage{array}
+% Für lange Tabellen
+\usepackage{longtable}
+\usepackage{tabularx}				% mehr Tabelleneinstellungen (z.B. Tabellen mit benutzerdefinierter Breite)
+%\usepackage{tikz}					% Erstellen von Vektorgrafiken in LaTeX
+\pgfplotsset{compat=1.16}			% Neuste Version des Pakets aufrufen 
+\pgfplotsset{plot coordinates/math parser=false} % (benötigt von matlab2tikz)
+\newlength\fwidth					% Breite einer Matlab-Figure bestimmen mit \setlength\fwidth{}
+\newlength\fheight					% Höhe einer Matlab-Figure bestimmen mit \setlength\fheight{}
+% Darstellung für Caption
+\usepackage[font=small,labelfont=bf,labelsep=endash,format=plain]{caption}
+
 \makeindex
   
 %==================================================================
@@ -61,8 +83,11 @@
 \input{./src/00_title.tex}
 
 \listoftodos
+\thispagestyle{empty}
+
 %Table of contents
 \tableofcontents
+\pagenumbering{arabic} 
 
 %Chapters
 \input{./src/einleitung.tex}

@@ -12,7 +12,12 @@
 \newblock \emph{Flugmechanik}.
 \newblock 2009
 
-\bibitem[2]{Klein2006}
+\bibitem[2]{Grimm2017}
+\textsc{Grimm}, W. :
+\newblock \emph{Skriptum Digitale Regelung und Filterung}.
+\newblock 2017
+
+\bibitem[3]{Klein2006}
 \textsc{Klein}, V.  ; \textsc{Morelli}, E.~A.:
 \newblock \emph{Aircraft System Identification}.
 \newblock American Institute of Aeronautics~{and}~Astronautics, Reston, VA,

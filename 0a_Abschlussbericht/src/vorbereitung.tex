@@ -10,23 +10,65 @@ Für die weitere Verarbeitung ist es zunächst nötig, aus den gegebenen Messdat
 bzw. zu berechnen. Die meisten Zustandsgrößen können direkt aus den Messdaten verwendet werden, einzig der Bahnwinkel $ 
 \gamma $ muss explizit berechnet werden. Die Bestimmung über die Beziehung $ \gamma=\theta-\alpha $ liefert dabei aufgrund 
 eines unplausiblen Verlaufs des Nickwinkels $ \theta $ kein sinnvolles Ergebnis.\footnote{Berechnet man den Bahnwinkel auf 
-diese Weise, nimmt er genau wie der Nickwinkel nie Werte unter 0 an. Lediglich der Anstellwinkel bewegt sich sowohl im 
-positiven als auch im negativen Bereich.} Stattdessen wird der Bahnwinkel über \cref{eq:gammaCalculation} berechnet, in 
-welcher die Bahngeschwindigkeit mit der Anströmgeschwindigkeit gleichgesetzt wird (kein Wind).
+diese Weise, nimmt er genau wie der Nickwinkel nie Werte kleiner 0 an. Lediglich der Anstellwinkel bewegt sich sowohl im 
+positiven als auch im negativen Bereich.} Stattdessen wird der Bahnwinkel mit \cref{eq:gammaCalculation} über die 
+geodätischen Geschwindigkeiten in $ z $- und $ x $-Richtung berechnet.
 
 \begin{equation}
-	\gamma = \arcsin{\left( \frac{\dot h}{V} \right)} = \arcsin{\left( \frac{\dot h}{V_A} \right)}
+	\gamma = \arcsin{\left( \frac{V_z}{V_x} \right)}
 	\label{eq:gammaCalculation}
 \end{equation}
 
-Tabelle ?? zeigt eine Übersicht über die verwendeten Messgrößen.
-\missingfigure{Tabelle mit Zustands- und Steuergrößen einfügen}
+\cref{tab:messgroessen} zeigt eine Übersicht über die verwendeten Messsignale aus den Originaldateien. Zu beachten ist, dass 
+in den Originaldaten für sämtliche Steueruder jeweils ein eigenes Signal für das linke sowie das rechte Ruder vorliegt (im 
+Fall des Querrruders sogar zwei Signale je Seite). Im hier betrachteten Bereich sind diese Signale jedoch zu jedem Zeitpunkt 
+gleich, weshalb die Verwendung eines Verlaufs ausreicht.
+
+\begin{table}[h!]
+	\centering
+	\caption{Übersicht über die verwendeten Messgrößen}
+	\label{tab:messgroessen}
+	\begin{tabular}{@{} cll @{}} 
+		\toprule
+		\multicolumn{3}{c}{Längsbewegung}\\
+		\midrule
+		Größe 	&Messsignal &Datei\\
+		\midrule
+		$ \alpha $	&Alpha &vectoflow\_airdata\\
+		$ q $	&pitchspeed &vehicle\_attitude\\
+		$ V_A $	&VMag &vectoflow\_airdata\\
+		$ \gamma $ &vx, vz &vehicle\_local\_position\\
+		$ \eta $ &elevator\_l &actuator\_controls\\
+		$ \delta_F $ &thrust &actuator\_controls\\
+		\bottomrule
+	\end{tabular}
+	\begin{tabular}{@{} cll @{}} 
+		\toprule
+		\multicolumn{3}{c}{Seitenbewegung}\\
+		\midrule
+		Größe 	&Messsignal &Datei\\
+		\midrule
+		$ r $	&yawspeed &vehicle\_attitude\\
+		$ \beta $	&Beta &vectoflow\_airdata\\
+		$ p $	&rollspeed &vehicle\_attitude\\
+		$ \phi $ &Phi &vectoflow\_airdata\\
+		$ \xi $ &aileron\_inner\_l &actuator\_controls\\
+		$ \zeta $ &rudder &actuator\_controls\\
+		\bottomrule
+	\end{tabular}
+\end{table}
 
 Die vorliegenden Messdaten umfassen einen großen Zeitbereich von Start bis Landung. Für die Systemidentifikation wurde nur 
 der Abschnitt berücksichtigt, in dem das Flugzeug Platzrunden fliegt. Dies entspricht im originalen Datensatz in etwa der 
-Zeit zwischen $ \SI{00}{\second} $ und $ \SI{00}{\second} $.\todo{Zeiten 
-einfügen}
+Zeit zwischen $ \SI{910}{\second} $ und $ \SI{2225}{\second} $. \cref{fig:flug} zeigt den Flug und den entsprechenden 
+Ausschnitt.
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{flug.png}
+	\caption{Visualisierung der Flugbahn}
+	\label{fig:flug}
+\end{figure}
 
 \section{Trimmpunkt} % Fabrizio
 In \cref{fig:trimmpunkte} ist beispielhaft der zeitliche Verlauf der Anströmgeschwindigkeit dargestellt. Es zeigen sich 
@@ -46,7 +88,7 @@ Eine Ausnahme bilden hier die Drehraten $ p $, $ q $ und $ r $, bei denen keine 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=\linewidth]{trimmpunkte.png}
+	\includegraphics[width=0.9\linewidth]{trimmpunkte.png}
 	\caption{zeitlicher Verlauf der Anströmgeschwindigkeit mit den stationären Bereichen}
 	\label{fig:trimmpunkte}
 \end{figure}
@@ -55,14 +97,12 @@ Eine Ausnahme bilden hier die Drehraten $ p $, $ q $ und $ r $, bei denen keine 
 
 
 \section{Interpolation} %Florian
-\todo[inline]{Abschnitt schreiben: Interpolation}
-
 Die Rohdaten werden von mehreren Sensoren mit unterschiedlichen Abtastraten geliefert. Da die Identifikationsalgorithmen die 
 Werte zu diskreten Zeitpunkten benötigen, ist es notwendig, einen einheitlichen Zeitvektor mit zugehörigen Eingangs- und 
 Zustandsvektoren zu generieren. Außerdem wird eine konstante Schrittweite gefordert.
 
-Die Abtastrate dieses Zeitvektors ist wichtig, da die Dimension des Optimierungsproblems (im Zeitbereich) und damit der 
-Rechenaufwand mit feinerer Diskretisierung steigt. In dieser Arbeit wird der Zeitvektor des 
+Die Abtastrate dieses Zeitvektors ist wichtig, da die Dimension des Optimierungsproblems und damit der 
+Rechenaufwand mit feinerer Diskretisierung steigt (im Zeitbereich). In dieser Arbeit wird der Zeitvektor des 
 
 
 \begin{figure}[h!]
@@ -85,7 +125,8 @@ Filter nicht in Echtzeit verwendet werden kann, da immer die vollständige
 Datenreihe vorliegen muss. Für eine Systemidentifikation ist dies jedoch keine 
 praktische Einschränkung.
 
-In Abb. \ref{fig:filterBsp} ist die Auswirkung einer reinen Vorwärts und einer Vorwärts-Rückwärtsfilterung auf die Phase gut zu sehen.
+In \cref{fig:filterBsp} sind die Auswirkungen einer reinen Vorwärts- und einer Vorwärts-Rückwärtsfilterung auf die Phase 
+gut zu sehen.
 
 \begin{figure}[h!]
 	\centering
@@ -115,7 +156,7 @@ Mit
 
 %\todo{gewählte Eckfrequenz nennen}
 
-und
+und der Dämpfung
 
 \begin{equation}
 	\zeta_{filt} = \frac{1}{\sqrt{2}}
@@ -127,11 +168,11 @@ ergibt sich die Übertragungsfunktion zu:
 	f(s) = \left(\frac{\omega_{filt}^2}{s^2+2 \cdot \zeta_{filt} \cdot \omega_{filt} +\omega_{filt}^2}\right)^2
 \end{equation}
 
-Im Bodediagramm, Abb. \ref{fig:bodeplot}, sind Amplituden- und Frequenzgang der Filterfunktion zu sehen.
+Im Bodediagramm, \cref{fig:bodeplot}, sind Amplituden- und Frequenzgang der Filterfunktion zu sehen.
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{bodeplot.png}
-	\caption{Bodeplot Filterfunktion Gl. \ref{eq:filter}}
+	\caption{Bodediagramm der Filterfunktion aus \cref{eq:filter}}
 	\label{fig:bodeplot}
 \end{figure}
