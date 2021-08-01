@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.6.24)  31 JUL 2021 15:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.6.24)  1 AUG 2021 16:46
 entering extended mode
 **./main.tex
 (main.tex
@@ -1307,7 +1307,7 @@ chapter 2.
 
 ]
 chapter 3.
-<./src/pics//flug.png, id=101, 481.8pt x 271.2534pt>
+<./src/pics//flug.png, id=103, 481.8pt x 271.2534pt>
 File: ./src/pics//flug.png Graphic file (type png)
 <use ./src/pics//flug.png>
 Package pdftex.def Info: ./src/pics//flug.png  used on input line 68.
@@ -1319,7 +1319,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 ]
-<./src/pics//trimmpunkte.png, id=113, 570.63188pt x 261.22594pt>
+<./src/pics//trimmpunkte.png, id=115, 570.63188pt x 261.22594pt>
 File: ./src/pics//trimmpunkte.png Graphic file (type png)
 <use ./src/pics//trimmpunkte.png>
 Package pdftex.def Info: ./src/pics//trimmpunkte.png  used on input line 91.
@@ -1329,7 +1329,7 @@ File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 103.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
  [5 <./src/pics//flug.png (PNG copy)> <./src/pics//trimmpunkte.png>]
-<./src/pics//beispielInterpolation.png, id=123, 1443.89438pt x 1489.81593pt>
+<./src/pics//beispielInterpolation.png, id=125, 1443.89438pt x 1489.81593pt>
 File: ./src/pics//beispielInterpolation.png Graphic file (type png)
 <use ./src/pics//beispielInterpolation.png>
 Package pdftex.def Info: ./src/pics//beispielInterpolation.png  used on input l
@@ -1341,7 +1341,7 @@ Overfull \hbox (15.97441pt too wide) in paragraph at lines 128--130
 rw[]arts- und ei-ner Vorw[]arts-R[]uckw[]artsfilterung
  []
 
-<./src/pics//beispielFilterung.png, id=125, 1443.89438pt x 1489.81593pt>
+<./src/pics//beispielFilterung.png, id=127, 1443.89438pt x 1489.81593pt>
 File: ./src/pics//beispielFilterung.png Graphic file (type png)
 <use ./src/pics//beispielFilterung.png>
 Package pdftex.def Info: ./src/pics//beispielFilterung.png  used on input line 
@@ -1360,7 +1360,7 @@ File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 172.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
  [7 <./src/pics//beispielFilterung.png (PNG copy)>]
-<./src/pics//bodeplot.png, id=140, 632.3625pt x 474.27188pt>
+<./src/pics//bodeplot.png, id=142, 632.3625pt x 474.27188pt>
 File: ./src/pics//bodeplot.png Graphic file (type png)
 <use ./src/pics//bodeplot.png>
 Package pdftex.def Info: ./src/pics//bodeplot.png  used on input line 175.
@@ -1378,30 +1378,30 @@ chapter 4.
 ]
 chapter 5.
 Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 24.
+ine 31.
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
-(Font)              using `OT1/cmss/bx/n' instead on input line 27.
+(Font)              using `OT1/cmss/bx/n' instead on input line 34.
 
 [10
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 69--75
+Underfull \hbox (badness 10000) in paragraph at lines 76--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--78
+Underfull \hbox (badness 10000) in paragraph at lines 83--85
 
  []
 
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 135.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 142.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 144--146
+Underfull \hbox (badness 10000) in paragraph at lines 151--153
 
  []
 
@@ -1412,15 +1412,26 @@ Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 1.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
  [12]
 chapter 6.
-)
-Underfull \hbox (badness 10000) in paragraph at lines 2--99
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--16
 
  []
 
-(main.bbl [13
+) (main.bbl [13
 
 
-]) [14
+]
+! Misplaced alignment tab character &.
+l.13 \newblock John Wiley &
+                            Sons, Inc., 1986. --
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+) [14
 
 
 ] (main.aux
@@ -1433,13 +1444,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 44742 strings out of 478931
- 1064651 string characters out of 2865567
- 1679242 words of memory out of 3000000
- 61813 multiletter control sequences out of 15000+600000
- 415526 words of font info for 71 fonts, out of 8000000 for 9000
+ 44734 strings out of 478931
+ 1064432 string characters out of 2865567
+ 1680242 words of memory out of 3000000
+ 61801 multiletter control sequences out of 15000+600000
+ 415694 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,24n,117p,10628b,975s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 108i,24n,117p,10628b,979s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\Fabrizio\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi6
 00\tcrm1095.pk><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/MiKTeX 2.9/fonts/type1/pub
@@ -1453,10 +1464,11 @@ b><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/MiKTeX 2.9/fonts/t
 ype1/public/amsfonts/cm/cmss9.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmssbx10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmti10.pfb>
-Output written on main.pdf (16 pages, 655708 bytes).
+ic/amsfonts/cm/cmti10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.
+pfb>
+Output written on main.pdf (16 pages, 672281 bytes).
 PDF statistics:
- 341 PDF objects out of 1000 (max. 8388607)
- 63 named destinations out of 1000 (max. 500000)
+ 352 PDF objects out of 1000 (max. 8388607)
+ 66 named destinations out of 1000 (max. 500000)
  195 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,9 +1,46 @@
 \chapter{Zusammenfassung und Ausblick}
-- Datenvorbereitung sehr wichtig und großer Teil der Arbeit\\
-- Matrix-LSQ sehr schnell und einfach zu implementieren, ABER flugmechanisch nur bedingt sinnvoll\\
-- Frequenzbereich nur sinnvoll bei passendem Eingangssignal\\
-\\
-- generell: Datennormalisierung (Skalierung mit Maximalwerten => Absolutwerte in gleicher Größenordnung
-) bzw. -gewichtung\\
-- Zeitbereich: nichtlineare Modellbildung\\
-- Frequenzbereich: Equation Error-Methode, kombinierte Methode (Output Error + Equation Error)
+Abschließend lässt sich sagen, dass die Datenvorbereitung ein sehr wichtiger und auch zeitintensiver Teil der gesamten Arbeit 
+war. Die richtigen Messsignale aus der Fülle an Originaldaten zu finden und auf Plausibilität zu prüfen legt den Grundstein 
+für alle weiteren Schritte. Schwierig ist außerdem die Auswahl eines geeigneten Zeitbereichs zur Identifikation. 
+
+Das LSQ-Verfahren im Zeitbereich lieferte keine sonderlich guten Ergebnisse. Deutlich bessere Approximationen der Messdaten 
+ließen sich mit dem Matrix-LSQ-Verfahren erreichen. Dieses stellte sich als sehr schnell und vergleichsweise einfach in der 
+Implementierung heraus. Aus flugmechanischer Sicht sind allerdings Einbußen in den bestimmten Parametern hinzunehmen, da sich 
+keine Vorgaben bzgl. der bereits bekannten Einträge in der System- und Steuermatrix treffen lassen.
+
+Es zeigte sich, dass der Flug in den Platzrunden weniger geeignet für eine Identifikatition im Frequenzbereich ist. Der 
+Verlauf des Steuersignals ist hier von großer Relevanz, bestimmte Manöver, wie ein \textit{Frequency Sweep}, sollten hier zu 
+deutlich besseren Ergebissen führen. Nichtsdestotrotz konnten bestimmte Zustandsgrößen angenähert werden. Der 
+Implementierungsaufwand für die \textit{Output Error}-Methode ist deutlich höher verglichen mit den Zeitbereich-Verfahren; 
+die symbolische Berechnung der sehr länglichen Ableitungen in Matlab ermöglichte überhaupt erst eine sinnvolle Anwendung.\\
+
+An dieser Stelle sei erneut erwähnt, dass in der vorliegenden Arbeit lediglich der Platzrundenflug berücksichtigt wurde. In 
+den restlichen Flugdaten steckt aber womöglich ebenso Potenzial zur Bestimmung des flugmechanischen Modells, vor allem, wenn 
+sich noch passende Manöver (z.B. Anregung der Eigenschwingung des Flugzeugs) finden lassen. Als nächster Schritt bietet sich 
+also eine genaue Untersuchung des bisher vernachlässigten Flugs an.
+
+Möglichkeiten zur Verfeinerung und Optimierung der Identifikation selbst gibt es viele. An erster Stelle bietet sich eine 
+Normalisierung der Signale an, d.h. eine Skalierung mit den Maximalwerten eines jeden Verlaufs, sodass die Werte danach in 
+der gleichen Größenordnung liegen. Dies ist sonst nicht der Fall, die Geschwindigkeit erreicht weit höhere Absolutwerte als 
+alle anderen Zustände, was in den verwendeten Algorithmen einer stärkeren Gewichtung des Geschwindigkeitssignalls entspricht. 
+Eine Gewichtung 
+ließe sich aber außerdem bewusst vornehmen und damit der Fokus speziell auf wichtige Größen legen. Weiterhin könnten die 
+zugrundeliegenden Modelle vereinfacht werden. In der Längsbewegung würde das bedeuten, zwei reduzierte Modelle für die 
+Anstellwinkelschwingung einerseits und die Phygoide andererseits zu erstellen und die Identifikationen getrennt durchzuführen.
+
+Weit aufwändiger, aber auch sehr vielversprechend, ist eine Identifikation im Zeitbereich mit einem nichtlinearen 
+Modell\todo{Infos ergänzen}.
+
+Im Frequenzbereich wurde mit der \textit{Output Error}-Methode nur der Fehler im gemessenen Signal berücksichtigt. Alternativ 
+wäre hier eine Betrachtung des Modellfehlers bei gleichzeitiger Vernachlässigung des Messfehlers möglich, wie es die 
+\textit{Equation Error}-Methode vorsieht. Zu guter Letzt lassen sich diese beiden Methoden auch kombinieren.
+
+%- Datenvorbereitung sehr wichtig und großer Teil der Arbeit\\
+%- Matrix-LSQ sehr schnell und einfach zu implementieren, ABER flugmechanisch nur bedingt sinnvoll\\
+%- Frequenzbereich nur sinnvoll bei passendem Eingangssignal\\
+%\\
+%- generell: Datennormalisierung (Skalierung mit Maximalwerten => Absolutwerte in gleicher Größenordnung
+%) bzw. -gewichtung\\
+%- Zeitbereich: nichtlineare Modellbildung\\
+%- Frequenzbereich: Equation Error-Methode, kombinierte Methode (Output Error + Equation Error)
+%- Vereinfachung des Modells

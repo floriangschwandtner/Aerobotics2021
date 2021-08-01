@@ -9,19 +9,26 @@ Ergebnisse
 bewertet und der Blick auf mögliche Verbesserungen und andere Methoden gerichtet.
 
 
-\section{Fouriertransformation}  
+\section{Fourier-Transformation}  
 
+Die Grundlage für die Arbeit im Frequenzbereich bildet die Fourier-Transformation \cite{Bendat1986}, mit der ein Verlauf im 
+Zeitbereich in den Frequenzbereich transformiert werden kann. Dafür wird der diskrete \textit{Fast Fourier 
+Transform}-Algorithmus verwendet, welcher in Matlab bereits als \texttt{fft()} integriert ist. Das Fourier-transformierte 
+Zustandsraummodell ergibt sich wie folgt \cite{Klein2006}:
 \begin{align}
 	\begin{split}
 		j\omega_{k}\mathbf{\tilde{x}}(k)  &= \mathbf{A\tilde{x}}(k) + \mathbf{B\tilde{u}}(k)  \\
 		\mathbf{\tilde{y}}(k)             &= \mathbf{C\tilde{x}}(k) + \mathbf{D\tilde{u}}(k) = 
 		\mathbf{G}(k,\mathbf{\theta})\mathbf{\tilde{u}}(k)  \\
-		\text{mit }\mathbf{G}(k,\mathbf{\theta}) &= \mathbf{C}(j\omega\mathbf{I}-\mathbf{A})^{-1}\mathbf{B}+\mathbf{D}
+		\text{mit }\mathbf{G}(k,\mathbf{\theta}) &= \mathbf{C}(j\omega_k\mathbf{I}-\mathbf{A})^{-1}\mathbf{B}+\mathbf{D}
 		\label{eq:ZRD_Frequenzbereich}
 	\end{split}
 \end{align}
 
-\missingfigure{Bild von Fourier-Trafo}
+Hier bezeichnen $ \tilde{x} $, $ \tilde{u} $ und $ \tilde{y} $ die Fourier-Transformation des Zustands-, Steuer bzw. 
+Ausgangsvektors. $ \omega_k=2\pi f_k=2\pi k/T $ ist die Kreisfrequenz und $ \mathbf{G}(k,\theta) $ die Übertragungsfunktion 
+einer Frequenz $ f_k $ abhängig vom Parametervektor $ \theta $.
+\todo{Bild hier nötig?}
 
 
 \section{\textit{Output Error}-Methode}

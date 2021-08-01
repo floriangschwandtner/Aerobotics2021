@@ -12,10 +12,10 @@
 \contentsline {subsection}{\numberline {3.4.2}Wahl der Filterübertragungsfunktion}{7}{subsection.3.4.2}%
 \contentsline {chapter}{\numberline {4}Systemidentifikation im Zeitbereich}{9}{chapter.4}%
 \contentsline {chapter}{\numberline {5}Systemidentifikation im Frequenzbereich}{10}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Fouriertransformation}{10}{section.5.1}%
+\contentsline {section}{\numberline {5.1}Fourier-Transformation}{10}{section.5.1}%
 \contentsline {section}{\numberline {5.2}\textit {Output Error}-Methode}{10}{section.5.2}%
 \contentsline {section}{\numberline {5.3}Vor- und Nachteile}{12}{section.5.3}%
 \contentsline {section}{\numberline {5.4}Ergebnisse}{12}{section.5.4}%
 \contentsline {chapter}{\numberline {6}Zusammenfassung und Ausblick}{13}{chapter.6}%
-\contentsline {chapter}{Literaturverzeichnis}{13}{chapter.6}%
+\contentsline {chapter}{Literaturverzeichnis}{13}{section*.12}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
