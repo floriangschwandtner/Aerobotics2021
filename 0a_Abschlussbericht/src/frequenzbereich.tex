@@ -28,7 +28,6 @@ Zustandsraummodell ergibt sich wie folgt \cite{Klein2006}:
 Hier bezeichnen $ \tilde{x} $, $ \tilde{u} $ und $ \tilde{y} $ die Fourier-Transformation des Zustands-, Steuer bzw. 
 Ausgangsvektors. $ \omega_k=2\pi f_k=2\pi k/T $ ist die Kreisfrequenz und $ \mathbf{G}(k,\theta) $ die Übertragungsfunktion 
 einer Frequenz $ f_k $ abhängig vom Parametervektor $ \theta $.
-\todo{Bild hier nötig?}
 
 
 \section{\textit{Output Error}-Methode}
@@ -72,7 +71,7 @@ Morelli \cite{Klein2006} die negative Log-Likelihood-Funktion mithilfe des Ansat
 	\label{eq:Kostenfunktion}
 \end{equation}  
 
-\todo{Svv kurz in ein zwei Sätzen erklären}
+Die Matrix $S_{\nu\nu}$ gewichtet die Messfehler der einzelnen Steuergrößen auf die Zustandsgrößen. 
 Wie bereits beschrieben, geht es nun darum das Minimum dieser Kostenfunktion zu finden. Wir suchen also die Nullstelle ihrer 
 Ableitung. Einer der wichtigsten Algorithmen zur Bestimmung von Nullstellen (nicht)-linearer Funktionen sowohl bei 
 Eingrößenproblemen als auch bei Mehrgrößenproblemen ist der iterative \textit{Newton-Raphson}-Algorithmus. Dabei wird die 
@@ -138,8 +137,14 @@ In jedem Iterationsschritt muss also ein lineares Gleichungssystem gelöst werde
 des Algorithmus ist die Berechnung der Ableitungen und der Hesse-Matrix in jedem Iterationsschritt. Diese können bei vielen 
 zu schätzenden Parametern schnell sehr kompliziert werden. Da die Kostenfunktion als Summe über alle Frequenzen berechnet 
 wird (siehe \cref{eq:Kostenfunktion}), gilt dies auch für die Ableitungen. Dadurch wird zusätzliche Rechenzeit 
-beansprucht.  
+beansprucht. Der Algorithmus ist in Abbildung \ref{fig:Newton_Raphson} nochmals übersichtlich dargestellt.  
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{Newton_Raphson.png}
+	\caption{Newton-Raphson Algorithmus für die OEM.}
+	\label{fig:Newton_Raphson}
+\end{figure}
 
 \section{Vor- und Nachteile}
 Wie bereits erwähnt werden bei der Systemidentifikation im Frequenzbereich fouriertransformierte Signalverläufe betrachtet. 
@@ -163,6 +168,22 @@ Schließlich bleibt noch die Berücksichtigung des Abtasttheorems nach Shannon e
 zu vermeiden \cite{Grimm2017}. Demzufolge muss die Abtastfrequenz mehr als doppelt so groß sein wie die größte Frequenz im 
 Signal. Dies stellte sich bei den vorliegenden Daten jedoch nicht als Problem heraus.
 
-
-
 \section{Ergebnisse}
+
+Abschließend will das folgende Kapitel noch einen kurzen Einblick in die Ergebnisse der Parameterschätzung im Frequenzbereich geben. In Abbildung \ref{fig:Ergebnisse_f} sind sowohl die geschätzten Frequenzverläufe als auch die originalen Frequenzverläufe dargestellt. Beim Blick auf die originalen Daten (in Rot dargestellt) fällt der erwartete Trend ins Auge. Die Übertragung findet hauptsächlich im Bereich niedriger Frequenzen statt. Die Verläufe knicken für große Frequenzen ab. Ausnahme ist die Nickrate $q$. Da wir allerdings nur die Bewegung während der Platzrunde betrachten liegt $q$ nahe bei 0 und wird hauptsächlich vom Messrauschen bestimmt. Dies könnte den Anstieg bei hohen Frequenzen erklären. Um ein besserer Bild vom Übertragungsverhalten von $q$ zu bekommen müsste beispielsweiße im Bereich der Anstellwinkelschwingung geflogen werden. Aus dem Newton-Raphson Algorithmus erhält man eine Abschätzung des Parametervektors $\theta$ und damit auch eine Abschätzung der Übertragungsmatrix $G(\theta)$. Mithilfe von $G(\theta)$ und den gemessenen Steuergrößen lässt sich ein geschätzter Frequenzverlauf der Zustandsgrößen berechnen. Dieser ist ebenfalls in Abb. \ref{fig:Ergebnisse_f} eingezeichnet. Es zeigt sich, dass die Frequenzverläufe im Allgemeinen gut getroffen werden. Teilweise werden Ausschläge sogar exakt getroffen (siehe Verlauf von $q$ im niedrigen Frequenzbereich). Das häufigstes Problem, das wir beobachten konnten, war allerdings das Überschätzen bzw. Unterschätzen der Ausgangsverläufe. Deutlich zu sehen ist das im Verlauf der Geschwindigkeit $V_{A}$. Ein Grund könnten die unterschiedlichen Größenordnungen der Zustandsgrößen sein. Dies würde erklären warum die Geschwindigkeit, mit der größten nominellen Abweichung vom Trimmpunkt, unterschätzt wird. Eine Normalisierung der Zustandsgrößen wäre deshalb ein möglicher Ansatz zur Verbesserung der Ergebnisse (siehe Kapitel \ref{chapter:Zusammenfassung}). 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[trim=100 0 100 0,clip,width=1\linewidth]{Ergebnisse_Frequenzbereich.png}
+	\caption{Frequenzverläufe der vier Zustandsgrößen der Längsbewegung. In Rot sind die Frequenzverläufe der Messdaten und in Blau die Frequenzverläufe des geschätzten Modells dargestellt.}
+	\label{fig:Ergebnisse_f}
+\end{figure}
+
+Exemplarisch wurde der Frequenzverlauf des Anstellwinkels $\alpha$ wieder in den Zeitbereich zurück transformiert. Das Ergebnis ist in Abbildung \ref{fig:Ergebnisse_t} dargestellt. Zusätzlich sind die Steuerverläufe von Elevator und Schub aufgetragen. Es ist gut zu erkennen das sogar die Ausschläge im Anstellwinkel abgeschätzt werden und der geschätzte Verlauf ein brauchbares Ergebnis liefert. Weniger realistisch sind allerdings die geschätzten Matrizen des Zustandsraummodells $A$ und $B$. Auch die Verläufe der anderen Größen werden nicht ganz so gut angenähert. Das Problem könnte hier bereits vor der Anwendung des Algorithmus liegen. Die gegebenen Flugdaten sind speziell für ein Schätzverfahren im Frequenzbereich unzureichend. Es ist vor allem interessant in welchem Frequenzbereich ein Steuereingang auf die Zustandsgrößen übertragen wird. Dies erkennt man dann wenn die Frequenzen, beipsielsweise in einem \textit{Frequency Sweep}, abgeflogen werden. Dies wäre eine mögliche Erklärung für die weniger guten Ergebnisse einiger Abschätzungen.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[trim=100 0 100 0,clip,width=1\linewidth]{Ergebnisse_alpha_inv.png}
+	\caption{Zeitverlauf der Steuergrößen und der Zustandsgröße $\alpha$.}
+	\label{fig:Ergebnisse_t}
+\end{figure}
