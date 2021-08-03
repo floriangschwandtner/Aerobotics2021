@@ -1,95 +1,146 @@
 \chapter{Systemidentifikation im Zeitbereich}
+\todo[inline]{kurze Einleitung schreiben}
 
-\section{Methode der kleinsten Fehlerquadrat}
-Die Methode der Kleinste-Quadrate-Schätzung (LSQ) wird in diesem Kapitel vorgestellt.
-Eine der Kernaufgaben vieler Ingenieure einen belastbaren Zusammenhang zwischen gemessenen Werten zu finden. Diese Zusammenhänge können  Näherungsweise durch folgendes lineares Modell beschrieben werden:  
+\section{\textit{Least Squares}-Methode}
+In diesem Kapitel wird die Methode der kleinsten Fehlerquadrate (\textit{Least Squares}, LSQ) vorgestellt.
+Eine der Kernaufgaben vieler Ingenieure besteht darin, einen belastbaren Zusammenhang zwischen gemessenen Werten zu finden. 
+Diese Zusammenhänge können näherungsweise durch folgendes lineares Modell beschrieben werden:  
 \begin{equation}
     z = H\cdot x+v 
 \end{equation}
 mit 
-\[z = [z_{1} \, z_{2} \, ...\,  z_{m} ]^T =\, m\times 1 \; \text{Messungsvektor} \]
-\[ H= \; m\times n \;\text{bekannte Matrix } \]
-\[ v = \;\text{unbekannter Rauschterm } \]
-\[ x= \; n\times 1 \;\text{unbekannter Parametervektor } \]
- \noindent LSQ kann hilfreich werden, um zum Beispiel die Schätzung von Modellparametern bei Systemidentifikation durchzuführen.  
-Gesucht ist ein Schätztwert $\hat{x}$ für Parametervektor. Der Restfehlervektor $e$ lautet:
+\begin{align}
+	\begin{split}
+		\text{Messvektor: } &\dim{(z)} = m\times 1\\
+		\text{bekannte Matrix: } &\dim{(H)} = m\times n\\
+		\text{unbekannter Rauschterm: } &\dim{(v)} = m\times1\\
+		\text{unbekannter Parametervektor: } &\dim{(x)} = n\times 1
+		\nonumber
+	\end{split}
+\end{align}
+
+Die LSQ-Methode kann beispielsweise verwendet werden, um die Schätzung von Modellparametern im Rahmen der 
+Systemidentifikation durchzuführen. Gesucht ist dabei ein Schätzwert $\hat{x}$ für den Parametervektor. Der Restfehlervektor 
+$e$ lautet:
 \begin{equation}
     e = z - H\cdot \hat{x} \\
 \end{equation}
-Die Idee ist ein Wert von $\hat{x}$ zu finden, das die 2-Norm des Restfehlervektors minimieren soll. Das quadratische Zielfunktional $J$ ist gegeben durch: 
+
+Die Idee besteht darin, einen Wert von $\hat{x}$ zu finden, der die Norm des quadrierten Restfehlervektors minimiert. Das 
+quadratische Zielfunktional $J$ ist gegeben durch: 
 \begin{align}
    \begin{split}
-     J = 1/2 \cdot e^{T} \cdot e \\
-     = 1/2 \cdot {(z- H\hat{x})}^{T}\cdot(z- H\hat{x}) \\
-     = 1/2 \cdot (z^{T} -{\hat{x}}^{T}H^{T})\cdot(z- H\hat{x}) \\
-     = 1/2 \cdot z^{T}z - z^{T}H\hat{x} + 1/2\cdot {\hat{x}}^{T}A\hat{x}  \\
+     J &= \frac{1}{2} \cdot e^{T} \cdot e \\
+     &= \frac{1}{2} \cdot {(z- H\hat{x})}^{T}\cdot(z- H\hat{x}) \\
+     &= \frac{1}{2} \cdot (z^{T} -{\hat{x}}^{T}H^{T})\cdot(z- H\hat{x}) \\
+     &= \frac{1}{2} \cdot z^{T}z - z^{T}H\hat{x} + \frac{1}{2}\cdot {\hat{x}}^{T}A\hat{x}  \\
    \end{split}
 \end{align}
 mit $A = H^{T}H$. Die Lösung des Minimierungsproblems lautet dann:
 \begin{equation}
     \hat{x}= {(H^{T} H)}^{-1} \cdot H^{T} z 
 \end{equation}
-\subsection{Bestimmung von Aerodynamischen Parametern anhand LSQ} 
+
+
+\subsection{Schätzung der Parameter mit dem LSQ-Verfahren} 
+
 Die Zustandsraumdarstellung \eqref{eq:laengsbewegung} liefert folgende Gleichungen: 
-\[\Delta\dot \alpha-q =  \frac{Z_{\alpha}\Delta\alpha}{V_0} + \frac{Z_{\nu}\Delta V_{A}}{V_0} + \frac{Z_{\eta}\Delta\eta}{V_0} - \frac{X_{\delta F}\sin{(\alpha_0 + i_F)}\cdot\Delta\delta_F}{V_0}\] 
-\[ \dot q = M_{\alpha}\Delta\alpha + M_{q}q + M_{\nu}\Delta V_A + M_{\eta}\Delta\eta + M{\delta F}\Delta\delta_F\]
-\[\Delta\dot V_A = X_{\alpha}\Delta\alpha +  X_{\nu}\Delta V_A + X_{\eta}\Delta\eta + X_{\delta F}\cos{(\alpha_0 + i_F)}\cdot\Delta\delta_ \]
-\[\Delta \dot \gamma = \frac{- Z_{\alpha}\Delta\alpha}{V_0} + \frac{- Z_{\nu}\Delta V_{A}}{V_0} + \frac{- Z_{\eta}\Delta\eta}{V_0} + \frac{X_{\delta F}\sin{(\alpha_0 + i_F)}\cdot\Delta\delta_F}{V_0}\]
-Welche zu dem folgenden linearen Gleichungssystem umgeformt werden können: 
+
+\begin{align}
+	\Delta\dot \alpha-q &=  \frac{Z_{\alpha}\Delta\alpha}{V_0} + \frac{Z_{\nu}\Delta V_{A}}{V_0} + 
+	\frac{Z_{\eta}\Delta\eta}{V_0} - \frac{X_{\delta_F}\sin{(\alpha_0)}\cdot\Delta\delta_F}{V_0}\\
+	\dot q &= M_{\alpha}\Delta\alpha + M_q q + M_{\nu}\Delta V_A + M_{\eta}\Delta\eta + M{\delta_F}\Delta\delta_F\\
+	\Delta\dot V_A &= X_{\alpha}\Delta\alpha +  X_{\nu}\Delta V_A + X_{\eta}\Delta\eta + 
+	X_{\delta_F}\cos{(\alpha_0)}\cdot\Delta\delta_F \\
+	\Delta \dot \gamma &= \frac{- Z_{\alpha}\Delta\alpha}{V_0} + \frac{- Z_{\nu}\Delta V_{A}}{V_0} + 
+	\frac{-Z_{\eta}\Delta\eta}{V_0} + \frac{X_{\delta F}\sin{(\alpha_0)}\cdot\Delta\delta_F}{V_0}
+\end{align}
+	
+Diese können zu einem linearen Gleichungssystem umgeformt werden: 
 \begin{equation}
     z_{L}= H_{L}\cdot x + v
 \end{equation}
-Sodass:
+
+Die einzelnen Vektoren und Matrizen lauten:
 \setcounter{MaxMatrixCols}{15}
-\[z_{L} = (\Delta\dot \alpha-q \;\; \dot q \;\; \Delta\dot V_A)^T\] \\
-\[ H_{L} = \begin{pmatrix}
-0&0&0& \frac{-\sin{(\alpha_0 + i_F)}\cdot\Delta\delta_F}{V_0} & \frac{\Delta\alpha}{V_0}& \frac{\Delta V_A}{V_0} & \frac{\Delta\eta}{V_0} &0&0&0&0&0   \\
-0&0&0&0&0&0&0 &\Delta\alpha & q & \Delta V_A & \Delta\eta & \Delta\delta_F \\
-\Delta\alpha &  \Delta V_A & \Delta\eta & \cos{(\alpha_0 + i_F)}\cdot\Delta\delta_F &0&0&0&0&0&0&0&0 
-\end{pmatrix}\] \\
-\[x = (X_{\alpha}\; 
-X_{\nu}\;
-X_{\eta}\;
-X_{\delta_F}\; 
-Z_{\alpha}\; 
-Z_{\nu}\;
-Z_{\eta}\;
-M_{\alpha}\;
-M_{q}\;
-M_{\nu}\;
-M_{\eta}\;
-M_{\delta_F}\;)^T
- \]
+\begin{equation}
+	z_{L} = (\Delta\dot \alpha-q \;\; \dot q \;\; \Delta\dot V_A)^T
+\end{equation}
+
+\begin{equation}
+	 H_{L} = \begin{pmatrix}
+		0&0&0& \frac{-\sin{(\alpha_0)}\cdot\Delta\delta_F}{V_0} & \frac{\Delta\alpha}{V_0}& \frac{\Delta V_A}{V_0} & 
+		\frac{\Delta\eta}{V_0} &0&0&0&0&0   \\
+		0&0&0&0&0&0&0 &\Delta\alpha & q & \Delta V_A & \Delta\eta & \Delta\delta_F \\
+		\Delta\alpha &  \Delta V_A & \Delta\eta & \cos{(\alpha_0)}\cdot\Delta\delta_F &0&0&0&0&0&0&0&0 
+	\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+	x = (X_{\alpha}\; 
+	X_{\nu}\;
+	X_{\eta}\;
+	X_{\delta_F}\; 
+	Z_{\alpha}\; 
+	Z_{\nu}\;
+	Z_{\eta}\;
+	M_{\alpha}\;
+	M_{q}\;
+	M_{\nu}\;
+	M_{\eta}\;
+	M_{\delta_F})^T
+\end{equation}
+
+ \todo[inline]{Beschreibung der Vorgehensweise, d.h. Lösung des Gleichungssystems mit LSQ}
+ 
  \section{Ergebnisse}
  
- Anschließend werden die Ergebnisse in diesem Kapitel kurz vorgestellt.\par
- \noindent Nach der Schätzung der Einträge der Matrizen $A$ und $B$, wird das Anfangswertproblem \eqref{eq:laengsbewegung} auf das gesamte Zeitintervall gelöst. Bei allen Simulationen sind die Filterparamtern von Kapitel 3.4.2 gewählt.\par
- \noindent In Abbildung \ref{fig:Ergebnisse_zmlsq} wird die Lösung Anhand ein Matrix-LSQ-Verfahren dargestellt. Die Ergebnisse zeigen eine relativ präzise Approximation. Das verfahren ist sehr schnell und einfach zu implementieren in vergleich zur LSQ-Methode.  Allerdings steht es aus flugmechanischer Sicht Abweichungen in System- und Eingangsmatrix. Die Matrizen $A$ und $B$ lauten: 
- \[ A = \begin{pmatrix}
- -0.1940 & 0.005 & -0.0002 & -0.0540 \\
- -38.9899 & -12.8888 & 0.3632 & -4.2686 \\
- -6.1506 & -0.1501 & -0.0589 & -5.0107 \\
- 0.4433 & 0.0427 & 0.0023 & 0.0818
- \end{pmatrix}
- \] 
- \[ B = \begin{pmatrix}
- -0.0267 & -0.0164 \\ 
- -26.1377 & -12.9651 \\
- -0.7414 & 4.6092 \\
- 0.0477 & -0.1328
- \end{pmatrix}
- \]
- \noindent Die Abbildung \ref{fig:Ergebnisse_zlsq} stellt die Lösung Anhand das LSQ-Verfahren. Die Methode liefert keine sonderlich guten Ergebnisse. 
- \begin{figure}[h!]
+Anschließend werden die Ergebnisse in diesem Kapitel kurz vorgestellt.
+
+Nach der Schätzung der Einträge der Matrizen $A$ und $B$ wird das Anfangswertproblem \eqref{eq:laengsbewegung} im gesamten 
+Zeitintervall gelöst. Bei allen Simulationen sind die Filterparametern wie in \ref{section:filterung} gewählt.
+
+In \cref{fig:Ergebnisse_zmlsq} wird die Lösung anhand des Matrix-LSQ-Verfahrens dargestellt. Die Ergebnisse zeigen eine 
+relativ präzise Approximation. Das Verfahren ist sehr schnell und einfach zu implementieren im Vergleich zur 
+LSQ-Methode.\todo{Vergleich der Verfahren hier noch nicht so passend}  Allerdings weist das Ergebnis in flugmechanischer 
+Hinsicht Abweichungen in System- 
+und Eingangsmatrix auf. Die Matrizen $A$ und $B$ lauten: 
+\begin{equation}
+ 	A = \begin{pmatrix}
+ 		-0.1940 & 0.005 & -0.0002 & -0.0540 \\
+ 		-38.9899 & -12.8888 & 0.3632 & -4.2686 \\
+ 		-6.1506 & -0.1501 & -0.0589 & -5.0107 \\
+ 		0.4433 & 0.0427 & 0.0023 & 0.0818
+ 	\end{pmatrix}
+	\nonumber
+\end{equation}
+
+\begin{equation}
+ 	 B = \begin{pmatrix}
+ 		-0.0267 & -0.0164 \\ 
+ 		-26.1377 & -12.9651 \\
+ 		-0.7414 & 4.6092 \\
+ 		0.0477 & -0.1328
+ 	\end{pmatrix}
+ \nonumber
+\end{equation}
+
+\todo[inline]{Ergebnisse der Matrizen bewerten}
+ 
+\cref{fig:Ergebnisse_zlsq} zeigt die Lösung anhand des LSQ-Verfahrens. Die Methode liefert keine sonderlich guten Ergebnisse. 
+\todo{Instabilität des Simulators erwähnen}\todo{warum schlechte Ergebnisse?}
+\begin{figure}[h!]
 	\centering
 	\includegraphics[trim=100 0 100 0,clip,width=1\linewidth]{LS.png}
-	\caption{Ergebnisse Anhand Matrix-LSQ }
+	\caption{Ergebnisse anhand des Matrix-LSQ-Verfahrens}
     \label{fig:Ergebnisse_zmlsq}
 \end{figure}
 
  \begin{figure}[h!]
 	\centering
 	\includegraphics[trim=100 0 100 0,clip,width=1\linewidth]{LS_LSQ.png}
-	\caption{Ergebnisse Anhand LSQ}
+	\caption{Ergebnisse anhand des LSQ-Verfahrens}
      \label{fig:Ergebnisse_zlsq} 
 \end{figure}
+
+\todo{Diagramme gut lesbar?}

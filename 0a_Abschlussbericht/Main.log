@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.6.24)  2 AUG 2021 20:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.6.24)  3 AUG 2021 13:18
 entering extended mode
 **./main.tex
 (main.tex
@@ -1292,12 +1292,17 @@ l.1 \chapter
 
 ]
 chapter 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--11
+
+ []
+
 ) (src/modell.texpdfTeX warning (ext4): destination with the same identifier (n
 ame{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.1 \chapter
-            {Modelle} [2
+            {Modell} [2
 
 
 ]
@@ -1307,7 +1312,7 @@ chapter 2.
 
 ]
 chapter 3.
-<./src/pics//flug.png, id=105, 481.8pt x 271.2534pt>
+<./src/pics//flug.png, id=118, 481.8pt x 271.2534pt>
 File: ./src/pics//flug.png Graphic file (type png)
 <use ./src/pics//flug.png>
 Package pdftex.def Info: ./src/pics//flug.png  used on input line 68.
@@ -1319,51 +1324,51 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 ]
-<./src/pics//trimmpunkte.png, id=117, 570.63188pt x 261.22594pt>
+<./src/pics//trimmpunkte.png, id=130, 570.63188pt x 261.22594pt>
 File: ./src/pics//trimmpunkte.png Graphic file (type png)
 <use ./src/pics//trimmpunkte.png>
 Package pdftex.def Info: ./src/pics//trimmpunkte.png  used on input line 91.
 (pdftex.def)             Requested size: 404.59515pt x 185.2166pt.
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 103.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 102.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
  [5 <./src/pics//flug.png (PNG copy)> <./src/pics//trimmpunkte.png>]
-<./src/pics//beispielInterpolation.png, id=127, 1443.89438pt x 1489.81593pt>
+<./src/pics//beispielInterpolation.png, id=140, 1443.89438pt x 1489.81593pt>
 File: ./src/pics//beispielInterpolation.png Graphic file (type png)
 <use ./src/pics//beispielInterpolation.png>
 Package pdftex.def Info: ./src/pics//beispielInterpolation.png  used on input l
-ine 110.
+ine 108.
 (pdftex.def)             Requested size: 314.68588pt x 324.6916pt.
 
-Overfull \hbox (15.97441pt too wide) in paragraph at lines 128--130
+Overfull \hbox (15.97441pt too wide) in paragraph at lines 127--129
 []\OT1/cmr/m/n/10.95 In Abb. []3.4[] sind die Aus-wir-kun-gen ei-ner rei-nen Vo
 rw[]arts- und ei-ner Vorw[]arts-R[]uckw[]artsfilterung
  []
 
-<./src/pics//beispielFilterung.png, id=129, 1443.89438pt x 1489.81593pt>
+<./src/pics//beispielFilterung.png, id=142, 1443.89438pt x 1489.81593pt>
 File: ./src/pics//beispielFilterung.png Graphic file (type png)
 <use ./src/pics//beispielFilterung.png>
 Package pdftex.def Info: ./src/pics//beispielFilterung.png  used on input line 
-133.
+132.
 (pdftex.def)             Requested size: 314.68588pt x 324.6916pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 145.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 143.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
 [6 <./src/pics//beispielInterpolation.png (PNG copy)>]
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 172.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 170.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
  [7 <./src/pics//beispielFilterung.png (PNG copy)>]
-<./src/pics//bodeplot.png, id=144, 632.3625pt x 474.27188pt>
+<./src/pics//bodeplot.png, id=157, 632.3625pt x 474.27188pt>
 File: ./src/pics//bodeplot.png Graphic file (type png)
 <use ./src/pics//bodeplot.png>
-Package pdftex.def Info: ./src/pics//bodeplot.png  used on input line 175.
+Package pdftex.def Info: ./src/pics//bodeplot.png  used on input line 173.
 (pdftex.def)             Requested size: 314.68588pt x 236.01366pt.
 ) (src/zeitbereich.tex
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
@@ -1372,86 +1377,165 @@ Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 1.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
  [8 <./src/pics//bodeplot.png (PNG copy)>]
 chapter 4.
-) (src/frequenzbereich.tex [9
-
-
-]
-chapter 5.
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
+ine 2.
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
-(Font)              using `OT1/cmss/bx/n' instead on input line 33.
+(Font)              using `OT1/cmss/bx/n' instead on input line 4.
 
-[10
+[9
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 76--83
+Overfull \hbox (2.08263pt too wide) in paragraph at lines 131--131
+[][][]\OT1/cmr/m/n/10.95 Instabilit[]at 
+ []
+
+
+Overfull \hbox (2.08263pt too wide) in paragraph at lines 131--131
+[][][]\OT1/cmr/m/n/10.95 Instabilit[]at 
+ []
+
+<./src/pics//LS.png, id=179, 3011.25pt x 1736.4875pt>
+File: ./src/pics//LS.png Graphic file (type png)
+<use ./src/pics//LS.png>
+Package pdftex.def Info: ./src/pics//LS.png  used on input line 134.
+(pdftex.def)             Requested size: 449.55322pt x 277.73769pt.
+
+LaTeX Warning: Marginpar on page 10 moved.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./src/pics//LS_LSQ.png, id=181, 3011.25pt x 1786.675pt>
+File: ./src/pics//LS_LSQ.png Graphic file (type png)
+<use ./src/pics//LS_LSQ.png>
+Package pdftex.def Info: ./src/pics//LS_LSQ.png  used on input line 141.
+(pdftex.def)             Requested size: 449.55322pt x 285.76479pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (4.02928pt too wide) in paragraph at lines 146--146
+[][][]\OT1/cmr/m/n/10.95 Diagramme 
+ []
+
+
+Overfull \hbox (4.02928pt too wide) in paragraph at lines 146--146
+[][][]\OT1/cmr/m/n/10.95 Diagramme 
+ []
+
+
+LaTeX Warning: Marginpar on page 10 moved.
+
+) (src/frequenzbereich.tex
+File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
+<use ./src/pics/logo/ifrlogo.pdf>
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 1.
+(pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
+ [10pdfTeX warning (ext4): destination with the same identifier (name{equation.
+4.2.13}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1 \chapter
+            {Systemidentifikation im Frequenzbereich}]
+File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
+<use ./src/pics/logo/ifrlogo.pdf>
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 1.
+(pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
+ [11 <./src/pics//LS.png> <./src/pics//LS_LSQ.png>]
+chapter 5.
+[12
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 68--73
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 84--86
+Underfull \hbox (badness 10000) in paragraph at lines 74--76
 
  []
 
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 146.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 136.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
-[11]
-<./src/pics//Newton_Raphson.png, id=188, 350.32883pt x 502.09583pt>
+[13]
+<./src/pics//Newton_Raphson.png, id=235, 350.32883pt x 502.09583pt>
 File: ./src/pics//Newton_Raphson.png Graphic file (type png)
 <use ./src/pics//Newton_Raphson.png>
-Package pdftex.def Info: ./src/pics//Newton_Raphson.png  used on input line 149
+Package pdftex.def Info: ./src/pics//Newton_Raphson.png  used on input line 139
 .
 (pdftex.def)             Requested size: 269.73466pt x 386.59966pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 161--163
+Overfull \hbox (0.165pt too wide) in paragraph at lines 144--147
+\OT1/cmr/m/n/10.95 tes-tet. Da-zu wur-den ein Sinus-Signal mit ei-ner be-stimm-
+ten Fre-quenz in der H[]ohenruderstuerung
+ []
 
+
+Overfull \hbox (20.56854pt too wide) in paragraph at lines 144--147
+\OT1/cmr/m/n/10.95 so-wie ein Sinus-Signal im An-stell-win-kel er-stellt und de
+r Al-go-rith-mus ver-wen-det, um die []Ubertragung
  []
 
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 163.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 156.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
-[12 <./src/pics//Newton_Raphson.png>]
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 178.
-<./src/pics//Ergebnisse_Frequenzbereich.png, id=199, 1445.4pt x 685.8122pt>
+[14 <./src/pics//Newton_Raphson.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 157--159
+
+ []
+
+
+Overfull \hbox (23.7611pt too wide) in paragraph at lines 173--190
+\OT1/cmr/m/n/10.95 ei-ne Absch[]atzung des Pa-ra-me-ter-vek-tors $\OML/cmm/m/it
+/10.95 $ \OT1/cmr/m/n/10.95 und da-mit auch ei-ne Absch[]atzung der []Ubertrag
+ungsmatrix
+ []
+
+<./src/pics//Ergebnisse_Frequenzbereich.png, id=245, 1445.4pt x 685.8122pt>
 File: ./src/pics//Ergebnisse_Frequenzbereich.png Graphic file (type png)
 <use ./src/pics//Ergebnisse_Frequenzbereich.png>
 Package pdftex.def Info: ./src/pics//Ergebnisse_Frequenzbereich.png  used on in
-put line 199.
+put line 193.
 (pdftex.def)             Requested size: 449.55322pt x 247.70845pt.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 214.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 208.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
-[13]
-<./src/pics//Ergebnisse_alpha_inv.png, id=209, 1445.4pt x 685.8122pt>
+[15]
+<./src/pics//Ergebnisse_alpha_inv.png, id=255, 1445.4pt x 685.8122pt>
 File: ./src/pics//Ergebnisse_alpha_inv.png Graphic file (type png)
 <use ./src/pics//Ergebnisse_alpha_inv.png>
 Package pdftex.def Info: ./src/pics//Ergebnisse_alpha_inv.png  used on input li
-ne 217.
+ne 211.
 (pdftex.def)             Requested size: 449.55322pt x 247.70845pt.
 ) (src/zusammenfassung.tex
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
 Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 1.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
- [14 <./src/pics//Ergebnisse_Frequenzbereich.png (PNG copy)> <./src/pics//Ergeb
+ [16 <./src/pics//Ergebnisse_Frequenzbereich.png (PNG copy)> <./src/pics//Ergeb
 nisse_alpha_inv.png (PNG copy)>]
+File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
+<use ./src/pics/logo/ifrlogo.pdf>
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 1.
+(pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
+ [17]
 chapter 6.
 
 Underfull \hbox (badness 10000) in paragraph at lines 11--16
 
  []
 
-) (main.bbl [15
+) (main.bbl [18
 
 
 ]
@@ -1465,7 +1549,7 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-) [16
+) [19
 
 
 ] (main.aux
@@ -1478,13 +1562,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 44793 strings out of 478931
- 1066006 string characters out of 2865567
- 1677242 words of memory out of 3000000
- 61849 multiletter control sequences out of 15000+600000
+ 44862 strings out of 478931
+ 1067312 string characters out of 2865567
+ 1692242 words of memory out of 3000000
+ 61892 multiletter control sequences out of 15000+600000
  417713 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,24n,117p,10628b,976s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 108i,24n,117p,10628b,979s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\Fabrizio\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi6
 00\tcrm1095.pk><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/MiKTeX 2.9/fonts/type1/pub
@@ -1500,9 +1584,9 @@ ype1/public/amsfonts/cm/cmss9.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 eX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmti10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.
 pfb>
-Output written on main.pdf (18 pages, 1346006 bytes).
+Output written on main.pdf (21 pages, 2032394 bytes).
 PDF statistics:
- 379 PDF objects out of 1000 (max. 8388607)
- 72 named destinations out of 1000 (max. 500000)
- 222 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 438 PDF objects out of 1000 (max. 8388607)
+ 96 named destinations out of 1000 (max. 500000)
+ 252 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,16 +1,12 @@
 \chapter{Systemidentifikation im Frequenzbereich}
-
 Neben der Systemidentifikation im Zeitbereich ist es möglich die Parameterschätzung auch im Frequenzbereich durchzuführen. 
 Die Analyse im Frequenzbereich bringt einige Vorteile mit sich, die im weiteren Verlauf dieser Dokumentation genauer 
-beleuchtet werden. Die Grundlage der Frequenzanalyse ist die Fouriertransformation der gemessenen Daten vom Zeitbereich in 
-den Frequenzbereich. Ausgehend von den transformierten Messwerten wird im Folgenden genauer auf die Idee der 
+beleuchtet werden.  Ausgehend von den Fourier-transformierten Messwerten wird im Folgenden genauer auf die Idee der 
 \textit{Output Error}-Methode und auf den Algorithmus zur Lösung des Schätzproblems eingegangen. Zum Schluss werden die 
-Ergebnisse 
-bewertet und der Blick auf mögliche Verbesserungen und andere Methoden gerichtet.
+Ergebnisse  bewertet und der Blick auf mögliche Verbesserungen und andere Methoden gerichtet.
 
 
 \section{Fourier-Transformation}  
-
 Die Grundlage für die Arbeit im Frequenzbereich bildet die Fourier-Transformation \cite{Bendat1986}, mit der ein Verlauf im 
 Zeitbereich in den Frequenzbereich transformiert werden kann. Dafür wird der diskrete \textit{Fast Fourier 
 Transform}-Algorithmus verwendet, welcher in Matlab bereits als \texttt{fft()} integriert ist. Das Fourier-transformierte 
@@ -31,14 +27,11 @@ Zustands-, Steuer bzw. Ausgangsvektors. $ \omega_k=2\pi f_k=2\pi k/T $ ist die K
 
 
 \section{\textit{Output Error}-Methode}
-
 Die Idee der \textit{Output Error}-Methode (OEM) liegt in der Art der Fehlerbetrachtung. Es wird dabei der Fehler, der durch 
-die 
-mathematische Modellbildung entsteht, vernachlässigt. Das dynamische System wird als deterministisch angenommen. 
+die mathematische Modellbildung entsteht, vernachlässigt. Das dynamische System wird als deterministisch angenommen. 
 Unsicherheiten entstehen nur durch fehlerhafte und verrauschte Messungen. Ausgangspunkt der OEM ist das transformierte 
 Zustandsraummodell (\ref{eq:ZRD_Frequenzbereich}). Im vorliegenden Fall entspricht der Ausgangsvektor $\mathbf{\tilde{y}}$ 
-dem 
-Zustandsvektor $\mathbf{\tilde{x}}$. Die Matrizen $\mathbf{C}$ und $\mathbf{D}$ nehmen also folgende Gestalt an:
+dem Zustandsvektor $\mathbf{\tilde{x}}$. Die Matrizen $\mathbf{C}$ und $\mathbf{D}$ nehmen also folgende Gestalt an:
 
 \begin{align}
 	\begin{split}
@@ -55,15 +48,14 @@ Da der Zustandsvektor gleichzeitig der gemessene Zustand ist, kann der \textit{O
 	\label{eq:Output_Error}
 \end{equation}
 
-$\mathbf{\tilde{z}}$ entspricht dabei dem gemessenen Zustand, der zusammen mit dem Messrauschen aus dem 
-übertragenen Zustand 
+$\mathbf{\tilde{z}}$ entspricht dabei dem gemessenen Zustand, der zusammen mit dem Messrauschen aus dem übertragenen Zustand 
 $\mathbf{\tilde{y}}$ entsteht. Der übertragene Zustand kann aus den Steuergrößen $\mathbf{\tilde{u}}$ durch Multiplikation 
 mit der Übertragungsmatrix $\mathbf{G}(\mathbf{\theta)}$ berechnet werden. Die Übertagungsmatrix ist, wie in 
 \cref{eq:ZRD_Frequenzbereich} gezeigt, abhängig vom zugrunde liegenden Modell und von den zu schätzenden Parametern 
 $\mathbf{\theta}$. Diese sind die Einträge der Matrizen des Zustandsraummodells. Das Ziel der Methode ist nun, den 
 Ausgangsvektor, der aus dem Modell und seinen Parametern folgt, dem gemessenen Zustand möglichst gut anzunähern. Mathematisch 
-bedeutet das, dass das Minimum einer Kostenfunktion gefunden werden soll. Die Kostenfunktion der OEM ist nach Klein und 
-Morelli \cite{Klein2006} die negative Log-Likelihood-Funktion mithilfe des Ansatzes des Ausgangsfehlers 
+bedeutet das, dass das Minimum einer Kostenfunktion gefunden werden soll. Die Kostenfunktion der OEM ist nach \textit{Klein} 
+und \textit{Morelli} \cite{Klein2006} die negative Log-Likelihood-Funktion mithilfe des Ansatzes des Ausgangsfehlers 
 (\ref{eq:Output_Error}):
 
 \begin{equation}
@@ -73,13 +65,11 @@ Morelli \cite{Klein2006} die negative Log-Likelihood-Funktion mithilfe des Ansat
 	\label{eq:Kostenfunktion}
 \end{equation}  
 
-Die Matrix $\mathbf{S_{\nu\nu}}$ gewichtet die Messfehler der einzelnen Steuergrößen auf die Zustandsgrößen. 
-Wie bereits beschrieben, geht es nun darum, das Minimum dieser Kostenfunktion zu finden. Wir suchen also die Nullstelle ihrer 
-Ableitung. Einer der wichtigsten Algorithmen zur Bestimmung von Nullstellen (nicht)-linearer Funktionen sowohl bei 
-Eingrößenproblemen als auch bei Mehrgrößenproblemen ist der iterative \textit{Newton-Raphson}-Algorithmus. Dabei wird die 
-Nullstelle 
-mithilfe der Richtung der Tangentensteigung iterativ angenähert. Das Problem lässt sich folgendermaßen beschreiben: \noindent 
-\\
+Die Matrix $\mathbf{S_{\nu\nu}}$ gewichtet die Messfehler der einzelnen Steuergrößen auf die Zustandsgrößen. Wie bereits 
+beschrieben, geht es nun darum, das Minimum dieser Kostenfunktion zu finden. Wir suchen also die Nullstelle ihrer Ableitung. 
+Einer der wichtigsten Algorithmen zur Bestimmung von Nullstellen (nicht)-linearer Funktionen sowohl bei Eingrößenproblemen 
+als auch bei Mehrgrößenproblemen ist der iterative \textit{Newton-Raphson}-Algorithmus. Dabei wird die Nullstelle  mithilfe 
+der Richtung der Tangentensteigung iterativ angenähert. Das Problem lässt sich folgendermaßen beschreiben:\\
 
 \noindent \tab Gesucht ist die Nullstelle $ s $ einer Funktion $f(x)$ mit $f(s)=0$ für $x=s$. \\
 \tab $\overline{x}$ sei ein Punkt in der Umgebung der Nullstelle.\\
@@ -122,7 +112,7 @@ Diese Vorschrift lässt sich umformulieren für einen mehrdimensionalen Funktion
 Da wir das Miminum der Kostenfunktion suchen ist unser Funktionsvektor die Ableitung der Kostenfunktion nach den einzelnen zu schätzenden Parametern. 
 
 \begin{equation}
-	{F} = \frac{\delta J}{\delta \mathbf{\theta}}
+	{F} = \frac{\partial J}{\partial \mathbf{\theta}}
 	\label{eq:Newton_Raphson_1}
 \end{equation}
 
@@ -141,8 +131,8 @@ unser Problem umschreiben:
 In jedem Iterationsschritt muss also ein lineares Gleichungssystem gelöst werden. Das größte Problem bei der Implementierung 
 des Algorithmus ist die Berechnung der Ableitungen und der Hesse-Matrix in jedem Iterationsschritt. Diese können bei vielen 
 zu schätzenden Parametern schnell sehr kompliziert werden. Da die Kostenfunktion als Summe über alle Frequenzen berechnet 
-wird (siehe \cref{eq:Kostenfunktion}), gilt dies auch für die Ableitungen. Dadurch wird zusätzliche Rechenzeit 
-beansprucht. Der Algorithmus ist in \cref{fig:Newton_Raphson} nochmals übersichtlich dargestellt.  
+wird (siehe \cref{eq:Kostenfunktion}), gilt dies auch für die Ableitungen. Dadurch wird zusätzliche Rechenzeit beansprucht. 
+Der Algorithmus ist in \cref{fig:Newton_Raphson} nochmals übersichtlich dargestellt.  
 
 \begin{figure}[h!]
 	\centering
@@ -151,48 +141,52 @@ beansprucht. Der Algorithmus ist in \cref{fig:Newton_Raphson} nochmals übersich
 	\label{fig:Newton_Raphson}
 \end{figure}
 
+Der in Matlab implementierte Algorithmus wurde mit eigens dafür generierten Testdaten getestet. Dazu wurden ein Sinus-Signal 
+mit einer bestimmten Frequenz in der Höhenruderstuerung sowie ein Sinus-Signal im Anstellwinkel erstellt und der Algorithmus 
+verwendet, um die Übertragung zu identifizieren. Er war dabei in der Lage, die gewählten Frequenzen zu treffen.
+\todo[inline]{Diagramm des Tests in Anhang?}
+
+
+
 \section{Vor- und Nachteile}
 Wie bereits erwähnt werden bei der Systemidentifikation im Frequenzbereich fouriertransformierte Signalverläufe betrachtet. 
 Ein großer Vorteil besteht nun darin, dass die in der Identifikation berücksichtigten Frequenzpunkte frei gewählt werden 
 können. Dies ist von Vorteil, wenn im Vorhinein bereits bekannt ist, welche Frequenzen für das Modell eine wichtige Rolle 
 spielen. Auch wenn die Berechnungen im Algorithmus durchaus sehr aufwändig werden können, so ist der Rechenaufwand unabhängig 
-von der Länge des betrachteten Zeitraums bzw. der Anzahl der Datenpunkte im Zeitbereich.
-
+von der Länge des betrachteten Zeitraums bzw. der Anzahl der Datenpunkte im Zeitbereich.\par
 Darüberhinaus lässt sich ein physikalisches Verständnis des Systems im Frequenzbereich gewinnen, was für viele Anwendungen 
 sehr hilfreich sein kann. Im Reglerentwurf beispielsweise sind Frequenzverläufe von großer Wichtigkeit.\\
 
 Ein schwerwiegender Nachteil ist die Notwendigkeit eines passenden Eingangssignals zum Erreichen einer guten Identifikation. 
 Als Beispiel sei ein Frequency Sweep, auch Chirp-Signal genannt, bei welchem eine Schwingung mit steigender Frequenz auf eine 
-Steuerung gegeben wird. Mit solchen passenden Steuerungen ist mit deutlich besseren Identifikationsergebnissen zu rechnen.
-
+Steuerung gegeben wird. Mit solchen passenden Steuerungen ist mit deutlich besseren Identifikationsergebnissen zu rechnen.\par
 Die Bestimmung der einfachen und zweifachen Ableitungen für die Jacobi- und Hesse-Matrizen ist sehr aufwändig. In diesem 
 Projekt wurde deshalb auf die Möglichkeit des symbolischen Rechnens in Matlab zurückgegriffen. Trotdzem bleibt dies ein 
-Nachteil.
-
+Nachteil.\par
 Schließlich bleibt noch die Berücksichtigung des Abtasttheorems nach Shannon ein wichtiger Punkt, um Frequenzverfälschungen 
 zu vermeiden \cite{Grimm2017}. Demzufolge muss die Abtastfrequenz mehr als doppelt so groß sein wie die größte Frequenz im 
 Signal. Dies stellte sich bei den vorliegenden Daten jedoch nicht als Problem heraus.
 
-\section{Ergebnisse}
 
-Abschließend will das folgende Kapitel\todo{will das folgende Kapitel => soll der folgende Abschnitt} noch einen kurzen 
-Einblick in die Ergebnisse der Parameterschätzung im Frequenzbereich geben. In \cref{fig:Ergebnisse_f} sind sowohl die 
-geschätzten Frequenzverläufe als auch die originalen Frequenzverläufe dargestellt. Beim Blick auf die originalen Daten (in 
-rot dargestellt) fällt der erwartete Trend ins Auge. Die Übertragung findet hauptsächlich im Bereich niedriger Frequenzen 
-statt. Die Verläufe knicken für große Frequenzen ab. Ausnahme ist die Nickrate $q$. Da wir allerdings nur die Bewegung 
-während der Platzrunde betrachten, liegt $q$ nahe bei $ 0 $ und wird hauptsächlich vom Messrauschen bestimmt. Dies könnte den 
-Anstieg bei hohen Frequenzen erklären. Um ein besseres Bild vom Übertragungsverhalten von $q$ zu bekommen, müsste 
-beispielsweiße im Bereich der Anstellwinkelschwingung geflogen werden. \todo{Erklärung zu Frequenzverläufen an Anfang 
-stellen?}Aus dem \textit{Newton-Raphson}-Algorithmus erhält man 
-eine Abschätzung des Parametervektors $\theta$ und damit auch eine Abschätzung der Übertragungsmatrix $G(\theta)$. Mithilfe 
-von $G(\theta)$ und den gemessenen Steuergrößen lässt sich ein geschätzter Frequenzverlauf der Zustandsgrößen berechnen. 
-Dieser ist ebenfalls in Abb. \ref{fig:Ergebnisse_f} eingezeichnet. Es zeigt sich, dass die Frequenzverläufe im Allgemeinen 
-gut getroffen werden. Teilweise werden Ausschläge sogar exakt getroffen (siehe Verlauf von $q$ im niedrigen Frequenzbereich). 
-Das häufigsts Problem, das wir beobachten konnten, war allerdings das Überschätzen bzw. Unterschätzen der Ausgangsverläufe. 
-Deutlich zu sehen ist das im Verlauf der Geschwindigkeit $V_{A}$. Ein Grund könnten die unterschiedlichen Größenordnungen der 
-Zustandsgrößen sein. Dies würde erklären warum die Geschwindigkeit, mit der größten nominellen Abweichung vom Trimmpunkt, 
-unterschätzt wird. Eine Normalisierung der Zustandsgrößen wäre deshalb ein möglicher Ansatz zur Verbesserung der Ergebnisse 
-(siehe Kapitel \ref{chapter:Zusammenfassung}). 
+
+\section{Ergebnisse}
+Abschließend soll der folgende Abschnitt noch einen kurzen Einblick in die Ergebnisse der Parameterschätzung im 
+Frequenzbereich geben. Aus dem \textit{Newton-Raphson}-Algorithmus erhält man eine Abschätzung des Parametervektors $\theta$ 
+und damit auch eine Abschätzung der Übertragungsmatrix $G(\theta)$. Mithilfe von $G(\theta)$ und den gemessenen Steuergrößen 
+lässt sich ein geschätzter Frequenzverlauf der Zustandsgrößen berechnen.
+In \cref{fig:Ergebnisse_f} sind sowohl die geschätzten Frequenzverläufe als auch die originalen 
+Frequenzverläufe dargestellt. Beim Blick auf die originalen Daten (in rot dargestellt) fällt der erwartete Trend ins Auge. 
+Die Übertragung findet hauptsächlich im Bereich niedriger Frequenzen statt. Die Verläufe knicken für große Frequenzen ab. 
+Ausnahme ist die Nickrate $q$. Da wir allerdings nur die Bewegung während der Platzrunde betrachten, liegt $q$ nahe bei $ 0 $ 
+und wird hauptsächlich vom Messrauschen bestimmt. Dies könnte den Anstieg bei hohen Frequenzen erklären. Um ein besseres Bild 
+vom Übertragungsverhalten von $q$ zu bekommen, müsste beispielsweiße im Bereich der Anstellwinkelschwingung geflogen werden. 
+\todo{Erklärung zu Frequenzverläufen an Anfang stellen?}
+Es zeigt sich, dass die Frequenzverläufe im Allgemeinen gut getroffen werden. Teilweise werden Ausschläge sogar exakt 
+getroffen (siehe Verlauf von $q$ im niedrigen Frequenzbereich). Das häufigste Problem, das wir beobachten konnten, war 
+allerdings das Überschätzen bzw. Unterschätzen der Ausgangsverläufe. Deutlich zu sehen ist das im Verlauf der Geschwindigkeit 
+$V_{A}$. Ein Grund könnten die unterschiedlichen Größenordnungen der Zustandsgrößen sein. Dies würde erklären warum die 
+Geschwindigkeit, mit der größten nominellen Abweichung vom Trimmpunkt, unterschätzt wird. Eine Normalisierung der 
+Zustandsgrößen wäre deshalb ein möglicher Ansatz zur Verbesserung der Ergebnisse (siehe \cref{chapter:Zusammenfassung}). 
 
 \begin{figure}[h!]
 	\centering
@@ -219,4 +213,4 @@ wäre eine mögliche Erklärung für die weniger guten Ergebnisse einiger Absch�
 	\label{fig:Ergebnisse_t}
 \end{figure}
 
-\todo[inline]{Seitenbewegung erwähnen}
+\todo[inline]{Testd erwähnen}

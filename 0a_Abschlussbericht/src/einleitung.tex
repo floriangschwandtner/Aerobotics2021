@@ -1,12 +1,16 @@
 \chapter{Einleitung}
 
-In der vorliegenden Arbeit geht es darum, aus vorliegenden Flugmessdaten des e-Genius 1:3-Modells die Parameter 
-linearisierter Modelle der Längs- und Seitenbewegung zu identifizieren. Dazu werden Verfahren im Frequenz- und im Zeitbereich 
-verwendet, um die Ergebnisse vergleichen zu können.
+Die vorliegende Arbeit wurde im Rahmen des Aerobotics-Seminars im Sommersemester 2021 an der Universität Stuttgart verfasst. 
+Ziel des Projekts war die Identifikation der Parameter eines linearisierten Modells der Längsbewegung aus vorliegenden 
+Flugmessdaten eines 1:3-Modells des Flugzeugs \textit{e-Genius}. Für die Seitenbewegung wurde ebenfalls eine 
+Systemidentifikation durchgeführt, aus Gründen der Übersichtlichkeit und Kürze wird diese aber in der Ausarbeitung 
+ausgelassen.\par
+Es werden Verfahren im Zeit- und im Frequenzbereich verwendet, um die Ergebnisse abschließend vergleichen zu können. Genauer 
+handelt es sich dabei im Zeitbereich um die \textit{Least Squares}-Methode sowie die Matrix-LSQ-Methode. Im Frequenzbereich 
+wird die \textit{Output Error}-Methode in Verbindung mit einem \textit{Newton-Raphson}-Algorithmus verwendet.\\
 
-- wichtige Rolle in der Regelungstechnik: liefert Modell der Regelstrecke
+Linearisierte Modelle spielen eine wichtige Rolle in der Regelungstechnik: Mit ihnen lässt sich eine lineare Regelung um 
+einen stationären Arbeits- bzw. Trimmpunkt entwickeln. Eine Schwierigkeit besteht dabei aber immer wieder darin, die 
+Regelstrecke mit dem Modell ausreichend genau zu beschreiben. Hier kommt die Systemidentifikation ins Spiel: Sie hat zum Ziel 
+aus gegebenen Flugmessdaten die Parameter des definierten Modells bestmöglich abzuschätzen.
 
-	o gegeben: 	$ x(t) $, $ u(t) $ aus Flugmessdaten, Struktur der lin. Modelle (Längs- und Seitenbewegung)
-	o gesucht: 	Parameter der lin. Modelle
-
-- 
