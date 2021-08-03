@@ -6,15 +6,15 @@ In diesem Kapitel wird die Methode der kleinsten Fehlerquadrate (\textit{Least S
 Eine der Kernaufgaben vieler Ingenieure besteht darin, einen belastbaren Zusammenhang zwischen gemessenen Werten zu finden. 
 Diese Zusammenhänge können näherungsweise durch folgendes lineares Modell beschrieben werden:  
 \begin{equation}
-    z = H\cdot x+v 
+    \textbf{z} = \textbf{H}\cdot \textbf{x}+v 
 \end{equation}
 mit 
 \begin{align}
 	\begin{split}
-		\text{Messvektor: } &\dim{(z)} = m\times 1\\
-		\text{bekannte Matrix: } &\dim{(H)} = m\times n\\
-		\text{unbekannter Rauschterm: } &\dim{(v)} = m\times1\\
-		\text{unbekannter Parametervektor: } &\dim{(x)} = n\times 1
+		\text{Messvektor: } &\dim{(\textbf{z})} = m\times 1\\
+		\text{bekannte Matrix: } &\dim{(\textbf{H})} = m\times n\\
+		\text{unbekannter Rauschterm: } &\dim{(\textbf{v})} = m\times1\\
+		\text{unbekannter Parametervektor: } &\dim{(\textbf{x})} = n\times 1
 		\nonumber
 	\end{split}
 \end{align}
@@ -23,7 +23,7 @@ Die LSQ-Methode kann beispielsweise verwendet werden, um die Schätzung von Mode
 Systemidentifikation durchzuführen. Gesucht ist dabei ein Schätzwert $\hat{x}$ für den Parametervektor. Der Restfehlervektor 
 $e$ lautet:
 \begin{equation}
-    e = z - H\cdot \hat{x} \\
+    \textbf{e} = \textbf{z} - \textbf{H}\cdot \hat{\textbf{x}} \\
 \end{equation}
 
 Die Idee besteht darin, einen Wert von $\hat{x}$ zu finden, der die Norm des quadrierten Restfehlervektors minimiert. Das 
@@ -36,9 +36,9 @@ quadratische Zielfunktional $J$ ist gegeben durch:
      &= \frac{1}{2} \cdot z^{T}z - z^{T}H\hat{x} + \frac{1}{2}\cdot {\hat{x}}^{T}A\hat{x}  \\
    \end{split}
 \end{align}
-mit $A = H^{T}H$. Die Lösung des Minimierungsproblems lautet dann:
+mit $\textbf{A} = \textbf{H}^{T} \textbf{H}$. Die Lösung des Minimierungsproblems lautet dann:
 \begin{equation}
-    \hat{x}= {(H^{T} H)}^{-1} \cdot H^{T} z 
+    \hat{\textbf{x}}= {(\textbf{H}^{T} \textbf{H})}^{-1} \cdot \textbf{H}^{T} \textbf{z} 
 \end{equation}
 
 
@@ -58,17 +58,17 @@ Die Zustandsraumdarstellung \eqref{eq:laengsbewegung} liefert folgende Gleichung
 	
 Diese können zu einem linearen Gleichungssystem umgeformt werden: 
 \begin{equation}
-    z_{L}= H_{L}\cdot x + v
+    \textbf{z}_{L}= \textbf{H}_{L}\cdot \textbf{x} + \textbf{v}
 \end{equation}
 
 Die einzelnen Vektoren und Matrizen lauten:
 \setcounter{MaxMatrixCols}{15}
 \begin{equation}
-	z_{L} = (\Delta\dot \alpha-q \;\; \dot q \;\; \Delta\dot V_A)^T
+	\textbf{z}_{L} = (\Delta\dot \alpha-q \;\; \dot q \;\; \Delta\dot V_A)^T
 \end{equation}
 
 \begin{equation}
-	 H_{L} = \begin{pmatrix}
+	 \textbf{H}_{L} = \begin{pmatrix}
 		0&0&0& \frac{-\sin{(\alpha_0)}\cdot\Delta\delta_F}{V_0} & \frac{\Delta\alpha}{V_0}& \frac{\Delta V_A}{V_0} & 
 		\frac{\Delta\eta}{V_0} &0&0&0&0&0   \\
 		0&0&0&0&0&0&0 &\Delta\alpha & q & \Delta V_A & \Delta\eta & \Delta\delta_F \\
@@ -77,7 +77,7 @@ Die einzelnen Vektoren und Matrizen lauten:
 \end{equation}
 
 \begin{equation}
-	x = (X_{\alpha}\; 
+	\textbf{x} = (X_{\alpha}\; 
 	X_{\nu}\;
 	X_{\eta}\;
 	X_{\delta_F}\; 
@@ -92,7 +92,7 @@ Die einzelnen Vektoren und Matrizen lauten:
 \end{equation}  
 Wie schon in dem letzten Abschnitt erwähnt, wird es nach einem geschätzten Paramertervektor $\hat{x}$ gesucht, der die Norm des quadrierten Restfehlervektors $ e = z - H\cdot \hat{x}$ minimiert. Die Lösung ist laut (4.4)
 \begin{equation}
-    \hat{x}= {({H_L}^{T} {H_L})}^{-1} \cdot {H_L}^{T} z_L 
+    \hat{\textbf{x}}= {({\textbf{H}_L}^{T} {\textbf{H}_L})}^{-1} \cdot {\textbf{H}_L}^{T} \textbf{z}_L 
 \end{equation}
 
 
