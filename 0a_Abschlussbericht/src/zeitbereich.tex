@@ -88,10 +88,13 @@ Die einzelnen Vektoren und Matrizen lauten:
 	M_{q}\;
 	M_{\nu}\;
 	M_{\eta}\;
-	M_{\delta_F})^T
+	M_{\delta_F})^T \\
+\end{equation}  
+Wie schon in dem letzten Abschnitt erwähnt, wird es nach einem geschätzten Paramertervektor $\hat{x}$ gesucht, der die Norm des quadrierten Restfehlervektors $ e = z - H\cdot \hat{x}$ minimiert. Die Lösung ist laut (4.4)
+\begin{equation}
+    \hat{x}= {({H_L}^{T} {H_L})}^{-1} \cdot {H_L}^{T} z_L 
 \end{equation}
 
- \todo[inline]{Beschreibung der Vorgehensweise, d.h. Lösung des Gleichungssystems mit LSQ}
  
  \section{Ergebnisse}
  
@@ -100,35 +103,45 @@ Anschließend werden die Ergebnisse in diesem Kapitel kurz vorgestellt.
 Nach der Schätzung der Einträge der Matrizen $A$ und $B$ wird das Anfangswertproblem \eqref{eq:laengsbewegung} im gesamten 
 Zeitintervall gelöst. Bei allen Simulationen sind die Filterparametern wie in \ref{section:filterung} gewählt.
 
-In \cref{fig:Ergebnisse_zmlsq} wird die Lösung anhand des Matrix-LSQ-Verfahrens dargestellt. Die Ergebnisse zeigen eine 
-relativ präzise Approximation. Das Verfahren ist sehr schnell und einfach zu implementieren im Vergleich zur 
-LSQ-Methode.\todo{Vergleich der Verfahren hier noch nicht so passend}  Allerdings weist das Ergebnis in flugmechanischer 
-Hinsicht Abweichungen in System- 
-und Eingangsmatrix auf. Die Matrizen $A$ und $B$ lauten: 
+In \cref{fig:Ergebnisse_zmlsq} wird die Lösung anhand des Matrix-LSQ-Verfahrens dargestellt. Die geschätzte Matrizen $A_L$ und $B_L$ lauten: 
 \begin{equation}
- 	A = \begin{pmatrix}
+ 	A_L = \begin{pmatrix}
  		-0.1940 & 0.005 & -0.0002 & -0.0540 \\
  		-38.9899 & -12.8888 & 0.3632 & -4.2686 \\
  		-6.1506 & -0.1501 & -0.0589 & -5.0107 \\
  		0.4433 & 0.0427 & 0.0023 & 0.0818
- 	\end{pmatrix}
+ 	\end{pmatrix} \;\;\; , \;\;\;
+ 	A = \begin{pmatrix}
+		\frac{Z_\alpha}{V_0} & 1 & \frac{Z_V}{V_0} & 0\\
+		M_\alpha & M_q & M_V & 0\\
+		X_\alpha & 0 & X_V & -g\\
+		-\frac{Z_\alpha}{V_0} & 0 & -\frac{Z_V}{V_0} & 0\\
+	\end{pmatrix}
 	\nonumber
 \end{equation}
 
 \begin{equation}
- 	 B = \begin{pmatrix}
+ 	 B_L = \begin{pmatrix}
  		-0.0267 & -0.0164 \\ 
  		-26.1377 & -12.9651 \\
  		-0.7414 & 4.6092 \\
  		0.0477 & -0.1328
- 	\end{pmatrix}
+ 	\end{pmatrix}  \;\;\; , \;\;\;
+ 	B= \begin{pmatrix}
+		\frac{Z_\eta}{V_0} & -\frac{X_{\delta F}}{V_0} \sin{(\alpha_0)}\\
+		M_\eta & M_{\delta F}\\
+		X_\eta & X_{\delta F} \cos{(\alpha_0)}\\
+		-\frac{Z_\eta}{V_0} & \frac{X_{\delta F}}{V_0} \sin{(\alpha_0)}\\
+	\end{pmatrix}
  \nonumber
 \end{equation}
+Die Ergebnisse in \cref{fig:Ergebnisse_zmlsq} zeigen eine relativ präzise Approximation. Allerdings weist das Ergebnis in flugmechanischer 
+Hinsicht Abweichungen in System- und Eingangsmatrix auf. Der Betrag der Einträge der ersten und vierten Spalten von $A_L$ unterscheiden sich stark voneinander ($-0.1940$ und $0.4433$) und ($-0.0002$ und $0.0023$). Eine Starke Abweichung ist auch zwischen die vierten Spalten der Matrizen $A_L$ und $A$.  
 
-\todo[inline]{Ergebnisse der Matrizen bewerten}
  
-\cref{fig:Ergebnisse_zlsq} zeigt die Lösung anhand des LSQ-Verfahrens. Die Methode liefert keine sonderlich guten Ergebnisse. 
-\todo{Instabilität des Simulators erwähnen}\todo{warum schlechte Ergebnisse?}
+\cref{fig:Ergebnisse_zlsq} zeigt die Lösung anhand des LSQ-Verfahrens. Die Methode liefert keine sonderlich guten Ergebnisse. Der Simulator kann keine stabilen Werten generieren. 
+
+\todo{warum schlechte Ergebnisse? : Adam : ich weiß nicht warum?}
 \begin{figure}[h!]
 	\centering
 	\includegraphics[trim=100 0 100 0,clip,width=1\linewidth]{LS.png}
@@ -144,3 +157,4 @@ und Eingangsmatrix auf. Die Matrizen $A$ und $B$ lauten:
 \end{figure}
 
 \todo{Diagramme gut lesbar?}
+
