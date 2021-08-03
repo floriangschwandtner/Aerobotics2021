@@ -131,7 +131,7 @@ unser Problem umschreiben:
 In jedem Iterationsschritt muss also ein lineares Gleichungssystem gelöst werden. Das größte Problem bei der Implementierung 
 des Algorithmus ist die Berechnung der Ableitungen und der Hesse-Matrix in jedem Iterationsschritt. Diese können bei vielen 
 zu schätzenden Parametern schnell sehr kompliziert werden. Da die Kostenfunktion als Summe über alle Frequenzen berechnet 
-wird (siehe \cref{eq:Kostenfunktion}), gilt dies auch für die Ableitungen. Dadurch wird zusätzliche Rechenzeit beansprucht. 
+wird (vgl. \cref{eq:Kostenfunktion}), gilt dies auch für die Ableitungen. Dadurch wird zusätzliche Rechenzeit beansprucht. 
 Der Algorithmus ist in \cref{fig:Newton_Raphson} nochmals übersichtlich dargestellt.  
 
 \begin{figure}[h!]
@@ -143,7 +143,7 @@ Der Algorithmus ist in \cref{fig:Newton_Raphson} nochmals übersichtlich dargest
 
 Der in Matlab implementierte Algorithmus wurde mit eigens dafür generierten Testdaten getestet. Dazu wurden ein Sinus-Signal 
 mit einer bestimmten Frequenz in der Höhenruderstuerung sowie ein Sinus-Signal im Anstellwinkel erstellt und der Algorithmus 
-verwendet, um die Übertragung zu identifizieren. Er war dabei in der Lage, die gewählten Frequenzen zu treffen.
+verwendet, um die Über-tragung zu identifizieren. Er war dabei in der Lage, die gewählten Frequenzen zu treffen.
 \todo[inline]{Diagramm des Tests in Anhang?}
 
 
@@ -172,21 +172,21 @@ Signal. Dies stellte sich bei den vorliegenden Daten jedoch nicht als Problem he
 \section{Ergebnisse}
 Abschließend soll der folgende Abschnitt noch einen kurzen Einblick in die Ergebnisse der Parameterschätzung im 
 Frequenzbereich geben. Aus dem \textit{Newton-Raphson}-Algorithmus erhält man eine Abschätzung des Parametervektors $\theta$ 
-und damit auch eine Abschätzung der Übertragungsmatrix $G(\theta)$. Mithilfe von $G(\theta)$ und den gemessenen Steuergrößen 
-lässt sich ein geschätzter Frequenzverlauf der Zustandsgrößen berechnen.
+und damit auch eine Abschätzung der Übertragungs-matrix $G\mathbf{(\theta)}$. Mithilfe von $G(\theta)$ und den gemessenen 
+Steuergrößen lässt sich ein geschätzter Frequenzverlauf der Zustandsgrößen berechnen.
 In \cref{fig:Ergebnisse_f} sind sowohl die geschätzten Frequenzverläufe als auch die originalen 
 Frequenzverläufe dargestellt. Beim Blick auf die originalen Daten (in rot dargestellt) fällt der erwartete Trend ins Auge. 
 Die Übertragung findet hauptsächlich im Bereich niedriger Frequenzen statt. Die Verläufe knicken für große Frequenzen ab. 
 Ausnahme ist die Nickrate $q$. Da wir allerdings nur die Bewegung während der Platzrunde betrachten, liegt $q$ nahe bei $ 0 $ 
 und wird hauptsächlich vom Messrauschen bestimmt. Dies könnte den Anstieg bei hohen Frequenzen erklären. Um ein besseres Bild 
 vom Übertragungsverhalten von $q$ zu bekommen, müsste beispielsweiße im Bereich der Anstellwinkelschwingung geflogen werden. 
-\todo{Erklärung zu Frequenzverläufen an Anfang stellen?}
-Es zeigt sich, dass die Frequenzverläufe im Allgemeinen gut getroffen werden. Teilweise werden Ausschläge sogar exakt 
-getroffen (siehe Verlauf von $q$ im niedrigen Frequenzbereich). Das häufigste Problem, das wir beobachten konnten, war 
-allerdings das Überschätzen bzw. Unterschätzen der Ausgangsverläufe. Deutlich zu sehen ist das im Verlauf der Geschwindigkeit 
-$V_{A}$. Ein Grund könnten die unterschiedlichen Größenordnungen der Zustandsgrößen sein. Dies würde erklären warum die 
-Geschwindigkeit, mit der größten nominellen Abweichung vom Trimmpunkt, unterschätzt wird. Eine Normalisierung der 
-Zustandsgrößen wäre deshalb ein möglicher Ansatz zur Verbesserung der Ergebnisse (siehe \cref{chapter:Zusammenfassung}). 
+Allgemein zeigt sich, dass die Frequenzverläufe gut getroffen werden. Teilweise werden Ausschläge sogar exakt 
+getroffen (vgl. Verlauf von $q$ im niedrigen Frequenzbereich). Das häufigste Problem, das beobachtet werden konnte, war 
+allerdings das Überschätzen bzw. Unterschätzen der Ausgangsverläufe. Deutlich zu sehen ist dies im Verlauf der 
+Geschwindigkeit $V_{A}$. Ein Grund könnten die unterschiedlichen Größenordnungen der Zustandsgrößen sein. Dies würde erklären 
+weshalb genau die Geschwindigkeit, mit der größten nominellen Abweichung vom Trimmpunkt, unterschätzt wird. Eine 
+Normalisierung der Zustandsgrößen wäre deshalb ein möglicher Ansatz zur Verbesserung der Ergebnisse (vgl. 
+\cref{chapter:Zusammenfassung}). 
 
 \begin{figure}[h!]
 	\centering
