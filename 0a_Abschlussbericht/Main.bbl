@@ -10,7 +10,7 @@
 \bibitem[1]{Bendat1986}
 \textsc{Bendat}, J.~S. ; \textsc{Piersol}, A.~G.:
 \newblock \emph{Random Data: Analysis and Measurement Procedures}.
-\newblock John Wiley & Sons, Inc., 1986. --
+\newblock John Wiley \& Sons, Inc., 1986. --
 \newblock ISBN 0--471--04000--2
 
 \bibitem[2]{Fichter2009}
@@ -29,5 +29,11 @@
 \newblock American Institute of Aeronautics~{and}~Astronautics, Reston, VA,
   2006. --
 \newblock ISBN 1--56347--832--3
+
+\bibitem[5]{Mandry2021}
+\textsc{Mandry}, N. :
+\newblock \emph{Modul 5: Kleinste Fehlerquadrate für eine Matrixgleichung:
+  Matrix-LSQ}.
+\newblock 2021
 
 \end{thebibliography}

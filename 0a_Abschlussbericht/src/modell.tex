@@ -16,40 +16,41 @@ Die Dynamiken können deshalb entkoppelt behandelt werden, was eine getrennte Id
 ermöglicht. %\cite{Vorlesung2}
 
 %\section{Längsbewegung}
-Der Zustand der Längsbewegung setzt sich zusammen aus dem Anstellwinkel $ \alpha $, der Nickrate $ q $, der 
-Anströmgeschwindigkeit $ V_A $ und dem Bahnwinkel $ \gamma $. Die zugehörigen Steuerungen umfassen den Höhenruderausschlag $ 
-\eta $ und den Schubdrosselgrad $ \delta_F $. Bis auf die Nickrate werden alle Größen als Abweichungen (Delta-Größen) vom 
-jeweiligen Trimmpunkt (gekennzeichnet durch den Index "$ _0 $") beschrieben. Es ergibt sich folgendes Modell:
+Der Zustand $ \mathbf {x} $ der Längsbewegung setzt sich zusammen aus dem Anstellwinkel $ \alpha $, der Nickrate $ q $, der 
+Anströmgeschwindigkeit $ V_A $ und dem Bahnwinkel $ \gamma $. Die zugehörige Steuerung $ \mathbf{u} $ umfasst den 
+Höhenruderausschlag $ \eta $ und den Schubdrosselgrad $ \delta_F $. Bis auf die Nickrate werden alle Größen als Abweichungen 
+(Delta-Größen) vom jeweiligen Trimmpunkt (gekennzeichnet durch den Index "$ _0 $") beschrieben. Es ergibt sich folgendes 
+Modell:
 
 \begin{equation}\label{eq:laengsbewegung}
-	\begin{pmatrix}
+	\underbrace{\begin{pmatrix}
 		\Delta \dot \alpha\\
 		\dot q\\
 		\Delta \dot V_A\\
 		\Delta \dot \gamma
-	\end{pmatrix} = 
-	\begin{pmatrix}
+	\end{pmatrix}}_{\mathbf{\dot x}} = 
+	\underbrace{\begin{pmatrix}
 		\frac{Z_\alpha}{V_0} & 1 & \frac{Z_V}{V_0} & 0\\
 		M_\alpha & M_q & M_V & 0\\
 		X_\alpha & 0 & X_V & -g\\
 		-\frac{Z_\alpha}{V_0} & 0 & -\frac{Z_V}{V_0} & 0\\
-	\end{pmatrix} \cdot
-	\begin{pmatrix}
+	\end{pmatrix}}_{\mathbf{A}} \cdot
+	\underbrace{\begin{pmatrix}
 		\Delta \alpha\\
 		q\\
 		\Delta V_A\\
 		\Delta \gamma
-	\end{pmatrix} + 
-	\begin{pmatrix}
+	\end{pmatrix}}_{\mathbf{x}} + 
+	\underbrace{\begin{pmatrix}
 		\frac{Z_\eta}{V_0} & -\frac{X_{\delta F}}{V_0} \sin{(\alpha_0)}\\
 		M_\eta & M_{\delta F}\\
 		X_\eta & X_{\delta F} \cos{(\alpha_0)}\\
 		-\frac{Z_\eta}{V_0} & \frac{X_{\delta F}}{V_0} \sin{(\alpha_0)}\\
-	\end{pmatrix}\cdot
-	\begin{pmatrix}
+	\end{pmatrix}}_{\mathbf{B}}\cdot
+	\underbrace{\begin{pmatrix}
 		\Delta \eta\\
 		\Delta \delta_F\\
-	\end{pmatrix}
+	\end{pmatrix}}_{\mathbf{u}}
 \end{equation}
 
 %\section{Seitenbewegung}

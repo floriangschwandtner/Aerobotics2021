@@ -10,13 +10,18 @@
 \contentsline {subsection}{\numberline {3.4.2}Wahl der Filterübertragungsfunktion}{7}{subsection.3.4.2}%
 \contentsline {chapter}{\numberline {4}Systemidentifikation im Zeitbereich}{9}{chapter.4}%
 \contentsline {section}{\numberline {4.1}\textit {Least Squares}-Methode}{9}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Schätzung der Parameter mit dem LSQ-Verfahren}{9}{subsection.4.1.1}%
-\contentsline {section}{\numberline {4.2}Ergebnisse}{10}{section.4.2}%
-\contentsline {chapter}{\numberline {5}Systemidentifikation im Frequenzbereich}{12}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Fourier-Transformation}{12}{section.5.1}%
-\contentsline {section}{\numberline {5.2}\textit {Output Error}-Methode}{12}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Vor- und Nachteile}{14}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Ergebnisse}{15}{section.5.4}%
-\contentsline {chapter}{\numberline {6}Zusammenfassung und Ausblick}{18}{chapter.6}%
-\contentsline {chapter}{Literaturverzeichnis}{18}{chapter.6}%
+\contentsline {subsection}{\numberline {4.1.1}Schätzung der Parameter mit dem LSQ-Verfahren}{10}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Matrix-LSQ-Methode}{10}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Modellgleichung}{10}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Schätzgleichung}{11}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Ergebnisse}{11}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Interpretation}{12}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Systemidentifikation im Frequenzbereich}{14}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Fourier-Transformation}{14}{section.5.1}%
+\contentsline {section}{\numberline {5.2}\textit {Output Error}-Methode}{14}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Vor- und Nachteile}{16}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Ergebnisse}{17}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Zusammenfassung und Ausblick}{19}{chapter.6}%
+\contentsline {chapter}{Literaturverzeichnis}{19}{chapter.6}%
+\contentsline {chapter}{\numberline {A}Test des Algorithmus im Frequenzbereich}{21}{appendix.A}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -6,15 +6,15 @@ In diesem Kapitel wird die Methode der kleinsten Fehlerquadrate (\textit{Least S
 Eine der Kernaufgaben vieler Ingenieure besteht darin, einen belastbaren Zusammenhang zwischen gemessenen Werten zu finden. 
 Diese Zusammenhänge können näherungsweise durch folgendes lineares Modell beschrieben werden:  
 \begin{equation}
-    \textbf{z} = \textbf{H}\cdot \textbf{x}+v 
+    \mathbf{z} = \mathbf{H}\cdot \mathbf{x}+\mathbf{v}
 \end{equation}
 mit 
 \begin{align}
 	\begin{split}
-		\text{Messvektor: } &\dim{(\textbf{z})} = m\times 1\\
-		\text{bekannte Matrix: } &\dim{(\textbf{H})} = m\times n\\
-		\text{unbekannter Rauschterm: } &\dim{(\textbf{v})} = m\times1\\
-		\text{unbekannter Parametervektor: } &\dim{(\textbf{x})} = n\times 1
+		\text{Messvektor: } &\dim{(\mathbf{z})} = m\times 1\\
+		\text{bekannte Matrix: } &\dim{(\mathbf{H})} = m\times n\\
+		\text{unbekannter Rauschterm: } &\dim{(\mathbf{v})} = m\times1\\
+		\text{unbekannter Parametervektor: } &\dim{(\mathbf{x})} = n\times 1
 		\nonumber
 	\end{split}
 \end{align}
@@ -23,22 +23,24 @@ Die LSQ-Methode kann beispielsweise verwendet werden, um die Schätzung von Mode
 Systemidentifikation durchzuführen. Gesucht ist dabei ein Schätzwert $\hat{x}$ für den Parametervektor. Der Restfehlervektor 
 $e$ lautet:
 \begin{equation}
-    \textbf{e} = \textbf{z} - \textbf{H}\cdot \hat{\textbf{x}} \\
+    \mathbf{e} = \mathbf{z} - \mathbf{H}\cdot \hat{\mathbf{x}} \\
 \end{equation}
 
 Die Idee besteht darin, einen Wert von $\hat{x}$ zu finden, der die Norm des quadrierten Restfehlervektors minimiert. Das 
 quadratische Zielfunktional $J$ ist gegeben durch: 
 \begin{align}
    \begin{split}
-     J &= \frac{1}{2} \cdot e^{T} \cdot e \\
-     &= \frac{1}{2} \cdot {(z- H\hat{x})}^{T}\cdot(z- H\hat{x}) \\
-     &= \frac{1}{2} \cdot (z^{T} -{\hat{x}}^{T}H^{T})\cdot(z- H\hat{x}) \\
-     &= \frac{1}{2} \cdot z^{T}z - z^{T}H\hat{x} + \frac{1}{2}\cdot {\hat{x}}^{T}A\hat{x}  \\
+     J &= \frac{1}{2} \cdot \mathbf{e}^{T} \cdot \mathbf{e} \\
+     &= \frac{1}{2} \cdot {(\mathbf{z}- \mathbf{H}\mathbf{\hat{x}})}^{T}\cdot(\mathbf{z}- \mathbf{H}\mathbf{\hat{x}}) \\
+     &= \frac{1}{2} \cdot (\mathbf{z}^{T} -\mathbf{\hat{x}}^{T}\mathbf{H}^{T})\cdot(\mathbf{z}- \mathbf{H}\mathbf{\hat{x}}) \\
+     &= \frac{1}{2} \cdot \mathbf{z}^{T}\mathbf{z} - \mathbf{z}^{T}\mathbf{H}\mathbf{\hat{x}} + \frac{1}{2}\cdot 
+     {\mathbf{\hat{x}}}^{T}\mathbf{A}\mathbf{\hat{x}}  \\
    \end{split}
 \end{align}
-mit $\textbf{A} = \textbf{H}^{T} \textbf{H}$. Die Lösung des Minimierungsproblems lautet dann:
+mit $\mathbf{A} = \mathbf{H}^{T} \mathbf{H}$. Die Lösung des Minimierungsproblems lautet dann:
 \begin{equation}
-    \hat{\textbf{x}}= {(\textbf{H}^{T} \textbf{H})}^{-1} \cdot \textbf{H}^{T} \textbf{z} 
+    \hat{\mathbf{x}}= {(\mathbf{H}^{T} \mathbf{H})}^{-1} \cdot \mathbf{H}^{T} \mathbf{z} 
+    \label{eq:minProblemLoesung}
 \end{equation}
 
 
@@ -58,17 +60,17 @@ Die Zustandsraumdarstellung \eqref{eq:laengsbewegung} liefert folgende Gleichung
 	
 Diese können zu einem linearen Gleichungssystem umgeformt werden: 
 \begin{equation}
-    \textbf{z}_{L}= \textbf{H}_{L}\cdot \textbf{x} + \textbf{v}
+    \mathbf{z}_{L}= \mathbf{H}_{L}\cdot \mathbf{x} + \mathbf{v}
 \end{equation}
 
 Die einzelnen Vektoren und Matrizen lauten:
 \setcounter{MaxMatrixCols}{15}
 \begin{equation}
-	\textbf{z}_{L} = (\Delta\dot \alpha-q \;\; \dot q \;\; \Delta\dot V_A)^T
+	\mathbf{z}_{L} = (\Delta\dot \alpha-q \;\; \dot q \;\; \Delta\dot V_A)^T
 \end{equation}
 
 \begin{equation}
-	 \textbf{H}_{L} = \begin{pmatrix}
+	 \mathbf{H}_{L} = \begin{pmatrix}
 		0&0&0& \frac{-\sin{(\alpha_0)}\cdot\Delta\delta_F}{V_0} & \frac{\Delta\alpha}{V_0}& \frac{\Delta V_A}{V_0} & 
 		\frac{\Delta\eta}{V_0} &0&0&0&0&0   \\
 		0&0&0&0&0&0&0 &\Delta\alpha & q & \Delta V_A & \Delta\eta & \Delta\delta_F \\
@@ -77,7 +79,7 @@ Die einzelnen Vektoren und Matrizen lauten:
 \end{equation}
 
 \begin{equation}
-	\textbf{x} = (X_{\alpha}\; 
+	\mathbf{x} = (X_{\alpha}\; 
 	X_{\nu}\;
 	X_{\eta}\;
 	X_{\delta_F}\; 
@@ -90,19 +92,25 @@ Die einzelnen Vektoren und Matrizen lauten:
 	M_{\eta}\;
 	M_{\delta_F})^T \\
 \end{equation}  
-Wie schon in dem letzten Abschnitt erwähnt, wird es nach einem geschätzten Paramertervektor $\hat{x}$ gesucht, der die Norm des quadrierten Restfehlervektors $ e = z - H\cdot \hat{x}$ minimiert. Die Lösung ist laut (4.4)
+Wie schon in dem letzten Abschnitt erwähnt, wird es nach einem geschätzten Paramertervektor $\mathbf{\hat{x}}$ gesucht, der 
+die Norm des quadrierten Restfehlervektors $ \mathbf{e} = \mathbf{z} - \mathbf{H}\cdot \mathbf{\hat{x}}$ minimiert. Die 
+Lösung ist laut \cref{eq:minProblemLoesung}
 \begin{equation}
-    \hat{\textbf{x}}= {({\textbf{H}_L}^{T} {\textbf{H}_L})}^{-1} \cdot {\textbf{H}_L}^{T} \textbf{z}_L 
+    \hat{\mathbf{x}}= {({\mathbf{H}_L}^{T} {\mathbf{H}_L})}^{-1} \cdot {\mathbf{H}_L}^{T} \mathbf{z}_L 
 \end{equation}
 
 
-\section{Schätzung mit Matrix-LSQ}
 
-Bei der Matrix-LSQ Methode wird, im Gegensatz zur klassischen LSQ Schätzung, sowohl die Systemmatrix \textbf{A} wie auch die Eingangsmatrix \textbf{B} als unbekannt angesehen. Es handelt sich somit um eine Systemidentifikation im eigentlichen Sinn, da keine flugmechanischen Modelle verwendet werden.
+\section{Matrix-LSQ-Methode}
+
+Bei der Matrix-LSQ-Methode werden, im Gegensatz zur klassischen LSQ-Schätzung, sowohl die Systemmatrix $ \mathbf{A} $ als 
+auch die Eingangsmatrix $ \mathbf{B} $ als unbekannt angesehen. Es handelt sich somit um eine Systemidentifikation im 
+eigentlichen Sinn, da keine flugmechanischen Modelle verwendet werden.
 
 \subsection{Modellgleichung}
 
-Messdaten der Eingänge $\textbf{u}$, des Zustands  $\textbf{x}$ und der Zustandsableitung $\dot{\textbf{x}}$ werden in die Form von Gl. \ref{eq:matrixLSQ} gebracht. 
+Die Messdaten der Eingänge $\mathbf{u}$, des Zustands  $\mathbf{x}$ und der Zustandsableitung $\dot{\mathbf{x}}$ werden in 
+die Form von \cref{eq:matrixLSQ} gebracht. 
 
 \begin{equation}
     \underbrace{\begin{pmatrix}
@@ -110,35 +118,38 @@ Messdaten der Eingänge $\textbf{u}$, des Zustands  $\textbf{x}$ und der Zustand
         . \\
         . \\
         \dot{x}_n^T 
-    \end{pmatrix}}_{\textbf{z}} =
+    \end{pmatrix}}_{\mathbf{z}} =
     \underbrace{\begin{pmatrix}
         x_{1}^T& u_{1}^T \\
         . & .  \\
         . & .  \\
         x_{n}^T & u_{n}^T \\
-    \end{pmatrix}}_{\textbf{H}}
+    \end{pmatrix}}_{\mathbf{H}}
     \underbrace{\begin{pmatrix}
-        \textbf{A}^T \\
-        \textbf{B}^T
-    \end{pmatrix}}_{\hat{\textbf{x}}} +
+        \mathbf{A}^T \\
+        \mathbf{B}^T
+    \end{pmatrix}}_{\hat{\mathbf{x}}} +
     \begin{pmatrix}
         v_1^T \\
         . \\
         . \\
         v_n^T
     \end{pmatrix}
-\end{equation}\label{eq:matrixLSQ}
+	\label{eq:matrixLSQ}
+\end{equation}
 
 \begin{tabular}[\textwidth]{l l}
 
-$\textbf{z}$ & Messmatrix \\
-$\textbf{H}$ & Modellmatrix \\
-$\hat{\textbf{x}}$ & Schätzwertmatrix \\
-$\textbf{v}$ & Störgrößenmatrix \\
+$\mathbf{z}$ & Messmatrix \\
+$\mathbf{H}$ & Modellmatrix \\
+$\hat{\mathbf{x}}$ & Schätzwertmatrix \\
+$\mathbf{v}$ & Störgrößenmatrix \\
 $n$ & Anzahl der Zeitschritte \\
 \end{tabular}
 
-Die Dimension der Systemmatrix und der Eingangsmatrix werden von den Dimensionen von $\textbf{u}$,  $\textbf{x}$ und $\dot{\textbf{x}}$ vorgegeben. Hier liegt auch der Nachteil der Matrix-LSQ Methode. Es ist nicht möglich die einzelnen Parameter innerhalb der Matrizen zu beeinflussen oder Wertebereiche vorzugeben.
+Die Dimension der Systemmatrix und der Eingangsmatrix werden von den Dimensionen von $\mathbf{u}$,  $\mathbf{x}$ und 
+$\dot{\mathbf{x}}$ vorgegeben. Hier liegt auch der Nachteil der Matrix-LSQ-Methode. Es ist nicht möglich die einzelnen 
+Parameter innerhalb der Matrizen zu beeinflussen oder Wertebereiche vorzugeben.
 
 
 \subsection{Schätzgleichung}
@@ -146,27 +157,32 @@ Die Dimension der Systemmatrix und der Eingangsmatrix werden von den Dimensionen
 Nach der Herleitung in \cite{Mandry2021} ergibt sich die Schätzgleichung zu:
 
 \begin{equation*}
-    \hat{\textbf{x}} = (\textbf{H}^T \textbf{H})^{-1}\textbf{H}^T\textbf{z}
+    \hat{\mathbf{x}} = (\mathbf{H}^T \mathbf{H})^{-1}\mathbf{H}^T\mathbf{z}
 \end{equation*}
 
-Besonders hervorzuheben ist hier die Inversion der Matrix $\textbf{H}^T \textbf{H}$. Es handelt sich dabei um eine Matrix der Dimension (dim(\textbf{x})+dim(\textbf{u}))x(dim(\textbf{x})+dim(\textbf{u})). In dieser Arbeit bedeutet das konkret 6x6, womit der Rechenaufwand für die, für große Matrizen aufwändige, Inversion klein bleibt.
+Besonders hervorzuheben ist hier die Inversion der Matrix $\mathbf{H}^T \mathbf{H}$. Es handelt sich dabei um eine Matrix der 
+Dimension $ (\dim{(\mathbf{x})}+\dim{(\mathbf{u})}) \times (\dim{(\mathbf{x})}+\dim{(\mathbf{u})}) $. In dieser Arbeit 
+bedeutet das konkret eine Dimension $ 6 \times 6 $, womit der Rechenaufwand für die, für große Matrizen aufwändige, Inversion 
+klein bleibt.
  
 \section{Ergebnisse}
  
 Anschließend werden die Ergebnisse in diesem Kapitel kurz vorgestellt.
 
-Nach der Schätzung der Einträge der Matrizen $A$ und $B$ wird das Anfangswertproblem \eqref{eq:laengsbewegung} im gesamten 
-Zeitintervall gelöst. Bei allen Simulationen sind die Filterparametern wie in \ref{section:filterung} gewählt.
+Nach der Schätzung der Einträge der Matrizen $\mathbf{A}$ und $\mathbf{B}$ wird das Anfangswertproblem 
+\eqref{eq:laengsbewegung} im gesamten Zeitintervall gelöst. Bei allen Simulationen sind die Filterparametern wie in 
+\cref{section:filterung} gewählt.
 
-In \cref{fig:Ergebnisse_zmlsq} wird die Lösung anhand des Matrix-LSQ-Verfahrens dargestellt. Die geschätzte Matrizen $A_L$ und $B_L$ lauten: 
+In \cref{fig:Ergebnisse_zmlsq} wird die Lösung anhand des Matrix-LSQ-Verfahrens dargestellt. Die geschätzten Matrizen 
+$\mathbf{A_L}$ und $\mathbf{B_L}$ lauten: 
 \begin{equation}
- 	A_L = \begin{pmatrix}
+ 	\mathbf{A_L}\mathbf = \begin{pmatrix}
  		-0.1940 & 0.005 & -0.0002 & -0.0540 \\
  		-38.9899 & -12.8888 & 0.3632 & -4.2686 \\
  		-6.1506 & -0.1501 & -0.0589 & -5.0107 \\
  		0.4433 & 0.0427 & 0.0023 & 0.0818
  	\end{pmatrix} \;\;\; , \;\;\;
- 	A = \begin{pmatrix}
+ 	\mathbf{A} = \begin{pmatrix}
 		\frac{Z_\alpha}{V_0} & 1 & \frac{Z_V}{V_0} & 0\\
 		M_\alpha & M_q & M_V & 0\\
 		X_\alpha & 0 & X_V & -g\\
@@ -176,21 +192,28 @@ In \cref{fig:Ergebnisse_zmlsq} wird die Lösung anhand des Matrix-LSQ-Verfahrens
 \end{equation}
 
 \begin{equation}
- 	 B_L = \begin{pmatrix}
+ 	 \mathbf{B_L} = \begin{pmatrix}
  		-0.0267 & -0.0164 \\ 
  		-26.1377 & -12.9651 \\
  		-0.7414 & 4.6092 \\
  		0.0477 & -0.1328
  	\end{pmatrix}  \;\;\; , \;\;\;
- 	B= \begin{pmatrix}
-		\frac{Z_\eta}{V_0} & -\frac{X_{\delta F}}{V_0} \sin{(\alpha_0)}\\
+ 	\mathbf{B}= \begin{pmatrix}
+		\frac{Z_\eta}{V_0} & -\frac{X_{\delta_F}}{V_0} \sin{(\alpha_0)}\\
 		M_\eta & M_{\delta F}\\
 		X_\eta & X_{\delta F} \cos{(\alpha_0)}\\
-		-\frac{Z_\eta}{V_0} & \frac{X_{\delta F}}{V_0} \sin{(\alpha_0)}\\
+		-\frac{Z_\eta}{V_0} & \frac{X_{\delta_F}}{V_0} \sin{(\alpha_0)}\\
 	\end{pmatrix}
  \nonumber
 \end{equation}
-Die Ergebnisse in \cref{fig:Ergebnisse_zmlsq} zeigen eine relativ präzise Approximation, das Modell liefert vor Allem für Anstellwinkel und Geschwindigkeit gute Ergebnisse. Auch die Ergebnisse für q und den Bahnwinkel sind sinnvoll, durch die wenig aussagekräftigen Messdaten aber schwer zu vergleichen. Allerdings weist das Ergebnis in flugmechanischer Hinsicht Abweichungen in System- und Eingangsmatrix auf. Der Betrag der Einträge der ersten und vierten Spalten von $A_L$ unterscheiden sich stark voneinander ($-0.1940$ und $0.4433$) und ($-0.0002$ und $0.0023$). Eine Starke Abweichung ist auch zwischen die vierten Spalten der Matrizen $A_L$ und $A$.  
+
+Die Ergebnisse in \cref{fig:Ergebnisse_zmlsq} zeigen eine relativ präzise Approximation, das Modell liefert vor allem für 
+Anstellwinkel und Geschwindigkeit gute Ergebnisse. Auch die Ergebnisse für $ q $ und den Bahnwinkel sind sinnvoll, durch die 
+wenig aussagekräftigen Messdaten aber schwer zu vergleichen. Allerdings weist das Ergebnis in flugmechanischer Hinsicht 
+Abweichungen in System- und Eingangsmatrix auf. Die Beträge der Einträge der ersten und vierten Zeile von $\mathbf{A_L}$ 
+unterscheiden sich stark voneinander ($0.1940$ und $0.4433$) und ($0.0002$ und $0.0023$), obwohl diese beim ersten, dritten 
+und vierten Eintrag aufgrund $\Delta \gamma = \Delta \theta - \Delta \alpha$ gleich sein sollten. Eine starke Abweichung ist 
+auch zwischen den vierten Spalten der Matrizen $A_L$ und $A$ zu sehen.
 
 %\todo{warum schlechte Ergebnisse? : Adam : ich weiß nicht warum?}
 \begin{figure}[h!]
@@ -200,7 +223,8 @@ Die Ergebnisse in \cref{fig:Ergebnisse_zmlsq} zeigen eine relativ präzise Appro
     \label{fig:Ergebnisse_zmlsq}
 \end{figure}
 
-\cref{fig:Ergebnisse_zlsq} zeigt die Lösung anhand des LSQ-Verfahrens. Die Methode liefert kein sinnvolles Ergebnisse. Der Simulator kann keine stabilen Werten generieren.
+\cref{fig:Ergebnisse_zlsq} zeigt die Lösung anhand des LSQ-Verfahrens. Die Methode liefert kein sinnvolles Ergebnisse. Die 
+Simulation ist nicht stabil.
 
  \begin{figure}[h!]
 	\centering
@@ -212,11 +236,34 @@ Die Ergebnisse in \cref{fig:Ergebnisse_zmlsq} zeigen eine relativ präzise Appro
 
 \section{Interpretation}
 
-Die wesentliche Erkenntnis der Analyse im Zeitbereich ist, dass es nicht möglich ist die Parameter des linearen Modells für die Seitenbewegung so zu bestimmen, dass eine stabile Simulation möglich ist.
+%Die wesentliche Erkenntnis der Analyse im Zeitbereich ist, dass es nicht möglich ist, die Parameter des linearen Modells für 
+%die Längsbewegung so zu bestimmen, dass eine stabile Simulation möglich ist.
+%
+%Eine Interpretation dafür ist, dass mithilfe der Matrix-LSQ Effekte übertragen werden, die vom linearen Modell 
+%vernachlässigt werden. Die in Kap. \ref{chapter:Modell} beschriebenen Vereinfachungen sind hier ein guter Ansatz. Besonders 
+%ist es möglich, dass der Wind und der Auftrieb durch die Nickrate eine relevante Rolle spielt. 
+%%Gerade die Elemente A[1,4] und A[2,4] sprechen dafür, weil durch diese der Bahnwinkel auf die Änderung des Anstellwinkels 
+%%übertragen wird. 
+%
+%Dass Element $\mathbf{A}_L[1,4]$ nicht null ist spricht für einen Einfluss des Windes, weil somit $\Delta \gamma = \Delta 
+%\theta- \Delta \alpha$ nicht mehr gilt. Der Bahnwinkel hat somit einen Einfluss auf den Anstellwinkel.
+%
+%Eine weitere Untersuchung und eine Betrachtung der Bedingungen beim Flugversuch sind hier notwendig, um eine fundierte 
+%Aussage zu treffen.
 
-Eine Interpretation dafür ist, dass mithilfe der Matrix-LSQ Effekte übertragen werden, die vom linearen Modell vernachlässigt werden. Die in Kap. \ref{chapter:Modell} beschriebenen Vereinfachungen sind hier ein guter Ansatz. Besonders ist es möglich, dass der Wind und der Auftrieb durch die Nickrate eine relevante Rolle spielt. 
-%Gerade die Elemente A[1,4] und A[2,4] sprechen dafür, weil durch diese der Bahnwinkel auf die Änderung des Anstellwinkels übertragen wird. 
+Die wesentliche Erkenntnis der Analyse im Zeitbereich ist, dass es mit der LSQ-Methode nicht möglich ist, die Parameter des 
+linearen Modells für die Längsbewegung so zu bestimmen, dass eine stabile Simulation möglich ist. Mit der Matrix-LSQ-Methode 
+lassen sich Matrizen $ A_L $ und $ B_L $ finden, mit denen die Messdaten angenähert werden können. Jedoch treten hier 
+Abweichungen von dem ursprünglichen Modell auf.\par
+Eine mögliche Erklärung dafür ist, dass die Einträge der mit Matrix-LSQ identifizierten Systemmatrix ungleich $ 0 $ eine 
+Übertragung von Effekten ermöglichen, zu der das ursprüngliche Modell nicht in der Lage ist. Die in \cref{chapter:Modell} 
+beschriebenen Vereinfachungen sind hier ein guter Ansatz. Besonders ist es möglich, dass der Wind und der Auftrieb durch die 
+Nickrate eine relevante Rolle spielen. 
+%Gerade die Elemente A[1,4] und A[2,4] sprechen dafür, weil durch diese der Bahnwinkel auf die Änderung des Anstellwinkels 
+%übertragen wird. 
 
-Dass Element $\textbf{A}_L[1,4]$ nicht null ist spricht für einen Einfluss des Windes, weil somit $\Delta \gamma = \Delta \theta- \Delta \alpha$ nicht mehr gilt. Der Bahnwinkel hat somit einen Einfluss auf den Anstellwinkel.
-
-Eine weitere Untersuchung und eine Betrachtung der Bedingungen beim Flugversuch sind hier notwendig, um eine fundierte Aussage zu treffen.
+Die Unterschiede in der ersten und vierten Zeile der Systemmatrix sprechen für einen Einfluss des Windes, weil somit $\Delta 
+\gamma = \Delta \theta - \Delta \alpha$ nicht mehr gilt.\footnote{Der Bahnwinkel hat somit einen Einfluss auf den 
+Anstellwinkel.}
+Eine weitere Untersuchung und eine Betrachtung der Bedingungen beim Flugversuch sind hier notwendig, um eine fundierte 
+Aussage zu treffen.
