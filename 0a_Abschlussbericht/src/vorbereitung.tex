@@ -96,12 +96,14 @@ Eine Ausnahme bilden hier die Drehraten $ p $, $ q $ und $ r $, bei denen keine 
 
 
 
-\section{Interpolation} %Florian
-Die Rohdaten werden von mehreren Sensoren mit unterschiedlichen Abtastraten geliefert. Da die Identifikationsalgorithmen die 
-Werte zu diskreten Zeitpunkten benötigen, ist es notwendig, einen einheitlichen Zeitvektor mit zugehörigen Eingangs- und 
-Zustandsvektoren zu generieren. Außerdem wird eine konstante Schrittweite gefordert.\par
-Die Abtastrate dieses Zeitvektors ist wichtig, da die Dimension des Optimierungsproblems und damit der 
-Rechenaufwand mit feinerer Diskretisierung steigt (im Zeitbereich). In dieser Arbeit wird der Zeitvektor des 
+\section{Interpolation} \label{sec:interp} %Florian
+
+Die Rohdaten werden von mehreren Sensoren mit unterschiedlichen Abtastraten geliefert. Da die Identifikationsalgorithmen die Werte zu diskreten Zeitpunkten benötigen ist es notwendig einen einheitlichen Zeitvektor mit zugehörigen Eingangs- und Zustandsvektoren zu generieren. Außerdem wird eine konstante Schrittweite gefordert.
+
+Die Abtastrate dieses Zeitvektors ist wichtig, da die Dimension des Optimierungsproblems und damit der Rechenaufwand mit feinerer Diskretisierung steigt. In dieser Arbeit wird der Zeitvektor des \textit{vectoflow\_airdata} Sensors verwendet, da dieser die geringste Abstastrate hat.
+
+In Abb. \ref{fig:interpBsp} ist deutlich zu sehen, dass die wesentliche Form des Signals erhalten bleibt. Die Frequenzen beider Sensoren sind so hoch, dass auch im interpolierten Verlauf alle relevanten Signalanteile erhalten bleiben und nur Rauschen verloren geht.
+
 
 \begin{figure}[h!]
 	\centering
@@ -121,8 +123,7 @@ Daten liefern in vielen Fällen keine sinnvolle Aussage. Neben aufwändigeren Ab
 Filterung der Daten an.\par
 Das Vorwärts-Rückwärtsfilter bietet den Vorteil, dass keine Phasenverschiebung auftritt. Gerade wenn nur einzelne Signalteile 
 gefiltert werden, beispielsweise nur der Eingang, ist diese Eigenschaft unerlässlich. Der Nachteil ist, dass das Filter nicht 
-in Echtzeit verwendet werden kann, da immer die vollständige Datenreihe vorliegen muss. Für eine Systemidentifikation ist 
-dies jedoch keine praktische Einschränkung.
+in Echtzeit verwendet werden kann, da immer die vollständige Datenreihe vorliegen muss. Für eine Systemidentifikation ist dies jedoch keine praktische Einschränkung. \cite{Gschwandtner2019}
 
 In \cref{fig:filterBsp} sind die Auswirkungen einer reinen Vorwärts- und einer Vorwärts-Rückwärtsfilterung auf die Phase 
 gut zu sehen.
@@ -173,4 +174,18 @@ Im Bodediagramm, \cref{fig:bodeplot}, sind Amplituden- und Frequenzgang der Filt
 	\includegraphics[width=0.7\linewidth]{bodeplot.png}
 	\caption{Bodediagramm der Filterfunktion aus \cref{eq:filter}}
 	\label{fig:bodeplot}
+\end{figure}
+
+\section{Simulator}
+
+Zur Beurteilung und Überprüfung des Modells wird ein einfacher Simulator im Zustandsraum verwendet. Die System- und Eingangsmatrix werden aus der Schätzung übernommen. Weiterhin gilt $y=x$ und $\textbf{D}=0$.
+
+Als Eingang $\textbf{u}$ werden die gefilterten Messdaten der Steuerkommandos verwendet. Der Zeitvektor für die Simulation ergibt sich aus dem langsamst gemessenen Zustand, analog zu Kap. \ref{sec:interp}. Das Ergebnis wird zur Weiterverarbeitung gespeichert.
+Die Simulinkimplementierung ist in Abb. \ref{fig:simulator} dargestellt.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{simulator.png}
+	\caption{Simulator in Simulink}
+	\label{fig:simulator}
 \end{figure}

@@ -8,7 +8,7 @@
 \usepackage[pdftex]{graphicx,xcolor}
 \graphicspath{{./src/pics/}}
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.16}
+\pgfplotsset{compat=1.15}
 \usepackage{tikz}
 \usetikzlibrary{plotmarks,shapes,arrows.meta,decorations.markings,patterns,calc}
 % Zum flexiblen Einbinden von Grafiken in .svg Format
@@ -24,11 +24,11 @@
 \geometry{verbose,a4paper,tmargin=3.5cm,bmargin=2.5cm,lmargin=2.6cm,rmargin=2.6cm,headheight=40pt,headsep=1cm}
 \usepackage[headsepline= 0.4pt]{scrlayer-scrpage}
 \pagestyle{scrheadings}
-\clearscrheadfoot % deprecated
-%\clearpairofpagestyles
+%\clearscrheadfoot % deprecated
+\clearpairofpagestyles
 \ohead{  \normalfont \sffamily \bfseries \small Universität Stuttgart \\[2pt] Institut für Flugmechanik und Flugregelung  \\[8pt] \normalfont\sffamily\footnotesize{Prof. Dr.-Ing. Walter Fichter}\\[-37pt] }
 \lohead{ \includegraphics[scale=0.4, trim= -0.0cm 0.05cm 0cm 0cm] {./src/pics/logo/ifrlogo.pdf} \vspace{0.05cm}}
-\cfoot[\pagemark]{}
+\cfoot[\pagemark]{\pagemark}
 
 %Mathematikfunktionen
 \usepackage{amsmath,amsfonts,amssymb}
@@ -56,7 +56,7 @@
 \usepackage{longtable}
 \usepackage{tabularx}				% mehr Tabelleneinstellungen (z.B. Tabellen mit benutzerdefinierter Breite)
 %\usepackage{tikz}					% Erstellen von Vektorgrafiken in LaTeX
-\pgfplotsset{compat=1.16}			% Neuste Version des Pakets aufrufen 
+\pgfplotsset{compat=1.15}			% Neuste Version des Pakets aufrufen 
 \pgfplotsset{plot coordinates/math parser=false} % (benötigt von matlab2tikz)
 \newlength\fwidth					% Breite einer Matlab-Figure bestimmen mit \setlength\fwidth{}
 \newlength\fheight					% Höhe einer Matlab-Figure bestimmen mit \setlength\fheight{}
@@ -89,7 +89,7 @@
 
 %Table of contents
 \tableofcontents
-\pagenumbering{arabic} 
+%\pagenumbering{arabic} 
 
 %Chapters
 \input{./src/einleitung.tex}
