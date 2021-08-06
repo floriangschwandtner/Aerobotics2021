@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.8.4)  6 AUG 2021 09:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.8.4)  6 AUG 2021 09:40
 entering extended mode
 **./main.tex
 (main.tex
@@ -1520,15 +1520,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--16
 
 ]
 chapter A.
+
+Overfull \hbox (8.83383pt too wide) in paragraph at lines 3--10
+\OT1/cmr/m/n/10.95 tragung zu iden-ti-fi-zie-ren. Mit der iden-ti-fi-zier-ten [
+]Ubertragunsgfunktion wur-de dann ei-ne N[]aherung
+ []
+
 <src/pics/Testdaten1.png, id=292, 780.66656pt x 624.08156pt>
 File: src/pics/Testdaten1.png Graphic file (type png)
 <use src/pics/Testdaten1.png>
-Package pdftex.def Info: src/pics/Testdaten1.png  used on input line 13.
+Package pdftex.def Info: src/pics/Testdaten1.png  used on input line 15.
 (pdftex.def)             Requested size: 269.73466pt x 215.63214pt.
 <src/pics/Testdaten2.png, id=293, 764.10469pt x 613.54219pt>
 File: src/pics/Testdaten2.png Graphic file (type png)
 <use src/pics/Testdaten2.png>
-Package pdftex.def Info: src/pics/Testdaten2.png  used on input line 20.
+Package pdftex.def Info: src/pics/Testdaten2.png  used on input line 22.
 (pdftex.def)             Requested size: 269.73466pt x 216.58727pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1573,7 +1579,7 @@ ype1/public/amsfonts/cm/cmss9.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 eX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmti10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.
 pfb>
-Output written on main.pdf (23 pages, 2197026 bytes).
+Output written on main.pdf (23 pages, 2197102 bytes).
 PDF statistics:
  486 PDF objects out of 1000 (max. 8388607)
  103 named destinations out of 1000 (max. 500000)
