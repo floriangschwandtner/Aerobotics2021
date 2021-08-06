@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.8.4)  6 AUG 2021 11:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.8.4)  6 AUG 2021 11:31
 entering extended mode
 **./main.tex
 (main.tex
@@ -1410,13 +1410,13 @@ LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
 ]
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 159.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 160.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
  [10]
 <./src/pics//LS.png, id=195, 3011.25pt x 1736.4875pt>
 File: ./src/pics//LS.png Graphic file (type png)
 <use ./src/pics//LS.png>
-Package pdftex.def Info: ./src/pics//LS.png  used on input line 230.
+Package pdftex.def Info: ./src/pics//LS.png  used on input line 231.
 (pdftex.def)             Requested size: 449.55322pt x 277.73769pt.
 
 
@@ -1424,18 +1424,18 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 237.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 238.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
 [11pdfTeX warning (ext4): destination with the same identifier (name{equation.4
 .3.15}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.237 
+l.238 
       ]
 <./src/pics//LS_LSQ.png, id=205, 3011.25pt x 1786.675pt>
 File: ./src/pics//LS_LSQ.png Graphic file (type png)
 <use ./src/pics//LS_LSQ.png>
-Package pdftex.def Info: ./src/pics//LS_LSQ.png  used on input line 240.
+Package pdftex.def Info: ./src/pics//LS_LSQ.png  used on input line 241.
 (pdftex.def)             Requested size: 449.55322pt x 285.76479pt.
 
 
@@ -1586,7 +1586,7 @@ ype1/public/amsfonts/cm/cmss9.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 eX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmti10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.
 pfb>
-Output written on main.pdf (23 pages, 2197567 bytes).
+Output written on main.pdf (23 pages, 2197565 bytes).
 PDF statistics:
  486 PDF objects out of 1000 (max. 8388607)
  103 named destinations out of 1000 (max. 500000)
