@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.8.4)  6 AUG 2021 11:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.8.4)  6 AUG 2021 09:40
 entering extended mode
 **./main.tex
 (main.tex
@@ -1281,69 +1281,25 @@ File: bkm-pdftex.def 2020-11-06 v1.29 bookmark driver for pdfTeX (HO)
 ))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
- (src/00_title.tex
-Runaway argument?
-{ \thispagestyle {empty} 
-! Paragraph ended before \@ssect was complete.
-<to be read again> 
-                   \par 
-l.6 
-    
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
+ (src/00_title.tex) [1
 
+{C:/Users/Fabrizio/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] (main.to
+c
+Package cleveref Info: loaded `ngerman' language definitions on input line 1.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
 
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.10 A
-      erobotics-Seminar  \\
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-! Too many }'s.
-l.21 }
-      
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
-
-
-Overfull \hbox (2.19092pt too wide) in paragraph at lines 10--22
-\OT1/cmr/m/n/20.74 Sch[]atzung der Pa-ra-me-ter flug-me-cha-ni-scher Mo-del-le 
-aus
- []
-
-)
-<./src/pics/logo/ifrlogo.pdf, id=6, 156.20056pt x 83.27834pt>
-File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
-<use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 91.
-(pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 91.
-
- (C:\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd
+(C:\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 91.
-
+LaTeX Font Info:    Trying to load font information for U+msb on input line 5.
 
 (C:\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1{C:/Users/Fabrizio/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
-
- <./src/pics/logo/ifrlogo.pdf>] (main.toc
-Package cleveref Info: loaded `ngerman' language definitions on input line 1.
-)
+))
 \tf@toc=\write6
 \openout6 = `main.toc'.
 
-
-(src/einleitung.tex [2
+ (src/einleitung.tex [2
 
 
 ]
@@ -1363,7 +1319,7 @@ chapter 2.
 
 ]
 chapter 3.
-<./src/pics//flug.png, id=109, 481.8pt x 271.2534pt>
+<./src/pics//flug.png, id=96, 481.8pt x 271.2534pt>
 File: ./src/pics//flug.png Graphic file (type png)
 <use ./src/pics//flug.png>
 Package pdftex.def Info: ./src/pics//flug.png  used on input line 68.
@@ -1375,29 +1331,30 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 ]
-<./src/pics//trimmpunkte.png, id=120, 570.63188pt x 261.22594pt>
+<./src/pics//trimmpunkte.png, id=107, 570.63188pt x 261.22594pt>
 File: ./src/pics//trimmpunkte.png Graphic file (type png)
 <use ./src/pics//trimmpunkte.png>
 Package pdftex.def Info: ./src/pics//trimmpunkte.png  used on input line 91.
 (pdftex.def)             Requested size: 404.59515pt x 185.2166pt.
+<./src/pics/logo/ifrlogo.pdf, id=109, 156.20056pt x 83.27834pt>
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 106.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 102.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
- [6 <./src/pics//flug.png (PNG copy)> <./src/pics//trimmpunkte.png>]
+ [6 <./src/pics/logo/ifrlogo.pdf> <./src/pics//flug.png (PNG copy)> <./src/pics
+//trimmpunkte.png>]
 <./src/pics//beispielInterpolation.png, id=130, 1443.89438pt x 1489.81593pt>
 File: ./src/pics//beispielInterpolation.png Graphic file (type png)
 <use ./src/pics//beispielInterpolation.png>
 Package pdftex.def Info: ./src/pics//beispielInterpolation.png  used on input l
-ine 120.
+ine 110.
 (pdftex.def)             Requested size: 314.68588pt x 324.6916pt.
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 140.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 128.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
-
-[7 <./src/pics//beispielInterpolation.png (PNG copy)>]
-Overfull \hbox (15.97441pt too wide) in paragraph at lines 140--142
+ [7 <./src/pics//beispielInterpolation.png (PNG copy)>]
+Overfull \hbox (15.97441pt too wide) in paragraph at lines 128--130
 []\OT1/cmr/m/n/10.95 In Abb. []3.4[] sind die Aus-wir-kun-gen ei-ner rei-nen Vo
 rw[]arts- und ei-ner Vorw[]arts-R[]uckw[]artsfilterung
  []
@@ -1406,20 +1363,20 @@ rw[]arts- und ei-ner Vorw[]arts-R[]uckw[]artsfilterung
 File: ./src/pics//beispielFilterung.png Graphic file (type png)
 <use ./src/pics//beispielFilterung.png>
 Package pdftex.def Info: ./src/pics//beispielFilterung.png  used on input line 
-145.
+133.
 (pdftex.def)             Requested size: 314.68588pt x 324.6916pt.
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 180.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 168.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
 [8 <./src/pics//beispielFilterung.png (PNG copy)>]
 <./src/pics//bodeplot.png, id=150, 632.3625pt x 474.27188pt>
 File: ./src/pics//bodeplot.png Graphic file (type png)
 <use ./src/pics//bodeplot.png>
-Package pdftex.def Info: ./src/pics//bodeplot.png  used on input line 186.
+Package pdftex.def Info: ./src/pics//bodeplot.png  used on input line 174.
 (pdftex.def)             Requested size: 314.68588pt x 236.01366pt.
 
-Overfull \hbox (9.47974pt too wide) in paragraph at lines 197--202
+Overfull \hbox (9.47974pt too wide) in paragraph at lines 185--190
 \OT1/cmr/m/n/10.95 schnitt []3.3[]. Das Er-geb-nis wird zur Wei-ter-ver-ar-bei-
 tung ge-spei-chert. Die Simulink-Implementierung
  []
@@ -1427,7 +1384,7 @@ tung ge-spei-chert. Die Simulink-Implementierung
 <./src/pics//simulator.png, id=155, 805.50937pt x 267.24844pt>
 File: ./src/pics//simulator.png Graphic file (type png)
 <use ./src/pics//simulator.png>
-Package pdftex.def Info: ./src/pics//simulator.png  used on input line 205.
+Package pdftex.def Info: ./src/pics//simulator.png  used on input line 193.
 (pdftex.def)             Requested size: 314.68588pt x 104.4059pt.
 ) (src/zeitbereich.tex
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
@@ -1600,13 +1557,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 45261 strings out of 478931
- 1075526 string characters out of 2865568
+ 45260 strings out of 478931
+ 1075517 string characters out of 2865568
  1703293 words of memory out of 3000000
- 62249 multiletter control sequences out of 15000+600000
- 418325 words of font info for 82 fonts, out of 8000000 for 9000
+ 62248 multiletter control sequences out of 15000+600000
+ 418021 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,25n,117p,10628b,791s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 108i,25n,117p,10628b,795s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\Fabrizio\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi6
 00\tcrm1095.pk><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/MiKTeX 2.9/fonts/type1/pub
@@ -1615,16 +1572,16 @@ lic/amsfonts/cm/cmbx8.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10
 nts/type1/public/amsfonts/cm/cmmi10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfo
 nts/cm/cmmi6.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmr17.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.p
-fb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmr9.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmss9.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmsy8.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.p
-fb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (23 pages, 2210820 bytes).
+blic/amsfonts/cm/cmr6.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pf
+b><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmss9.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmssbx10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmti10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.
+pfb>
+Output written on main.pdf (23 pages, 2197102 bytes).
 PDF statistics:
- 489 PDF objects out of 1000 (max. 8388607)
- 102 named destinations out of 1000 (max. 500000)
+ 486 PDF objects out of 1000 (max. 8388607)
+ 103 named destinations out of 1000 (max. 500000)
  315 words of extra memory for PDF output out of 10000 (max. 10000000)
 
