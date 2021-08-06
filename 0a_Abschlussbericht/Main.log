@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.8.4)  4 AUG 2021 13:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.8.4)  6 AUG 2021 09:35
 entering extended mode
 **./main.tex
 (main.tex
@@ -794,10 +794,6 @@ Package scrlayer-scrpage Info: deactivating warning for font element
 )
 Package scrlayer-scrpage Info: auto-selection of `pagestyleset=KOMA-Script'.
 
-
-Package scrlayer-scrpage Warning: replacing deprecated \clearscrheadfoot by
-(scrlayer-scrpage)                \clearpairofpagestyles on input line 27.
-
 (C:\MiKTeX 2.9\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2021/04/20 v2.17j AMS math features
 \@mathmargin=\skip67
@@ -1203,7 +1199,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package pgfplots notification 'compat/show suggested version=true': you might b
-enefit from \pgfplotsset{compat=1.18} (current compat level: 1.16).
+enefit from \pgfplotsset{compat=1.18} (current compat level: 1.15).
 
 ()
 
@@ -1285,38 +1281,25 @@ File: bkm-pdftex.def 2020-11-06 v1.29 bookmark driver for pdfTeX (HO)
 ))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
- (src/00_title.tex)
-<./src/pics/logo/ifrlogo.pdf, id=6, 156.20056pt x 83.27834pt>
-File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
-<use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 91.
-(pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 91.
+ (src/00_title.tex) [1
 
+{C:/Users/Fabrizio/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] (main.to
+c
+Package cleveref Info: loaded `ngerman' language definitions on input line 1.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
 
 (C:\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 91.
-
+LaTeX Font Info:    Trying to load font information for U+msb on input line 5.
 
 (C:\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1{C:/Users/Fabrizio/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
-
- <./src/pics/logo/ifrlogo.pdf>] (main.toc
-Package cleveref Info: loaded `ngerman' language definitions on input line 1.
-)
+))
 \tf@toc=\write6
 \openout6 = `main.toc'.
 
-
-(src/einleitung.texpdfTeX warning (ext4): destination with the same identifier 
-(name{page.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1 \chapter
-            {Einleitung} [1
+ (src/einleitung.tex [2
 
 
 ]
@@ -1326,17 +1309,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--10
 
  []
 
-) (src/modell.tex [2
+) (src/modell.tex [3
 
 
 ]
 chapter 2.
-) (src/vorbereitung.tex [3
+) (src/vorbereitung.tex [4
 
 
 ]
 chapter 3.
-<./src/pics//flug.png, id=106, 481.8pt x 271.2534pt>
+<./src/pics//flug.png, id=96, 481.8pt x 271.2534pt>
 File: ./src/pics//flug.png Graphic file (type png)
 <use ./src/pics//flug.png>
 Package pdftex.def Info: ./src/pics//flug.png  used on input line 68.
@@ -1344,80 +1327,89 @@ Package pdftex.def Info: ./src/pics//flug.png  used on input line 68.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[4
+[5
 
 
 ]
-<./src/pics//trimmpunkte.png, id=117, 570.63188pt x 261.22594pt>
+<./src/pics//trimmpunkte.png, id=107, 570.63188pt x 261.22594pt>
 File: ./src/pics//trimmpunkte.png Graphic file (type png)
 <use ./src/pics//trimmpunkte.png>
 Package pdftex.def Info: ./src/pics//trimmpunkte.png  used on input line 91.
 (pdftex.def)             Requested size: 404.59515pt x 185.2166pt.
+<./src/pics/logo/ifrlogo.pdf, id=109, 156.20056pt x 83.27834pt>
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
 Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 102.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
- [5 <./src/pics//flug.png (PNG copy)> <./src/pics//trimmpunkte.png>]
-<./src/pics//beispielInterpolation.png, id=126, 1443.89438pt x 1489.81593pt>
+ [6 <./src/pics/logo/ifrlogo.pdf> <./src/pics//flug.png (PNG copy)> <./src/pics
+//trimmpunkte.png>]
+<./src/pics//beispielInterpolation.png, id=130, 1443.89438pt x 1489.81593pt>
 File: ./src/pics//beispielInterpolation.png Graphic file (type png)
 <use ./src/pics//beispielInterpolation.png>
 Package pdftex.def Info: ./src/pics//beispielInterpolation.png  used on input l
-ine 108.
+ine 110.
 (pdftex.def)             Requested size: 314.68588pt x 324.6916pt.
-
-Overfull \hbox (15.97441pt too wide) in paragraph at lines 127--129
+File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
+<use ./src/pics/logo/ifrlogo.pdf>
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 128.
+(pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
+ [7 <./src/pics//beispielInterpolation.png (PNG copy)>]
+Overfull \hbox (15.97441pt too wide) in paragraph at lines 128--130
 []\OT1/cmr/m/n/10.95 In Abb. []3.4[] sind die Aus-wir-kun-gen ei-ner rei-nen Vo
 rw[]arts- und ei-ner Vorw[]arts-R[]uckw[]artsfilterung
  []
 
-<./src/pics//beispielFilterung.png, id=128, 1443.89438pt x 1489.81593pt>
+<./src/pics//beispielFilterung.png, id=139, 1443.89438pt x 1489.81593pt>
 File: ./src/pics//beispielFilterung.png Graphic file (type png)
 <use ./src/pics//beispielFilterung.png>
 Package pdftex.def Info: ./src/pics//beispielFilterung.png  used on input line 
-132.
+133.
 (pdftex.def)             Requested size: 314.68588pt x 324.6916pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 143.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 168.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
-[6 <./src/pics//beispielInterpolation.png (PNG copy)>]
-File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
-<use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 170.
-(pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
- [7 <./src/pics//beispielFilterung.png (PNG copy)>]
-<./src/pics//bodeplot.png, id=145, 632.3625pt x 474.27188pt>
+[8 <./src/pics//beispielFilterung.png (PNG copy)>]
+<./src/pics//bodeplot.png, id=150, 632.3625pt x 474.27188pt>
 File: ./src/pics//bodeplot.png Graphic file (type png)
 <use ./src/pics//bodeplot.png>
-Package pdftex.def Info: ./src/pics//bodeplot.png  used on input line 173.
+Package pdftex.def Info: ./src/pics//bodeplot.png  used on input line 174.
 (pdftex.def)             Requested size: 314.68588pt x 236.01366pt.
+
+Overfull \hbox (9.47974pt too wide) in paragraph at lines 185--190
+\OT1/cmr/m/n/10.95 schnitt []3.3[]. Das Er-geb-nis wird zur Wei-ter-ver-ar-bei-
+tung ge-spei-chert. Die Simulink-Implementierung
+ []
+
+<./src/pics//simulator.png, id=155, 805.50937pt x 267.24844pt>
+File: ./src/pics//simulator.png Graphic file (type png)
+<use ./src/pics//simulator.png>
+Package pdftex.def Info: ./src/pics//simulator.png  used on input line 193.
+(pdftex.def)             Requested size: 314.68588pt x 104.4059pt.
 ) (src/zeitbereich.tex
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
 Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 1.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
- [8 <./src/pics//bodeplot.png (PNG copy)>]
+ [9 <./src/pics//bodeplot.png (PNG copy)> <./src/pics//simulator.png>]
 chapter 4.
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
-(Font)              using `OT1/cmss/bx/n' instead on input line 4.
+(Font)              using `OT1/cmss/bx/n' instead on input line 11.
 
-[9
+[10
 
 
 ]
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 150.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 159.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
- [10]
-<./src/pics//LS.png, id=184, 3011.25pt x 1736.4875pt>
+ [11]
+<./src/pics//LS.png, id=195, 3011.25pt x 1736.4875pt>
 File: ./src/pics//LS.png Graphic file (type png)
 <use ./src/pics//LS.png>
-Package pdftex.def Info: ./src/pics//LS.png  used on input line 221.
+Package pdftex.def Info: ./src/pics//LS.png  used on input line 230.
 (pdftex.def)             Requested size: 449.55322pt x 277.73769pt.
 
 
@@ -1425,18 +1417,18 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 228.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 237.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
-[11pdfTeX warning (ext4): destination with the same identifier (name{equation.4
+[12pdfTeX warning (ext4): destination with the same identifier (name{equation.4
 .3.15}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.228 
+l.237 
       ]
-<./src/pics//LS_LSQ.png, id=194, 3011.25pt x 1786.675pt>
+<./src/pics//LS_LSQ.png, id=205, 3011.25pt x 1786.675pt>
 File: ./src/pics//LS_LSQ.png Graphic file (type png)
 <use ./src/pics//LS_LSQ.png>
-Package pdftex.def Info: ./src/pics//LS_LSQ.png  used on input line 231.
+Package pdftex.def Info: ./src/pics//LS_LSQ.png  used on input line 240.
 (pdftex.def)             Requested size: 449.55322pt x 285.76479pt.
 
 
@@ -1447,72 +1439,72 @@ File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
 Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 1.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
- [12 <./src/pics//LS.png>]
+ [13 <./src/pics//LS.png>]
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
 Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 1.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
- [13 <./src/pics//LS_LSQ.png>]
+ [14 <./src/pics//LS_LSQ.png>]
 chapter 5.
-[14
+[15
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 68--73
+Underfull \hbox (badness 10000) in paragraph at lines 70--75
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--76
+Underfull \hbox (badness 10000) in paragraph at lines 76--78
 
  []
 
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 136.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 138.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
-[15]
-<./src/pics//Newton_Raphson.png, id=239, 350.32883pt x 502.09583pt>
+[16]
+<./src/pics//Newton_Raphson.png, id=250, 350.32883pt x 502.09583pt>
 File: ./src/pics//Newton_Raphson.png Graphic file (type png)
 <use ./src/pics//Newton_Raphson.png>
-Package pdftex.def Info: ./src/pics//Newton_Raphson.png  used on input line 139
+Package pdftex.def Info: ./src/pics//Newton_Raphson.png  used on input line 141
 .
 (pdftex.def)             Requested size: 269.73466pt x 386.59966pt.
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 154.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 156.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
- [16 <./src/pics//Newton_Raphson.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 155--157
+ [17 <./src/pics//Newton_Raphson.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 157--159
 
  []
 
-<./src/pics//Ergebnisse_Frequenzbereich.png, id=250, 1445.4pt x 685.8122pt>
+<./src/pics//Ergebnisse_Frequenzbereich.png, id=261, 1445.4pt x 685.8122pt>
 File: ./src/pics//Ergebnisse_Frequenzbereich.png Graphic file (type png)
 <use ./src/pics//Ergebnisse_Frequenzbereich.png>
 Package pdftex.def Info: ./src/pics//Ergebnisse_Frequenzbereich.png  used on in
-put line 191.
+put line 193.
 (pdftex.def)             Requested size: 449.55322pt x 247.70845pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
-Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 206.
+Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 208.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
-[17]
-<./src/pics//Ergebnisse_alpha_inv.png, id=260, 1445.4pt x 685.8122pt>
+[18]
+<./src/pics//Ergebnisse_alpha_inv.png, id=271, 1445.4pt x 685.8122pt>
 File: ./src/pics//Ergebnisse_alpha_inv.png Graphic file (type png)
 <use ./src/pics//Ergebnisse_alpha_inv.png>
 Package pdftex.def Info: ./src/pics//Ergebnisse_alpha_inv.png  used on input li
-ne 209.
+ne 211.
 (pdftex.def)             Requested size: 449.55322pt x 247.70845pt.
 ) (src/zusammenfassung.tex
 File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
 Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 1.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
- [18 <./src/pics//Ergebnisse_Frequenzbereich.png (PNG copy)> <./src/pics//Ergeb
+ [19 <./src/pics//Ergebnisse_Frequenzbereich.png (PNG copy)> <./src/pics//Ergeb
 nisse_alpha_inv.png (PNG copy)>]
 chapter 6.
 
@@ -1520,28 +1512,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--16
 
  []
 
-) (main.bbl [19
+) (main.bbl [20
 
 
-]) (src/appendix_test_algorithmus.tex [20
+]) (src/appendix_test_algorithmus.tex [21
 
 
 ]
 chapter A.
-<src/pics/Testdaten1.png, id=281, 780.66656pt x 624.08156pt>
+<src/pics/Testdaten1.png, id=292, 780.66656pt x 624.08156pt>
 File: src/pics/Testdaten1.png Graphic file (type png)
 <use src/pics/Testdaten1.png>
-Package pdftex.def Info: src/pics/Testdaten1.png  used on input line 12.
+Package pdftex.def Info: src/pics/Testdaten1.png  used on input line 13.
 (pdftex.def)             Requested size: 269.73466pt x 215.63214pt.
-<src/pics/Testdaten2.png, id=282, 764.10469pt x 613.54219pt>
+<src/pics/Testdaten2.png, id=293, 764.10469pt x 613.54219pt>
 File: src/pics/Testdaten2.png Graphic file (type png)
 <use src/pics/Testdaten2.png>
-Package pdftex.def Info: src/pics/Testdaten2.png  used on input line 19.
+Package pdftex.def Info: src/pics/Testdaten2.png  used on input line 20.
 (pdftex.def)             Requested size: 269.73466pt x 216.58727pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) [21
+) [22
 
 
  <./src/pics/Testdaten1.png>]
@@ -1549,7 +1541,7 @@ File: ./src/pics/logo/ifrlogo.pdf Graphic file (type pdf)
 <use ./src/pics/logo/ifrlogo.pdf>
 Package pdftex.def Info: ./src/pics/logo/ifrlogo.pdf  used on input line 111.
 (pdftex.def)             Requested size: 62.47911pt x 32.74165pt.
- [22 <./src/pics/Testdaten2.png>] (main.aux
+ [23 <./src/pics/Testdaten2.png>] (main.aux
 Package cleveref Info: loaded `ngerman' language definitions on input line 25.
 )
 
@@ -1559,10 +1551,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 45242 strings out of 478931
- 1075154 string characters out of 2865568
- 1703291 words of memory out of 3000000
- 62235 multiletter control sequences out of 15000+600000
+ 45260 strings out of 478931
+ 1075517 string characters out of 2865568
+ 1703293 words of memory out of 3000000
+ 62248 multiletter control sequences out of 15000+600000
  418021 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,25n,117p,10628b,795s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1581,9 +1573,9 @@ ype1/public/amsfonts/cm/cmss9.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 eX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmti10.pfb><C:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.
 pfb>
-Output written on main.pdf (23 pages, 2152103 bytes).
+Output written on main.pdf (23 pages, 2197026 bytes).
 PDF statistics:
- 471 PDF objects out of 1000 (max. 8388607)
- 99 named destinations out of 1000 (max. 500000)
- 302 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 486 PDF objects out of 1000 (max. 8388607)
+ 103 named destinations out of 1000 (max. 500000)
+ 315 words of extra memory for PDF output out of 10000 (max. 10000000)
 

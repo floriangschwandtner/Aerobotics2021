@@ -1,5 +1,12 @@
 \chapter{Systemidentifikation im Zeitbereich}
-Systemidentifikation im Zeitbereich heißt, ein Modell und den zugehörigen Parametersatz zu finden, welches den zeitlichen Verlauf möglichst gut approximiert. Grundlegend ist hier zwischen der Systemidentifikation und der Parameteridentifikation zu unterscheiden. Systemidentifikation bedeutet, dass auch das Modell als unbekannt angenommen wird und die gesamte Struktur aus den Messdaten geschätzt wird, wie es hier mit der Matrix LSQ . Bei der Parameteridentifikation hingegen ist ein flugmechanisches Modell bekannt, in dem Parameter gesucht werden.
+Systemidentifikation im Zeitbereich heißt, ein Modell und den zugehörigen 
+Parametersatz zu finden, welches den zeitlichen Verlauf möglichst gut 
+approximiert. Grundlegend ist hier zwischen der Systemidentifikation und der 
+Parameteridentifikation zu unterscheiden. Systemidentifikation bedeutet, dass 
+auch das Modell als unbekannt angenommen wird und die gesamte Struktur aus den 
+Messdaten geschätzt wird, wie hier mit der Matrix-LSQ. Bei der 
+Parameteridentifikation hingegen ist ein flugmechanisches Modell bekannt, in 
+dem Parameter gesucht werden (vgl. LSQ).
 
 \section{\textit{Least Squares}-Methode}
 In diesem Kapitel wird die Methode der kleinsten Fehlerquadrate (\textit{Least Squares}, LSQ) vorgestellt.
@@ -20,13 +27,15 @@ mit
 \end{align}
 
 Die LSQ-Methode kann beispielsweise verwendet werden, um die Schätzung von Modellparametern im Rahmen der 
-Systemidentifikation durchzuführen. Gesucht ist dabei ein Schätzwert $\hat{x}$ für den Parametervektor. Der Restfehlervektor 
-$e$ lautet:
+Systemidentifikation durchzuführen. Gesucht ist dabei ein Schätzwert 
+$\mathbf{\hat{x}}$ für den Parametervektor. Der Restfehlervektor 
+$\mathbf{e}$ lautet:
 \begin{equation}
     \mathbf{e} = \mathbf{z} - \mathbf{H}\cdot \hat{\mathbf{x}} \\
 \end{equation}
 
-Die Idee besteht darin, einen Wert von $\hat{x}$ zu finden, der die Norm des quadrierten Restfehlervektors minimiert. Das 
+Die Idee besteht darin, einen Wert für $\mathbf{\hat{x}}$ zu finden, der die 
+Norm des quadrierten Restfehlervektors minimiert. Das 
 quadratische Zielfunktional $J$ ist gegeben durch: 
 \begin{align}
    \begin{split}
@@ -162,8 +171,8 @@ Nach der Herleitung in \cite{Mandry2021} ergibt sich die Schätzgleichung zu:
 
 Besonders hervorzuheben ist hier die Inversion der Matrix $\mathbf{H}^T \mathbf{H}$. Es handelt sich dabei um eine Matrix der 
 Dimension $ (\dim{(\mathbf{x})}+\dim{(\mathbf{u})}) \times (\dim{(\mathbf{x})}+\dim{(\mathbf{u})}) $. In dieser Arbeit 
-bedeutet das konkret eine Dimension $ 6 \times 6 $, womit der Rechenaufwand für die, für große Matrizen aufwändige, Inversion 
-klein bleibt.
+bedeutet das konkret eine Dimension $ 6 \times 6 $, womit der Rechenaufwand für 
+die - für große Matrizen aufwändige - Inversion klein bleibt.
  
 \section{Ergebnisse}
  
@@ -266,4 +275,4 @@ Die Unterschiede in der ersten und vierten Zeile der Systemmatrix sprechen für 
 \gamma = \Delta \theta - \Delta \alpha$ nicht mehr gilt.\footnote{Der Bahnwinkel hat somit einen Einfluss auf den 
 Anstellwinkel.}
 Eine weitere Untersuchung und eine Betrachtung der Bedingungen beim Flugversuch sind hier notwendig, um eine fundierte 
-Aussage zu treffen.
+Aussage treffen zu können.

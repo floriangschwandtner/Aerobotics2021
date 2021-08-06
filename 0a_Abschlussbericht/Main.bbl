@@ -23,14 +23,20 @@
 \newblock \emph{Skriptum Digitale Regelung und Filterung}.
 \newblock 2017
 
-\bibitem[4]{Klein2006}
+\bibitem[4]{Gschwandtner2019}
+\textsc{Gschwandtner}, F. :
+\newblock \emph{Bestimmung eines Pilotenmodells mit Flugmessdaten aus einem
+  UL-Helikopter}.
+\newblock 2019
+
+\bibitem[5]{Klein2006}
 \textsc{Klein}, V.  ; \textsc{Morelli}, E.~A.:
 \newblock \emph{Aircraft System Identification}.
 \newblock American Institute of Aeronautics~{and}~Astronautics, Reston, VA,
   2006. --
 \newblock ISBN 1--56347--832--3
 
-\bibitem[5]{Mandry2021}
+\bibitem[6]{Mandry2021}
 \textsc{Mandry}, N. :
 \newblock \emph{Modul 5: Kleinste Fehlerquadrate für eine Matrixgleichung:
   Matrix-LSQ}.

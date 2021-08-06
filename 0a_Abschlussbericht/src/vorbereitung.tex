@@ -178,10 +178,15 @@ Im Bodediagramm, \cref{fig:bodeplot}, sind Amplituden- und Frequenzgang der Filt
 
 \section{Simulator}
 
-Zur Beurteilung und Überprüfung des Modells wird ein einfacher Simulator im Zustandsraum verwendet. Die System- und Eingangsmatrix werden aus der Schätzung übernommen. Weiterhin gilt $y=x$ und $\textbf{D}=0$.
+Zur Beurteilung und Überprüfung des Modells wird ein einfacher Simulator im 
+Zustandsraum verwendet. Die System- und Eingangsmatrix werden aus der Schätzung 
+übernommen. Weiterhin gilt $\mathbf{y}=\mathbf{x}$ und $\textbf{D}=0$.
 
-Als Eingang $\textbf{u}$ werden die gefilterten Messdaten der Steuerkommandos verwendet. Der Zeitvektor für die Simulation ergibt sich aus dem langsamst gemessenen Zustand, analog zu Kap. \ref{sec:interp}. Das Ergebnis wird zur Weiterverarbeitung gespeichert.
-Die Simulinkimplementierung ist in Abb. \ref{fig:simulator} dargestellt.
+Als Eingang $\textbf{u}$ werden die gefilterten Messdaten der Steuerkommandos 
+verwendet. Der Zeitvektor für die Simulation ergibt sich aus dem langsamst 
+gemessenen Zustand, analog zu \cref{sec:interp}. Das Ergebnis wird zur 
+Weiterverarbeitung gespeichert.
+Die Simulink-Implementierung ist in \cref{fig:simulator} dargestellt.
 
 \begin{figure}[h!]
 	\centering

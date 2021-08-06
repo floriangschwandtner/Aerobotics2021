@@ -1,27 +1,28 @@
 \babel@toc {ngerman}{}
-\contentsline {chapter}{\numberline {1}Einleitung}{2}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Modell}{3}{chapter.2}%
-\contentsline {chapter}{\numberline {3}Vorbereitung der Daten}{4}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Ermittlung der relevanten Signale}{4}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Trimmpunkt}{5}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Interpolation}{6}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Filterung}{6}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Ablauf}{7}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Wahl der Filterübertragungsfunktion}{7}{subsection.3.4.2}%
-\contentsline {chapter}{\numberline {4}Systemidentifikation im Zeitbereich}{9}{chapter.4}%
-\contentsline {section}{\numberline {4.1}\textit {Least Squares}-Methode}{9}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Schätzung der Parameter mit dem LSQ-Verfahren}{10}{subsection.4.1.1}%
-\contentsline {section}{\numberline {4.2}Matrix-LSQ-Methode}{10}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Modellgleichung}{10}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Schätzgleichung}{11}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Ergebnisse}{11}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Interpretation}{12}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Systemidentifikation im Frequenzbereich}{14}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Fourier-Transformation}{14}{section.5.1}%
-\contentsline {section}{\numberline {5.2}\textit {Output Error}-Methode}{14}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Vor- und Nachteile}{16}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Ergebnisse}{17}{section.5.4}%
-\contentsline {chapter}{\numberline {6}Zusammenfassung und Ausblick}{19}{chapter.6}%
-\contentsline {chapter}{Literaturverzeichnis}{19}{chapter.6}%
-\contentsline {chapter}{\numberline {A}Test des Algorithmus im Frequenzbereich}{21}{appendix.A}%
+\contentsline {chapter}{\numberline {1}Einleitung}{3}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Modell}{4}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Vorbereitung der Daten}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Ermittlung der relevanten Signale}{5}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Trimmpunkt}{6}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Interpolation}{7}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Filterung}{7}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Ablauf}{8}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Wahl der Filterübertragungsfunktion}{8}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Simulator}{9}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Systemidentifikation im Zeitbereich}{10}{chapter.4}%
+\contentsline {section}{\numberline {4.1}\textit {Least Squares}-Methode}{10}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Schätzung der Parameter mit dem LSQ-Verfahren}{11}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Matrix-LSQ-Methode}{11}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Modellgleichung}{11}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Schätzgleichung}{12}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Ergebnisse}{12}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Interpretation}{13}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Systemidentifikation im Frequenzbereich}{15}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Fourier-Transformation}{15}{section.5.1}%
+\contentsline {section}{\numberline {5.2}\textit {Output Error}-Methode}{15}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Vor- und Nachteile}{17}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Ergebnisse}{18}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Zusammenfassung und Ausblick}{20}{chapter.6}%
+\contentsline {chapter}{Literaturverzeichnis}{20}{chapter.6}%
+\contentsline {chapter}{\numberline {A}Test des Algorithmus im Frequenzbereich}{22}{appendix.A}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
